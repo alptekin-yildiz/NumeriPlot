@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: >-
+  If NumeriPlot contributes to a publication, thesis, report, or teaching
+  material, please cite the software using this metadata.
+title: NumeriPlot
+type: software
+authors:
+  - family-names: YILDIZ
+    given-names: Alptekin
+    affiliation: Istanbul Technical University
+version: 0.1.0
+license: GPL-3.0-only
+repository-code: https://github.com/alptekin-yildiz/NumeriPlot
+url: https://github.com/alptekin-yildiz/NumeriPlot
+abstract: >-
+  NumeriPlot is a free and open-source desktop application for scientific
+  plotting, data processing, and curve fitting, designed primarily for
+  students and researchers.
+keywords:
+  - scientific plotting
+  - data analysis
+  - curve fitting
+  - desktop application
+preferred-citation:
+  type: software
+  authors:
+    - family-names: YILDIZ
+      given-names: Alptekin
+      affiliation: Istanbul Technical University
+  title: NumeriPlot
+  version: 0.1.0
+  url: https://github.com/alptekin-yildiz/NumeriPlot
+# Add date-released only when version 0.1.0 is actually published.

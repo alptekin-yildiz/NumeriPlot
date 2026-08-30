@@ -1,0 +1,87 @@
+{
+    "version": "2.0",
+    "raw_data": "Time,Signal\n0.0,1.0\n1.0,2.0\n2.0,4.0\n",
+    "canvas_config": {
+        "width_cm": 12.0,
+        "height_cm": 8.0,
+        "dpi": 150,
+        "margin_left": 0.15,
+        "margin_bottom": 0.15,
+        "margin_right": 0.95,
+        "margin_top": 0.95
+    },
+    "layout": [
+        1,
+        1
+    ],
+    "panel_names": [
+        "Synthetic Legacy Panel"
+    ],
+    "panel_configs": [
+        {
+            "title": "Synthetic legacy project",
+            "xlabel": "Time",
+            "ylabel": "Signal",
+            "legend_show": true,
+            "legend_loc": "best"
+        }
+    ],
+    "series": [
+        {
+            "label": "Synthetic signal",
+            "x": [
+                0.0,
+                1.0,
+                2.0
+            ],
+            "y": [
+                1.0,
+                2.0,
+                4.0
+            ],
+            "x_col": "Time",
+            "y_col": "Signal",
+            "axis": "left",
+            "plot_type": "scatter",
+            "color": "#3366cc",
+            "marker": "o",
+            "linestyle": "-",
+            "filled": true,
+            "markersize": 4,
+            "markeredgewidth": 0.5,
+            "linewidth": 1.0,
+            "capsize": 1,
+            "alpha": 1.0,
+            "interpolation": "linear",
+            "x_err": null,
+            "y_err": null,
+            "panel_id": 0,
+            "legend_show": true,
+            "legend_label": "Synthetic signal",
+            "legend_order": 0
+        }
+    ],
+    "fits": [],
+    "text_items": [
+        {
+            "id": 1,
+            "panel_id": 0,
+            "text": "Synthetic fixture",
+            "coord_mode": "axes",
+            "x": 0.05,
+            "y": 0.95,
+            "ha": "left",
+            "va": "top",
+            "fontsize": 10,
+            "bold": false,
+            "italic": false,
+            "math_mode": false,
+            "rotation": 0.0,
+            "color": "#000000"
+        }
+    ],
+    "text_auto_cfg": {
+        "enabled": false
+    },
+    "global_states": {}
+}

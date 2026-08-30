@@ -1,0 +1,9 @@
+PyQt6==6.10.2
+PyQt6-Qt6==6.10.2
+PyQt6_sip==13.11.0
+matplotlib==3.10.1
+pandas==2.2.3
+numpy==2.2.4
+scipy==1.15.2
+openpyxl==3.1.5
+Pillow==10.4.0
