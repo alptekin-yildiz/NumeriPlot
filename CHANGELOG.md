@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 - Unreleased
+## 0.1.0 - 2026-08-31 (Public Beta)
 
 - Prepared the NumeriPlot application identity for its first public beta.
 - Added GPLv3 licensing, citation metadata, public project policies, and a

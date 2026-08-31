@@ -6,10 +6,10 @@ NumeriPlot; özellikle öğrenciler ve araştırmacılar için geliştirilen, bi
 grafik çizimi, veri işleme ve eğri uydurma amaçlı özgür ve açık kaynaklı bir
 masaüstü uygulamasıdır.
 
-> **Public Beta uyarısı:** NumeriPlot 0.1.0 ilk halka açık sürüm için
-> hazırlanmaktadır. Arayüzler, iş akışları ve proje dosyası biçimi değişebilir.
-> Araştırma, eğitim veya raporlama amacıyla kullanılacak sayısal sonuçları
-> bağımsız olarak doğrulayın.
+> **Public Beta uyarısı:** NumeriPlot 0.1.0, public beta pre-release olarak
+> kullanıma sunulmuştur. Arayüzler, iş akışları ve proje dosyası biçimi
+> değişebilir. Araştırma, eğitim veya raporlama amacıyla kullanılacak sayısal
+> sonuçları bağımsız olarak doğrulayın.
 
 NumeriPlot, Alptekin YILDIZ tarafından sürdürülen bağımsız bir akademik yazılım
 projesidir. İstanbul Teknik Üniversitesi yalnızca geliştiricinin akademik bağı
@@ -66,11 +66,13 @@ QT_QPA_PLATFORM=offscreen python3 examples/capture_screenshots.py
 
 ## Durum ve platformlar
 
-Henüz halka açık bir binary yayımlanmamıştır.
+İlk public beta ikili paketi doğrulama amacıyla pre-release olarak
+[resmî GitHub Releases sayfasında](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
+sunulmaktadır.
 
 | Ortam | 0.1.0 durumu |
 | --- | --- |
-| Apple Silicon, macOS 12 veya üzeri | Planlanan ilk paket; imzasız ve noter onaysız |
+| Apple Silicon, macOS 12 veya üzeri | Public beta pre-release mevcut; imzasız ve noter onaysız |
 | Intel Mac | 0.1.0 için paket planlanmıyor |
 | Windows ve Linux | Şu anda paket veya release doğrulaması sunulmuyor |
 | Python 3.11 veya üzeri | Kaynak/geliştirme yolu; ilk release doğrulaması Apple Silicon macOS hedeflidir |
@@ -105,8 +107,8 @@ bash release_check.sh
 
 ## macOS ZIP kurulumu
 
-Bu adımlar resmî `v0.1.0` release dosyaları yayımlandıktan sonra geçerli
-olacaktır:
+Bu adımlar [NumeriPlot GitHub Releases sayfasındaki](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
+resmî `v0.1.0` pre-release dosyaları için geçerlidir:
 
 1. `NumeriPlot_v0.1.0_macOS.zip` ve `.sha256` dosyasını yalnızca resmî
    NumeriPlot GitHub Release sayfasından indirin.
@@ -125,8 +127,8 @@ olacaktır:
 
 ### Gatekeeper ve imzasız beta
 
-Planlanan ilk build Apple Developer ID ile imzalanmayacak ve Apple tarafından
-noter onayından geçirilmeyecektir. Bu nedenle macOS geliştiriciyi tanıyamaz ve
+Public beta build'i Apple Developer ID ile imzalanmamıştır ve Apple tarafından
+noter onayından geçirilmemiştir. Bu nedenle macOS geliştiriciyi tanıyamaz ve
 uygulamanın Apple tarafından zararlı yazılım açısından kontrol edildiğini
 doğrulayamaz.
 

@@ -9,6 +9,7 @@ authors:
     given-names: Alptekin
     affiliation: Istanbul Technical University
 version: 0.1.0
+date-released: 2026-08-31
 license: GPL-3.0-only
 repository-code: https://github.com/alptekin-yildiz/NumeriPlot
 url: https://github.com/alptekin-yildiz/NumeriPlot
@@ -30,4 +31,3 @@ preferred-citation:
   title: NumeriPlot
   version: 0.1.0
   url: https://github.com/alptekin-yildiz/NumeriPlot
-# Add date-released only when version 0.1.0 is actually published.

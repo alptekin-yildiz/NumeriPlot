@@ -6,8 +6,8 @@ NumeriPlot is a free and open-source desktop application for scientific
 plotting, data processing, and curve fitting, designed primarily for students
 and researchers.
 
-> **Public Beta notice:** NumeriPlot 0.1.0 is being prepared for its first
-> public release. Interfaces, workflows, and the project-file format may still
+> **Public Beta notice:** NumeriPlot 0.1.0 is available as a public beta
+> pre-release. Interfaces, workflows, and the project-file format may still
 > change. Independently verify numerical results before using them in research,
 > teaching, or reports.
 
@@ -64,11 +64,13 @@ QT_QPA_PLATFORM=offscreen python3 examples/capture_screenshots.py
 
 ## Status and platforms
 
-No public binary has been released yet.
+The first public beta binary is available from the
+[official GitHub Releases page](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
+as a pre-release for validation.
 
 | Environment | 0.1.0 status |
 | --- | --- |
-| Apple Silicon, macOS 12 or newer | First planned packaged build; unsigned and not notarized |
+| Apple Silicon, macOS 12 or newer | Public beta pre-release available; unsigned and not notarized |
 | Intel Mac | No packaged build is planned for 0.1.0 |
 | Windows and Linux | No packaged build or release validation is currently provided |
 | Python 3.11 or newer | Source/development route; first release validation targets Apple Silicon macOS |
@@ -103,8 +105,8 @@ bash release_check.sh
 
 ## Install the macOS ZIP
 
-These instructions apply once the official `v0.1.0` release assets are
-published:
+These instructions apply to the official `v0.1.0` pre-release assets on the
+[NumeriPlot GitHub Releases page](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0):
 
 1. Download `NumeriPlot_v0.1.0_macOS.zip` and its `.sha256` file only from the
    official NumeriPlot GitHub Release page.
@@ -122,7 +124,7 @@ published:
 
 ### Gatekeeper and the unsigned beta
 
-The first planned build has no Apple Developer ID signature and is not
+The public beta build has no Apple Developer ID signature and is not
 notarized. macOS therefore cannot identify the developer or confirm that Apple
 has checked the application for malicious software.
 
