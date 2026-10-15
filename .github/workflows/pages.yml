@@ -1,0 +1,61 @@
+name: Publish user guide
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/guide/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Prepare public guide only
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          source = Path('docs/guide')
+          target = Path('_site')
+          target.mkdir()
+          for name in ('index.html', 'en.html', 'guide.css', 'guide.js'):
+              shutil.copy2(source / name, target / name)
+          (target / 'assets').mkdir()
+          for image in (source / 'assets').glob('*.png'):
+              shutil.copy2(image, target / 'assets' / image.name)
+          for page in target.glob('*.html'):
+              text = page.read_text(encoding='utf-8')
+              for name in ('README.md', 'README_TR.md', 'SUPPORT.md', 'SUPPORT_TR.md', 'SECURITY.md'):
+                  text = text.replace('../../' + name, 'https://github.com/alptekin-yildiz/NumeriPlot/blob/main/' + name)
+              page.write_text(text, encoding='utf-8')
+          PY
+      - name: Configure Pages
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - name: Upload guide
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: _site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

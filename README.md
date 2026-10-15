@@ -31,6 +31,8 @@ Türkçe özet için [README_TR.md](README_TR.md) dosyasına bakın.
 
 ## Illustrated user guide
 
+[Read the guide online](https://alptekin-yildiz.github.io/NumeriPlot/en.html).
+
 The offline HTML guide covers panels, menus, dropdowns, plot settings, fitting,
 and exports with real interface screenshots. Download the repository, then open
 [`docs/guide/en.html`](docs/guide/en.html) in a browser; no server is required.

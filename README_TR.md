@@ -32,6 +32,8 @@ Ana proje belgesi İngilizce [`README.md`](README.md) dosyasıdır.
 
 ## Görselli kullanım kılavuzu
 
+[Kılavuzu çevrimiçi okuyun](https://alptekin-yildiz.github.io/NumeriPlot/).
+
 Çevrimdışı HTML kılavuzu; panelleri, menüleri, açılır seçenekleri, grafik
 ayarlarını, fit ve dışa aktarmayı gerçek arayüz görüntüleriyle açıklar. Depoyu
 indirdikten sonra [`docs/guide/index.html`](docs/guide/index.html) dosyasını
