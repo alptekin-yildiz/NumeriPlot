@@ -1,4 +1,7 @@
 import json
+import os
+import stat
+from contextlib import contextmanager
 
 import pytest
 
@@ -66,3 +69,106 @@ def test_unknown_new_schema_is_rejected(tmp_path):
 
     with pytest.raises(ProjectSchemaError, match="2.0"):
         read_project(path)
+
+
+def test_serialization_failure_preserves_existing_project(tmp_path):
+    path = tmp_path / "project.json"
+    original = b'{"schema_version": "1.0", "series": []}'
+    path.write_bytes(original)
+
+    with pytest.raises(TypeError):
+        write_project(path, {"unsupported": object()})
+
+    assert path.read_bytes() == original
+    assert list(tmp_path.iterdir()) == [path]
+
+
+def test_partial_write_failure_preserves_existing_project(monkeypatch, tmp_path):
+    path = tmp_path / "project.json"
+    original = b'{"schema_version": "1.0", "series": []}'
+    path.write_bytes(original)
+    real_fdopen = os.fdopen
+
+    @contextmanager
+    def failing_fdopen(*args, **kwargs):
+        with real_fdopen(*args, **kwargs) as stream:
+            class FailingWriter:
+                def write(self, text):
+                    stream.write(text[:10])
+                    stream.flush()
+                    raise OSError("synthetic write failure")
+            yield FailingWriter()
+
+    monkeypatch.setattr(os, "fdopen", failing_fdopen)
+
+    with pytest.raises(OSError, match="synthetic write failure"):
+        write_project(path, {"series": []})
+
+    assert path.read_bytes() == original
+    assert list(tmp_path.iterdir()) == [path]
+
+
+def test_replace_failure_preserves_existing_project(monkeypatch, tmp_path):
+    path = tmp_path / "project.json"
+    original = b'{"schema_version": "1.0", "series": []}'
+    path.write_bytes(original)
+
+    def failing_replace(source, destination):
+        assert source.parent == path.parent
+        assert json.loads(source.read_text())["schema_version"] == "1.0"
+        raise OSError("synthetic replace failure")
+
+    monkeypatch.setattr(os, "replace", failing_replace)
+
+    with pytest.raises(OSError, match="synthetic replace failure"):
+        write_project(path, {"series": []})
+
+    assert path.read_bytes() == original
+    assert list(tmp_path.iterdir()) == [path]
+
+
+def test_successful_save_preserves_existing_permissions(tmp_path):
+    path = tmp_path / "project.json"
+    path.write_text("{}", encoding="utf-8")
+    path.chmod(0o640)
+
+    write_project(path, {"series": []})
+
+    assert stat.S_IMODE(path.stat().st_mode) == 0o640
+    assert json.loads(path.read_text())["schema_version"] == "1.0"
+    assert list(tmp_path.iterdir()) == [path]
+
+
+@pytest.mark.parametrize("existing", [False, True])
+def test_sync_failure_leaves_destination_unchanged(monkeypatch, tmp_path, existing):
+    path = tmp_path / "project.json"
+    original = b'{"schema_version": "1.0", "series": []}'
+    if existing:
+        path.write_bytes(original)
+
+    def failing_sync(_descriptor):
+        raise OSError("synthetic sync failure")
+
+    monkeypatch.setattr(os, "fsync", failing_sync)
+
+    with pytest.raises(OSError, match="synthetic sync failure"):
+        write_project(path, {"series": []})
+
+    if existing:
+        assert path.read_bytes() == original
+        assert list(tmp_path.iterdir()) == [path]
+    else:
+        assert list(tmp_path.iterdir()) == []
+
+
+def test_save_through_symlink_updates_target_and_preserves_link(tmp_path):
+    target = tmp_path / "target.json"
+    target.write_text("{}", encoding="utf-8")
+    link = tmp_path / "project.json"
+    link.symlink_to(target.name)
+
+    write_project(link, {"series": []})
+
+    assert link.is_symlink()
+    assert json.loads(target.read_text())["schema_version"] == "1.0"
+    assert set(tmp_path.iterdir()) == {target, link}

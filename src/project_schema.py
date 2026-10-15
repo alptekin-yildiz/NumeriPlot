@@ -4,6 +4,9 @@ from __future__ import annotations
 
 import copy
 import json
+import os
+import stat
+import tempfile
 from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
@@ -44,7 +47,30 @@ def write_project(path: str | Path, project_data: Mapping[str, Any]) -> None:
     document = copy.deepcopy(dict(project_data))
     document.pop("version", None)
     document["schema_version"] = CURRENT_SCHEMA_VERSION
-    Path(path).write_text(
-        json.dumps(document, indent=4, ensure_ascii=False),
-        encoding="utf-8",
+    serialized = json.dumps(document, indent=4, ensure_ascii=False)
+    # Follow existing symlinks as direct writes did, while replacing the target
+    # only after the complete new document has reached disk.
+    target = Path(path).resolve()
+    try:
+        existing_mode = stat.S_IMODE(target.stat().st_mode)
+    except FileNotFoundError:
+        existing_mode = None
+    descriptor, temporary_name = tempfile.mkstemp(
+        prefix=".numeriplot-", suffix=".tmp", dir=target.parent
     )
+    temporary = Path(temporary_name)
+    try:
+        try:
+            stream = os.fdopen(descriptor, "w", encoding="utf-8")
+        except BaseException:
+            os.close(descriptor)
+            raise
+        with stream as output:
+            output.write(serialized)
+            output.flush()
+            os.fsync(output.fileno())
+        if existing_mode is not None:
+            temporary.chmod(existing_mode)
+        os.replace(temporary, target)
+    finally:
+        temporary.unlink(missing_ok=True)

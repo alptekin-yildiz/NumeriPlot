@@ -4,6 +4,7 @@ import inspect
 from itertools import cycle
 from functools import partial
 import io
+import warnings
 
 from PyQt6.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
@@ -21,7 +22,7 @@ from matplotlib.widgets import SpanSelector
 from matplotlib.mathtext import MathTextParser
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-from scipy.optimize import curve_fit
+from scipy.optimize import OptimizeWarning, curve_fit
 from src.ui.python_exporter import export_as_python, export_as_notebook
 from src.ui.data_ops_dialog import DataOpsDialog
 from src.ui.main_window.dialogs_mixin import MainWindowDialogsMixin
@@ -32,7 +33,7 @@ import pandas as pd
 # --- MODÜLLER ---
 from src.plotting.canvas import MplCanvas
 from src.analysis.data_manager import DataManager
-from src.analysis.fit_utils import prepare_fit_xy
+from src.analysis.fit_utils import prepare_fit_xy, evaluate_fit_model, fit_statistics
 from src.analysis.text_utils import format_panel_label, get_text_preset
 from src.project_schema import ProjectSchemaError, read_project, write_project
 from src.ui.emoji_spinbox import EmojiDoubleSpinBox, EmojiSpinBox
@@ -3580,8 +3581,8 @@ class MainWindow(MainWindowDialogsMixin, MainWindowThemeMixin, QMainWindow):
         d = FitDialog(display_pn, dt, self)
         if not d.exec():
             return
-        p0 = d.get_values()
         try:
+            p0 = d.get_values()
             pid = self.canvas.active_index
             panel_series = self.data_manager.get_series_for_panel(pid)
             if r >= len(panel_series):
@@ -3594,14 +3595,23 @@ class MainWindow(MainWindowDialogsMixin, MainWindowThemeMixin, QMainWindow):
                 msk = (x >= self.fit_xrange[0]) & (x <= self.fit_xrange[1])
                 x, y = x[msk], y[msk]
             if x.size < 2 or y.size < 2:
-                raise ValueError("Seçili fit aralığında yeterli veri noktası yok.")
+                raise ValueError(t("fit_insufficient_data"))
             idx = np.argsort(x)
             x, y = x[idx], y[idx]
             if np.unique(x).size < 2:
-                raise ValueError("Fit için farklı en az iki X değeri gerekir.")
-            popt, pcov = curve_fit(func, x, y, p0=p0, method='trf', maxfev=5000)
+                raise ValueError(t("fit_distinct_x"))
+            def checked_model(values, *parameters):
+                return evaluate_fit_model(func, values, parameters)
+
+            with warnings.catch_warnings(record=True) as fit_warnings:
+                warnings.simplefilter("always", OptimizeWarning)
+                popt, pcov = curve_fit(checked_model, x, y, p0=p0, method='trf', maxfev=5000)
+            if not np.isfinite(popt).all():
+                raise ValueError(t("fit_invalid_result"))
             xf = np.linspace(x.min(), x.max(), 500)
-            yf = func(xf, *popt)
+            yf = evaluate_fit_model(func, xf, popt)
+            y_pred = evaluate_fit_model(func, x, popt)
+            resid, r2, stats = fit_statistics(y, y_pred)
             fit_obj = {
                 'label': f"Fit: {mn}",
                 'x': xf, 'y': yf,
@@ -3616,21 +3626,10 @@ class MainWindow(MainWindowDialogsMixin, MainWindowThemeMixin, QMainWindow):
                 'source_series': s.get('label', '')
             }
 
-            y_pred = func(x, *popt)
-            resid = (y - y_pred)
-            resid_n = int(len(resid))
-            resid_mean = float(np.mean(resid)) if resid_n else 0.0
-            resid_std = float(np.std(resid, ddof=1)) if resid_n > 1 else 0.0
-            resid_rmse = float(np.sqrt(np.mean(resid ** 2))) if resid_n else 0.0
-
             fit_obj['res_x'] = x
             fit_obj['res_y'] = resid
-            r2 = float(1 - (np.sum(resid ** 2) / np.sum((y - y.mean()) ** 2))) if len(y) > 1 else 0.0
             fit_obj['r2'] = r2
-            fit_obj['res_stats'] = {
-                'n': resid_n, 'mean': resid_mean,
-                'std': resid_std, 'rmse': resid_rmse
-            }
+            fit_obj['res_stats'] = stats
 
             self.fit_list.append(fit_obj)
             self.lst_fits.addItem(f"{mn} -> {s['label']}")
@@ -3642,6 +3641,10 @@ class MainWindow(MainWindowDialogsMixin, MainWindowThemeMixin, QMainWindow):
 
             self.mark_modified()
             self.redraw_plot()
+            if not np.isfinite(pcov).all() or any(
+                issubclass(warning.category, OptimizeWarning) for warning in fit_warnings
+            ):
+                QMessageBox.warning(self, t("msg_warning"), t("fit_covariance_warning"))
 
         except Exception as e:
             QMessageBox.warning(self, t("msg_warning"), t("msg_fit_error").format(error=str(e)))
@@ -3730,7 +3733,9 @@ class MainWindow(MainWindowDialogsMixin, MainWindowThemeMixin, QMainWindow):
             mean = float(stats.get('mean', 0.0))
             std  = float(stats.get('std',  0.0))
             rmse = float(stats.get('rmse', 0.0))
-            r2_str = f"{fit_obj['r2']:.6f}" if 'r2' in fit_obj else "—"
+            r2 = fit_obj.get('r2')
+            r2_str = (t("report_r2_undefined") if 'r2' in fit_obj and r2 is None
+                      else f"{r2:.6f}" if r2 is not None and np.isfinite(r2) else "—")
             lines += [
                 "─" * 34,
                 f"  {t('report_lbl_n'):<20}: {n}",
