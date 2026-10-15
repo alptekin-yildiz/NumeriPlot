@@ -1,0 +1,1021 @@
+[
+  {
+    "id": "settings-axes",
+    "title": {
+      "tr": "Ayarlar: Eksenler",
+      "en": "Settings: Axes"
+    },
+    "intro": {
+      "tr": "Üstte adı görünen aktif panelin X, sol Y ve varsa sağ Y eksenini düzenler. Sağ eksen ayarı tek başına sağ eksene seri eklemez.",
+      "en": "Edits X, left Y and, when present, right Y for the active panel named at the top. Right-axis settings alone do not assign a series to the right axis."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Uygula ve Kapat",
+          "en": "Apply and Close"
+        },
+        "text": {
+          "tr": "Uygula, tüm sekmelerdeki mevcut alanları birlikte uygular ve pencereyi açık tutar. Kapat, bekleyen alanları otomatik uygulamaz; ancak geri alma düğmesi de değildir. Renk seçimi, bar Dolu seçimi ve lejant sıralama işlemleri nesneleri Uygula öncesinde değiştirebilir. Birden çok seriyi ayrı ayrı düzenlerken her seri için Uygula kullanın; başka seri seçmek bekleyen stil alanlarını yeniden yükler.",
+          "en": "Apply commits the current fields across all tabs and keeps the dialog open. Close does not automatically apply pending fields, but is not an undo button. Color selection, bar Filled and legend reordering can change objects before Apply. When editing multiple series individually, use Apply for each one; selecting another series reloads the style fields."
+        }
+      },
+      {
+        "heading": {
+          "tr": "Çerçeve ve tıklar",
+          "en": "Frame and ticks"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Çerçeve Kalınlığı",
+              "en": "Frame Width"
+            },
+            "description": {
+              "tr": "Çerçeve çizgilerinin kalınlığı; 0,5–5 aralığı.",
+              "en": "Thickness of the frame lines; range 0.5–5."
+            }
+          },
+          {
+            "label": {
+              "tr": "Alt / Üst / Sol / Sağ Çerçeve",
+              "en": "Bottom / Top / Left / Right Frame"
+            },
+            "description": {
+              "tr": "Panelin ana ekseninin ilgili kenarını gösterir veya gizler. Sağ Y ekseni bulunan panellerde ikincil eksenin çerçevesini ayrıca görsel olarak kontrol edin.",
+              "en": "Shows or hides each side of the main axes frame. With a secondary Y axis, also inspect its frame visually."
+            }
+          },
+          {
+            "label": {
+              "tr": "Alt / Üst / Sol / Sağ Tık",
+              "en": "Bottom / Top / Left / Right Tick"
+            },
+            "description": {
+              "tr": "İlgili kenardaki tık işaretlerini açar. Sayıların görünürlüğü aşağıdaki Değerleri Göster ile ayrıdır; üst tıkları açmak üstte sayı oluşturmaz.",
+              "en": "Enables tick marks on the selected side. Numeric labels are controlled separately below; enabling top ticks does not add top labels."
+            }
+          },
+          {
+            "label": {
+              "tr": "Major Tık / Minor Tık",
+              "en": "Major Tick / Minor Tick"
+            },
+            "description": {
+              "tr": "Her satırda ilk sayı uzunluk, ikinci sayı kalınlıktır. Küçük tıklar için ayrıca eksenin Minör değerini artırın.",
+              "en": "In each row the first value is length and the second is thickness. Also increase Minor for the axis to request minor ticks."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Izgara",
+          "en": "Grid"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Göster",
+              "en": "Show"
+            },
+            "description": {
+              "tr": "Ana eksenin ızgarasını açar.",
+              "en": "Enables the main axes grid."
+            }
+          },
+          {
+            "label": {
+              "tr": ": / -- / - / -.",
+              "en": " : / -- / - / -."
+            },
+            "description": {
+              "tr": "Noktalı, kesikli, düz veya nokta-çizgi görünümü seçer.",
+              "en": "Chooses dotted, dashed, solid or dash-dot grid lines."
+            }
+          },
+          {
+            "label": {
+              "tr": "Opaklık",
+              "en": "Opacity"
+            },
+            "description": {
+              "tr": "0,1 daha soluk; 1 tam opak. Veri çizgilerini ayırt edebilmek için düşük değerle başlayın.",
+              "en": "0.1 is faint; 1 is fully opaque. Start low so data remains readable."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "X, Y (Sol) ve Y (Sağ) için ortak kontroller",
+          "en": "Controls shared by X, Y (Left) and Y (Right)"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Oto",
+              "en": "Auto"
+            },
+            "description": {
+              "tr": "Veriye göre sınırlar; açıkken Min, Max ve Adım alanları kilitlidir. Oto kapatılınca görünür sınırları elle belirleyebilirsiniz. Önceden saklanan pozitif adım değeri Oto modunda da tık aralığını etkileyebilir.",
+              "en": "Uses data-based limits; Min, Max and Step are disabled while checked. Uncheck it to set limits manually. A previously stored positive step can still affect ticks in Auto mode."
+            }
+          },
+          {
+            "label": {
+              "tr": "Min / Max",
+              "en": "Min / Max"
+            },
+            "description": {
+              "tr": "Görünür aralığın uçlarıdır; veriyi silmez. Başlangıç için Min < Max kullanın.",
+              "en": "Endpoints of the visible range; they do not delete data. Start with Min < Max."
+            }
+          },
+          {
+            "label": {
+              "tr": "Adım",
+              "en": "Step"
+            },
+            "description": {
+              "tr": "Doğrusal eksende ana tıklar arasındaki sayısal fark. 0 otomatik aralık seçer. Çok küçük adım çok sayıda tık üretebilir.",
+              "en": "Numeric spacing between major ticks on a linear axis. 0 selects automatic spacing. Very small steps can create too many ticks."
+            }
+          },
+          {
+            "label": {
+              "tr": "Minör",
+              "en": "Minor"
+            },
+            "description": {
+              "tr": "0 küçük tıkları kapatır; pozitif değer doğrusal eksende ana tıklar arasına istenen sayıda küçük tık koyar. Log ölçeğinde aynı bölme anlamını beklemeyin.",
+              "en": "0 disables minor ticks; a positive value requests that many minor ticks between major ticks on a linear axis. Do not expect the same subdivision meaning on log axes."
+            }
+          },
+          {
+            "label": {
+              "tr": "Log",
+              "en": "Log"
+            },
+            "description": {
+              "tr": "Logaritmik görünüm seçer. Pozitif değerler ve pozitif elle girilmiş sınırlar kullanın; sıfır ve negatif değerler log ekseninde gösterilemez. Sayı biçimi seçicisi log ekseninin kendi biçimlendirmesini değiştirmez.",
+              "en": "Selects logarithmic display. Use positive values and positive manual limits; zero and negative values cannot be displayed on a log axis. The number-format dropdown does not override logarithmic tick formatting."
+            }
+          },
+          {
+            "label": {
+              "tr": "Değerleri Göster",
+              "en": "Show Tick Labels"
+            },
+            "description": {
+              "tr": "Eksen sayılarının görünürlüğünü değiştirir; tıkları ve veriyi kaldırmaz.",
+              "en": "Toggles numeric tick labels; it does not remove tick marks or data."
+            }
+          },
+          {
+            "label": {
+              "tr": "Açı",
+              "en": "Angle"
+            },
+            "description": {
+              "tr": "Sayı etiketlerini −90° ile 90° arasında döndürür. Uzun X etiketlerinde 30° veya 45° deneyin.",
+              "en": "Rotates numeric labels from −90° to 90°. Try 30° or 45° for long X labels."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Sayı biçimi seçenekleri",
+          "en": "Number-format choices"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Otomatik",
+              "en": "Auto"
+            },
+            "description": {
+              "tr": "Büyüklüğe göre normal veya bilimsel gösterim ve gerekirse ortak offset seçilir.",
+              "en": "Chooses ordinary or scientific display and a shared offset when useful."
+            }
+          },
+          {
+            "label": {
+              "tr": "E",
+              "en": "E"
+            },
+            "description": {
+              "tr": "Her tıkta 1.000e+03 gibi bilimsel gösterim; ayrı offset yazısı yoktur.",
+              "en": "Scientific notation on each tick, such as 1.000e+03; no separate offset text."
+            }
+          },
+          {
+            "label": {
+              "tr": "E + Offset",
+              "en": "E + Offset"
+            },
+            "description": {
+              "tr": "Gerekirse ortak ölçek/offset ayrı yazılır, tıklarda daha kısa sayılar kalır. Ayrı yazıyı da okuyarak gerçek değeri yorumlayın.",
+              "en": "May show a shared scale/offset separately, leaving shorter tick labels. Include that separate text when interpreting values."
+            }
+          },
+          {
+            "label": {
+              "tr": "10ⁿ",
+              "en": "10ⁿ"
+            },
+            "description": {
+              "tr": "Her tıkta a×10ⁿ biçimi; ayrı offset yoktur.",
+              "en": "Uses a×10ⁿ on each tick, without a separate offset."
+            }
+          },
+          {
+            "label": {
+              "tr": "10ⁿ + Offset",
+              "en": "10ⁿ + Offset"
+            },
+            "description": {
+              "tr": "Gerekirse 10 kuvvetli ortak ölçek ve offset kullanır. Offset gösterimi her aralıkta zorunlu değildir.",
+              "en": "May use a shared power-of-ten scale and offset. An offset is not forced for every range."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Örnek: karşılaştırılabilir paneller",
+          "en": "Example: comparable panels"
+        },
+        "steps": {
+          "tr": [
+            "İlk paneli etkinleştirin; Eksenler sekmesinde X ve Y için Oto seçimini kaldırın.",
+            "Min, Max ve uygun Adım değerlerini girin; Uygula seçin.",
+            "Diğer paneli etkinleştirip aynı sınırları uygulayın; birimlerin de aynı olduğunu doğrulayın."
+          ],
+          "en": [
+            "Activate the first panel; uncheck Auto for X and Y in Axes.",
+            "Enter Min, Max and a suitable Step; select Apply.",
+            "Activate the other panel and apply the same limits; verify matching units too."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "settings-appearance",
+    "title": {
+      "tr": "Ayarlar: Genel Görünüm",
+      "en": "Settings: Appearance"
+    },
+    "intro": {
+      "tr": "Aktif panelin başlığını, eksen adlarını ve yazı boyutlarını düzenler. Seri adları ve lejant metinleri Lejant sekmesinde ayrı yönetilir.",
+      "en": "Edits the active panel title, axis labels and text sizes. Series names and legend text are managed separately in Legend."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Etiketler",
+          "en": "Labels"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Başlık / X Ekseni / Y Sol / Y Sağ",
+              "en": "Title / X Axis / Y Left / Y Right"
+            },
+            "description": {
+              "tr": "Metin ve birimi birlikte yazın, örneğin Zaman (s). Y Sağ etiketi sağ eksen varsa görünür. Boş metin ilgili etiketi kaldırır.",
+              "en": "Include quantity and unit, for example Time (s). Y Right appears when a right axis exists. Empty text removes the corresponding label."
+            }
+          },
+          {
+            "label": {
+              "tr": "K / İ",
+              "en": "K / İ"
+            },
+            "description": {
+              "tr": "Her etiketin yanındaki K kalın, İ italik görünüm seçer. İngilizce arayüzde de bu harfler görülebilir.",
+              "en": "K selects bold and İ selects italic for that label. These letters can also appear in the English interface."
+            }
+          },
+          {
+            "label": {
+              "tr": "Etiket yanındaki sayı",
+              "en": "Number beside each label"
+            },
+            "description": {
+              "tr": "Metnin eksene/çizim alanına uzaklığıdır (puan). −20–40 aralığında; artırmak genellikle uzaklaştırır, negatif değer yaklaştırabilir veya üst üste bindirebilir.",
+              "en": "Padding from the axes/plot area in points. Range −20–40; increasing generally moves text away, while negative padding can bring it closer or cause overlap."
+            }
+          },
+          {
+            "label": {
+              "tr": "Ω",
+              "en": "Ω"
+            },
+            "description": {
+              "tr": "İmleç konumuna Yunan harfi, bilimsel işaret veya üst/alt indis ekleyen paleti açar. xⁿ ve xₙ seçenekleri ^{} ve _{} şablonu ekler; parantez içine değeri yazın.",
+              "en": "Opens a palette that inserts Greek letters, scientific symbols or superscript/subscript text at the cursor. xⁿ and xₙ insert ^{} and _{} templates; enter the value inside the braces."
+            }
+          },
+          {
+            "label": {
+              "tr": "Math Modu (üst/alt indis)",
+              "en": "Math Mode (superscript/subscript)"
+            },
+            "description": {
+              "tr": "Başlık ve eksen etiketlerinde x^{2} veya C_{0} gibi matematik yazımını yorumlar. Desteklenmeyen ifade düz metne dönebilir ve durum çubuğunda bildirim görünür. Tam LaTeX belge sistemi değildir.",
+              "en": "Interprets mathematical notation such as x^{2} or C_{0} in the title and axis labels. Unsupported expressions may fall back to plain text with a status message. This is not a full LaTeX document system."
+            }
+          },
+          {
+            "label": {
+              "tr": "\\n",
+              "en": "\\n"
+            },
+            "description": {
+              "tr": "Metin kutusunda ters eğik çizgi ve n yazmak grafikte yeni satır oluşturur.",
+              "en": "Typing backslash followed by n in a text box creates a new line in the plot."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Yazı Tipleri",
+          "en": "Fonts"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Font",
+              "en": "Font"
+            },
+            "description": {
+              "tr": "Times New Roman, Arial, Helvetica, Calibri veya Courier New seçilir. Makinede bulunmayan font için yerine başka font kullanılabilir; dışa aktarılan sonucu inceleyin.",
+              "en": "Chooses Times New Roman, Arial, Helvetica, Calibri or Courier New. An unavailable font may be substituted; inspect the exported result."
+            }
+          },
+          {
+            "label": {
+              "tr": "Başlık Boyutu / Eksen Boyutu / Tık Boyutu",
+              "en": "Title Size / Axis Size / Tick Size"
+            },
+            "description": {
+              "tr": "Sırasıyla panel başlığını, eksen adı metinlerini ve eksen sayılarını büyütür; 6–72 puan. Tık Boyutu tık çizgisinin uzunluğu değildir. Lejantın boyutu kendi sekmesindedir.",
+              "en": "Controls panel title, axis-label text and numeric tick labels, respectively; 6–72 points. Tick Size does not set tick-mark length. Legend text size is set in its own tab."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Örnek: alt indis ve birim",
+          "en": "Example: subscript and unit"
+        },
+        "steps": {
+          "tr": [
+            "Y Sol alanına C_{0} yazın ve Math Modu seçin; Uygula ile sonucu görün.",
+            "Düz metin tercih ederseniz Math Modu kapatıp Ω paletinden Unicode alt indis kullanabilirsiniz.",
+            "Metin kesiliyorsa Kanvas Ayarları sekmesinde ilgili kenar boşluğunu artırın."
+          ],
+          "en": [
+            "Enter C_{0} in Y Left and enable Math Mode; select Apply to inspect it.",
+            "For plain text, disable Math Mode and use a Unicode subscript from the Ω palette.",
+            "If text is clipped, increase the relevant margin in Canvas Settings."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "settings-legend",
+    "title": {
+      "tr": "Ayarlar: Lejant",
+      "en": "Settings: Legend"
+    },
+    "intro": {
+      "tr": "Aktif panelin sol ve sağ eksenindeki veri ve fit öğelerini tek bir lejantta yönetir. Lejantı gizlemek çizilen seriyi gizlemez.",
+      "en": "Manages data and fit entries from both axes of the active panel in one legend. Hiding a legend entry does not hide its plotted series."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Gösterim ve konum",
+          "en": "Visibility and position"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Lejantı Göster / Çerçeve / Font",
+              "en": "Show Legend / Frame / Font"
+            },
+            "description": {
+              "tr": "Tüm lejantı açar, kutu çerçevesini açar ve metin boyutunu 6–24 puan arasında ayarlar. Gösterilecek öğe yoksa lejant oluşmaz.",
+              "en": "Toggles the whole legend, toggles its box frame and sets text size from 6–24 points. No legend is drawn if there are no eligible entries."
+            }
+          },
+          {
+            "label": {
+              "tr": "Oto Konum",
+              "en": "Auto Position"
+            },
+            "description": {
+              "tr": "Konum listesini etkinleştirir: best çizim içeriğine göre yer seçer; upper right/left sağ/sol üst; lower right/left sağ/sol alt köşedir.",
+              "en": "Enables the location list: best chooses a position based on plotted content; upper right/left and lower right/left select those corners."
+            }
+          },
+          {
+            "label": {
+              "tr": "Manuel (X,Y)",
+              "en": "Manual (X,Y)"
+            },
+            "description": {
+              "tr": "Lejantın sol üst köşesini panel koordinatlarına bağlar. (0,0) sol alt, (1,1) sağ üsttür. X=1, Y=1 kutuyu panelin sağına doğru yerleştirir. −0,5–1,5 aralığı mümkündür; dışarı taşan kutu için kanvas boşluğu ayırın.",
+              "en": "Anchors the legend upper-left corner in axes coordinates. (0,0) is bottom-left and (1,1) top-right. X=1, Y=1 places the box toward the right of the panel. Range −0.5–1.5; reserve canvas margin for a box outside the panel."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Yerleşim seçenekleri",
+          "en": "Layout choices"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Otomatik",
+              "en": "Auto"
+            },
+            "description": {
+              "tr": "Saklanan Sütun değerini kullanır; otomatik sığdırma veya çakışma önleme garantisi vermez. Sütun alanı yalnız Özel seçiliyken değiştirilebilir.",
+              "en": "Uses the stored Columns value; it does not guarantee automatic fitting or overlap avoidance. Columns is editable only in Custom mode."
+            }
+          },
+          {
+            "label": {
+              "tr": "Dikey",
+              "en": "Vertical"
+            },
+            "description": {
+              "tr": "Tek sütun yapar.",
+              "en": "Uses one column."
+            }
+          },
+          {
+            "label": {
+              "tr": "Yatay",
+              "en": "Horizontal"
+            },
+            "description": {
+              "tr": "Görünür her öğe için bir sütun kullanır; uzun lejant panelden taşabilir.",
+              "en": "Uses one column per visible entry; a long legend may extend beyond the panel."
+            }
+          },
+          {
+            "label": {
+              "tr": "Özel (Sütun)",
+              "en": "Custom (Columns)"
+            },
+            "description": {
+              "tr": "1–20 sütun sayısını etkinleştirir. Çok sütunda görsel okuma sırasını sonuç üzerinde kontrol edin.",
+              "en": "Enables 1–20 columns. Inspect the visual reading order with multiple columns."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Aralık ve semboller",
+          "en": "Spacing and symbols"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Sembol-Metin",
+              "en": "Symbol-Text Gap"
+            },
+            "description": {
+              "tr": "Lejant örneği ile metni arasındaki boşluk.",
+              "en": "Space between the legend sample and its text."
+            }
+          },
+          {
+            "label": {
+              "tr": "Satır Aralığı / Sütun Aralığı",
+              "en": "Row Spacing / Column Spacing"
+            },
+            "description": {
+              "tr": "Lejant satırları ve sütunları arasındaki boşluk; font boyutuna bağlı göreli değerlerdir, santimetre değildir.",
+              "en": "Spacing between legend rows and columns; values are relative to font size, not centimetres."
+            }
+          },
+          {
+            "label": {
+              "tr": "Sembol Uzunluğu",
+              "en": "Symbol Length"
+            },
+            "description": {
+              "tr": "Lejanttaki çizgi örneğinin uzunluğu; grafikteki veri çizgisini uzatmaz.",
+              "en": "Length of the legend line sample; it does not lengthen the data line."
+            }
+          },
+          {
+            "label": {
+              "tr": "Sembol Ölçeği",
+              "en": "Marker Scale"
+            },
+            "description": {
+              "tr": "Lejant işaretinin grafikteki işarete göre boyutu; veri noktalarının boyutunu değiştirmez.",
+              "en": "Size of a legend marker relative to its plotted marker; does not resize data points."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Lejant Öğeleri tablosu",
+          "en": "Legend Items table"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Göster / Tip / Kaynak",
+              "en": "Show / Type / Source"
+            },
+            "description": {
+              "tr": "Göster yalnız o öğenin lejant kaydını açar. Tip Veri veya Fit; Kaynak özgün seri etiketidir ve burada düzenlenmez.",
+              "en": "Show controls only that legend entry. Type identifies Data or Fit; Source is the original series label and is not edited here."
+            }
+          },
+          {
+            "label": {
+              "tr": "Lejant Metni",
+              "en": "Legend Text"
+            },
+            "description": {
+              "tr": "Hücreyi çift tıklayıp görünen adı değiştirin. Boş bırakılırsa kaynak etikete dönülür; bu işlem veriyi veya kaynak adını değiştirmez.",
+              "en": "Double-click the cell to change the displayed name. Empty text falls back to the source label; this does not alter data or the source name."
+            }
+          },
+          {
+            "label": {
+              "tr": "Sıra / Yukarı / Aşağı",
+              "en": "Order / Up / Down"
+            },
+            "description": {
+              "tr": "Satırı seçip Yukarı/Aşağı ile sıralayın. Bu düğmeler mevcut tablo metinlerini ve gösterim seçimlerini Uygula öncesinde nesnelere aktarır.",
+              "en": "Select a row and use Up/Down to reorder it. These buttons transfer current table text and visibility edits to objects before Apply."
+            }
+          },
+          {
+            "label": {
+              "tr": "Yenile",
+              "en": "Reload"
+            },
+            "description": {
+              "tr": "Tabloyu mevcut nesne değerlerinden yeniden doldurur; henüz uygulanmamış hücre düzenlemelerini kaybedebilirsiniz.",
+              "en": "Refills the table from current object values; uncommitted cell edits can be lost."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Örnek: kısa ve okunur lejant",
+          "en": "Example: a compact readable legend"
+        },
+        "steps": {
+          "tr": [
+            "Lejant Metni hücrelerinde kısa, ayırt edilebilir adlar yazın; gereksiz öğelerin Göster seçimini kaldırın.",
+            "Dikey veya Özel (Sütun) seçin ve Uygula kullanın.",
+            "Gerekirse Manuel (X,Y) ile dışarı taşıyın ve Kanvas Ayarları ile sağ tarafta boşluk açın."
+          ],
+          "en": [
+            "Enter short, distinct Legend Text values; uncheck Show for unnecessary entries.",
+            "Choose Vertical or Custom (Columns), then Apply.",
+            "If needed, move it outside with Manual (X,Y) and reserve room on the right in Canvas Settings."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "settings-styles",
+    "title": {
+      "tr": "Ayarlar: Stiller",
+      "en": "Settings: Styles"
+    },
+    "intro": {
+      "tr": "Normal modda aktif panel listesinden seçilen tek seri veya fit düzenlenir. Çizim türüne göre ilgili Sembol / Çizgi, Histogram veya Bar grubu görünür. Grup başlığına basarak alanları açıp kapatabilirsiniz.",
+      "en": "In normal mode, edits target one selected series or fit in the active-panel list. The relevant Scatter / Line, Histogram or Bar group is shown for its plot type. Click a group heading to expand or collapse it."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Tek seri: renk, sembol ve çizgi",
+          "en": "One series: color, marker and line"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Renk Seç",
+              "en": "Choose Color"
+            },
+            "description": {
+              "tr": "Seçilen nesnenin ana rengini değiştirir. Renk seçicisi nesne değerini hemen değiştirebilir; güvenli alışkanlık olarak ardından Uygula kullanın.",
+              "en": "Changes the selected object main color. The picker can change the object value immediately; follow it with Apply."
+            }
+          },
+          {
+            "label": {
+              "tr": "İşaret",
+              "en": "Marker"
+            },
+            "description": {
+              "tr": "None işareti gizler. o daire, s kare; ^/v/</> yukarı/aşağı/sol/sağ üçgen; D elmas, d ince elmas; p beşgen, h/H iki altıgen biçimi; x çarpı, + artı, * yıldız.",
+              "en": "None hides markers. o is circle, s square; ^/v/</> are up/down/left/right triangles; D diamond, d thin diamond; p pentagon, h/H two hexagon forms; x cross, + plus, * star."
+            }
+          },
+          {
+            "label": {
+              "tr": "Boyut / Kenar / Dolu",
+              "en": "Size / Edge / Filled"
+            },
+            "description": {
+              "tr": "İşaret boyutunu, kenar kalınlığını ve iç dolgusunu değiştirir. Çarpı ve artı gibi çizgisel işaretlerde dolgu farkı beklemeyin.",
+              "en": "Controls marker size, edge thickness and filling. Line-only markers such as cross and plus do not have a filled interior."
+            }
+          },
+          {
+            "label": {
+              "tr": "Çizgi Stili",
+              "en": "Line Style"
+            },
+            "description": {
+              "tr": "None bağlantı çizgisini kaldırır; - düz, -- kesikli, : noktalı, -. nokta-çizgi. Hem işaret hem çizgi None ise veri görünmeyebilir; mevcut hata çubukları yine çizilebilir.",
+              "en": "None removes the connecting line; - solid, -- dashed, : dotted, -. dash-dot. If both marker and line are None the data may be invisible; existing error bars can still appear."
+            }
+          },
+          {
+            "label": {
+              "tr": "Çizgi Kalınlığı",
+              "en": "Line Width"
+            },
+            "description": {
+              "tr": "Veri bağlantı çizgisinin kalınlığı; sembol ve hata çubuğu kalınlığından ayrıdır.",
+              "en": "Thickness of the connecting line, separate from marker edges and error bars."
+            }
+          },
+          {
+            "label": {
+              "tr": "Linear / Spline",
+              "en": "Linear / Spline"
+            },
+            "description": {
+              "tr": "Linear noktaları veri sırasıyla düz parçalarla bağlar. Spline, çizgi açık ve en az dört nokta varsa X sırasına göre kübik yumuşak çizgi üretir; başarısızsa düz çizime döner. Eğri noktalar arasında aşabilir; interpolasyon bilimsel fit değildir ve veriyi değiştirmez.",
+              "en": "Linear joins points in data order with straight segments. Spline creates a cubic smooth line in X order when a line is enabled and at least four points exist; failure falls back to straight plotting. It can overshoot between points; interpolation is not a scientific fit and does not change the data."
+            }
+          },
+          {
+            "label": {
+              "tr": "Hata Çizgisi Uzunluğu / Kalınlığı / Hata Rengi",
+              "en": "Error Capsize / Error Width / Error Color"
+            },
+            "description": {
+              "tr": "Mevcut hata çubuklarının uç kapak boyunu, gövde kalınlığını ve rengini değiştirir. Hata verisi oluşturmaz veya hata değerlerini değiştirmez.",
+              "en": "Controls end-cap size, stroke width and color of existing error bars. Does not create error data or change error values."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Histogram",
+          "en": "Histogram"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Kutu Sayısı",
+              "en": "Bin Count"
+            },
+            "description": {
+              "tr": "Seçilen serinin Y değerlerini 1–500 kutuya böler ve sayımları çizer. Kutu sayısı dağılımın görünen biçimini değiştirebilir.",
+              "en": "Bins the selected series Y values into 1–500 bins and plots counts. Bin count can change the apparent distribution shape."
+            }
+          },
+          {
+            "label": {
+              "tr": "Opaklık",
+              "en": "Opacity"
+            },
+            "description": {
+              "tr": "0 görünmez, 1 tam opak; üst üste dağılımları görmek için azaltın.",
+              "en": "0 is invisible, 1 fully opaque; reduce it to inspect overlapping distributions."
+            }
+          },
+          {
+            "label": {
+              "tr": "Kenar Rengi",
+              "en": "Edge Color"
+            },
+            "description": {
+              "tr": "white beyaz, black siyah, none kenarsız kutular seçer.",
+              "en": "white gives white edges, black black edges, none no visible edges."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Bar",
+          "en": "Bar"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Bar Genişliği",
+              "en": "Bar Width"
+            },
+            "description": {
+              "tr": "Üst Üste modunda X ekseni biriminde genişliktir. Yan Yana modunda grup genişliği serilerin genişliklerinden hesaplanır, seriler arasında bölünür ve komşu X aralığına göre sınırlandırılabilir.",
+              "en": "In Overlay mode this is width in X-axis units. In Grouped mode group width is derived from the series widths, divided among series and may be limited by neighboring X spacing."
+            }
+          },
+          {
+            "label": {
+              "tr": "Bar Yerleşimi: Üst Üste / Yan Yana",
+              "en": "Bar Layout: Overlay / Grouped"
+            },
+            "description": {
+              "tr": "Aktif panelin tüm bar serileri için ortak ayardır. Üst Üste aynı X merkezinde; Yan Yana ortak X veya kategoride yan yana çizer. Yığılmış bar modu değildir. Tekrarlanan aynı X değerleri Yan Yana görünümde son değerle temsil edilebilir; önce X değerlerini kontrol edin.",
+              "en": "Shared by all bar series in the active panel. Overlay uses the same X centres; Grouped places series side by side at common X values or categories. It is not a stacked-bar mode. Repeated X values may be represented by the last value in Grouped display; inspect X values first."
+            }
+          },
+          {
+            "label": {
+              "tr": "Dolu / Çerçeve Kalınlığı",
+              "en": "Filled / Frame Width"
+            },
+            "description": {
+              "tr": "Dolu kapalıyken iç boşalır, kenar ana seri rengini kullanır ve kenar kalınlığı alanı görünür. Dolu değişimi hemen yeniden çizer.",
+              "en": "When Filled is off the interior is empty, the outline uses the main series color and outline width becomes available. Changing Filled redraws immediately."
+            }
+          },
+          {
+            "label": {
+              "tr": "Opaklık / Kenar Rengi",
+              "en": "Opacity / Edge Color"
+            },
+            "description": {
+              "tr": "0–1 opaklık; dolu barlarda none, black veya white kenar seçimi. İçi boş barlarda kenar seri rengidir.",
+              "en": "Opacity from 0–1; filled bars offer none, black or white edges. Hollow bars use the series color for their outline."
+            }
+          },
+          {
+            "label": {
+              "tr": "Hata Rengi / Hata Çizgisi Uzunluğu / Kalınlığı",
+              "en": "Error Color / Error Capsize / Error Width"
+            },
+            "description": {
+              "tr": "Mevcut Y hata çubuklarının görünümünü değiştirir. Bar çiziminde X hata çubukları gösterilmez.",
+              "en": "Changes appearance of existing Y error bars. Bar plots do not display X error bars."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Fit görünümü",
+          "en": "Fit appearance"
+        },
+        "text": {
+          "tr": "Fit listesinden bir öğe seçildiğinde renk, çizgi stili/kalınlığı ve işaret/işaret boyutu çizimde kullanılır. Diğer görünen veri stili alanlarının tümü fit çiziminde kullanılmaz; Spline seçimi fit modelini veya hesaplanan eğriyi değiştirmez.",
+          "en": "For a selected fit, rendering uses color, line style/width and marker/marker size. Not every visible data-style field is used for fits; Spline does not alter the fit model or calculated curve."
+        }
+      },
+      {
+        "heading": {
+          "tr": "Tümüne Uygula (Global Mod)",
+          "en": "Apply to All (Global Mode)"
+        },
+        "text": {
+          "tr": "Bu mod yalnız aktif paneldeki scatter/line veri serilerine uygulanır. Fitleri, barları, histogramları veya diğer panelleri kapsamaz. Liste kilitlenir; normal renk ve tek işaret seçicileri gizlenir. Uygula, görünür ortak stil değerlerini kapsamdaki tüm serilere yazar.",
+          "en": "This mode targets only scatter/line data series in the active panel. It excludes fits, bars, histograms and other panels. The list is disabled; the normal color and individual-marker selectors are hidden. Apply writes the displayed shared style values to all eligible series."
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Sembol Göster",
+              "en": "Show Marker"
+            },
+            "description": {
+              "tr": "Açıkken serilere sırayla daire, kare, üçgen vb. işaretler atar; mevcut işaretleri korumaz. Kapalıyken hepsinin işaretini gizler. Boyut, Kenar ve Dolu ortak uygulanır.",
+              "en": "When checked, assigns a sequence of circle, square, triangle and other markers; existing marker choices are replaced. Unchecked hides all eligible markers. Size, Edge and Filled are shared."
+            }
+          },
+          {
+            "label": {
+              "tr": "Renk Teması",
+              "en": "Color Theme"
+            },
+            "description": {
+              "tr": "Tema Yok renkleri korur. Classic, Color4Line, Color4Bar, Candy, Bold1, Bold2, Moderate2, Paired Color, Rainbow7 önceden tanımlı renk dizileridir; şerit renkleri gösterir. Dizinin sonuna gelince renkler tekrar eder. Color4Bar adı bu modun barları kapsadığı anlamına gelmez.",
+              "en": "No Theme preserves colors. Classic, Color4Line, Color4Bar, Candy, Bold1, Bold2, Moderate2, Paired Color and Rainbow7 are preset color sequences shown in the swatch strip. Colors repeat after the sequence ends. The Color4Bar name does not make this mode apply to bars."
+            }
+          },
+          {
+            "label": {
+              "tr": "Tema ve hata rengi",
+              "en": "Theme and error color"
+            },
+            "description": {
+              "tr": "Tema seçilirse her serinin hata rengi de yeni ana rengine eşitlenir. Tema Yok modunda ortak Hata Rengi düğmesini tüm serilere uygulanan bir ayar olarak kullanmayın; mevcut hata renkleri korunur.",
+              "en": "With a theme, each series error color is set to its new main color. With No Theme, do not treat the Error Color button as a shared color setter; existing error colors are preserved."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Örnek: çoklu seriyi ayırt etmek",
+          "en": "Example: distinguish multiple series"
+        },
+        "steps": {
+          "tr": [
+            "Aktif paneli doğrulayın; Global Mod açın.",
+            "Bir tema seçin, Sembol Göster açın, ortak boyut ve çizgi stilini belirleyin.",
+            "Uygula seçip tüm serileri kontrol edin; tek bir seriye özel değişiklik için Global Mod kapatıp o seriyi seçin."
+          ],
+          "en": [
+            "Verify the active panel; enable Global Mode.",
+            "Choose a theme, enable Show Marker and set shared size and line style.",
+            "Select Apply and inspect all series; disable Global Mode and select a series for individual changes."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "settings-canvas",
+    "title": {
+      "tr": "Ayarlar: Kanvas Ayarları",
+      "en": "Settings: Canvas Settings"
+    },
+    "intro": {
+      "tr": "Bu sekme aktif panel yerine tüm figure alanını etkiler. Boyut, panel aralıkları ve dış kenarlar birlikte tüm grafiğin yerleşimini belirler.",
+      "en": "This tab affects the whole figure, rather than just the active panel. Size, panel spacing and outer margins jointly determine the plot layout."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Boyut (cm) ve şablonlar",
+          "en": "Size (cm) and presets"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Genişlik / Yükseklik",
+              "en": "Width / Height"
+            },
+            "description": {
+              "tr": "Tüm figure boyutu, her biri 2–50 cm. Boyut fiziksel çıktı yerleşimi içindir; ekrandaki görünüm pencere ve ekran ölçeklemesine bağlı olabilir.",
+              "en": "Whole-figure dimensions, each 2–50 cm. These define the physical output layout; the screen view can depend on window and display scaling."
+            }
+          },
+          {
+            "label": {
+              "tr": "Özel",
+              "en": "Custom"
+            },
+            "description": {
+              "tr": "Boyutları elle girin. Bu seçeneğe dönmek daha önceki boyutları geri yüklemez.",
+              "en": "Enter dimensions manually. Returning to Custom does not restore previous dimensions."
+            }
+          },
+          {
+            "label": {
+              "tr": "Tek Sütun (8.5 cm)",
+              "en": "Single Column (8.5 cm)"
+            },
+            "description": {
+              "tr": "Genişlik 8,5 cm, yükseklik 6,5 cm.",
+              "en": "Width 8.5 cm, height 6.5 cm."
+            }
+          },
+          {
+            "label": {
+              "tr": "1.5 Sütun (13 cm)",
+              "en": "1.5 Column (13 cm)"
+            },
+            "description": {
+              "tr": "Genişlik 13 cm, yükseklik 8 cm.",
+              "en": "Width 13 cm, height 8 cm."
+            }
+          },
+          {
+            "label": {
+              "tr": "Tam Genişlik (17 cm)",
+              "en": "Full Width (17 cm)"
+            },
+            "description": {
+              "tr": "Genişlik 17 cm, yükseklik 10 cm.",
+              "en": "Width 17 cm, height 10 cm."
+            }
+          },
+          {
+            "label": {
+              "tr": "A4 Yarı (14x10)",
+              "en": "A4 Half (14x10)"
+            },
+            "description": {
+              "tr": "Genişlik 14 cm, yükseklik 10 cm. Bu seçenekler bir yayın veya baskı standardına uyum garantisi değildir.",
+              "en": "Width 14 cm, height 10 cm. These presets do not guarantee compliance with a publication or print standard."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Alt Grafik Boşlukları",
+          "en": "Subplot Spacing"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Dikey Boşluk",
+              "en": "Vertical Gap"
+            },
+            "description": {
+              "tr": "Çoklu panelde satırlar arasındaki göreli boşluk; 0–2. Artırmak dikey etiket çakışmasını azaltabilir, panel çizim alanını küçültür.",
+              "en": "Relative spacing between rows in a multi-panel figure; 0–2. Increasing it can reduce vertical label overlap but shrinks the panels."
+            }
+          },
+          {
+            "label": {
+              "tr": "Yatay Boşluk",
+              "en": "Horizontal Gap"
+            },
+            "description": {
+              "tr": "Çoklu panelde sütunlar arasındaki göreli boşluk; 0–2. Santimetre değildir; tek panelde panel aralıkları etkisizdir.",
+              "en": "Relative spacing between columns in a multi-panel figure; 0–2. It is not in centimetres; panel spacing has no effect with one panel."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Figure Kenar Boşlukları",
+          "en": "Figure Margins"
+        },
+        "text": {
+          "tr": "Başlık çoklu panel dese de bu kontroller tek panelde de çalışır. Değerler figure genişliği/yüksekliğinin oranı olarak çizim bölgesinin sınır koordinatlarıdır. Sol < Sağ ve Alt < Üst kullanın; ters sınırlar çizimde güvenli aralığa düzeltilse de beklediğiniz yerleşimi vermeyebilir.",
+          "en": "Although the heading mentions multi-panel figures, these controls also work with one panel. Values are plot-region boundary coordinates as fractions of figure width/height. Use Left < Right and Bottom < Top; reversed boundaries are adjusted to a safe range for drawing but may give an unexpected layout."
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Sol / Alt",
+              "en": "Left / Bottom"
+            },
+            "description": {
+              "tr": "Artırmak solda/altta daha çok dış boşluk bırakır. Örneğin Sol=0,15 çizim alanını figure genişliğinin %15 noktasından başlatır.",
+              "en": "Increasing reserves more outer space at the left/bottom. For example Left=0.15 starts the plot region at 15% of figure width."
+            }
+          },
+          {
+            "label": {
+              "tr": "Sağ / Üst",
+              "en": "Right / Top"
+            },
+            "description": {
+              "tr": "Azaltmak sağda/üstte daha çok dış boşluk bırakır. Sağ=0,80 sağda yaklaşık %20 yer ayırır; 0,20 değerinde bir boşluk genişliği anlamına gelmez.",
+              "en": "Decreasing reserves more outer space at the right/top. Right=0.80 reserves about 20% on the right; this is a boundary coordinate, not a margin-width value."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Örnek: sağda lejanta yer açmak",
+          "en": "Example: reserve room for a legend on the right"
+        },
+        "steps": {
+          "tr": [
+            "Lejant sekmesinde Manuel (X,Y), X=1, Y=1 seçin.",
+            "Kanvas Ayarları sekmesinde Sağ değerini azaltın; gerekirse toplam Genişlik değerini artırın.",
+            "Uygula seçin; hem ekranı hem dışa aktarılan dosyayı kesilme, metin çakışması ve okunabilirlik açısından kontrol edin."
+          ],
+          "en": [
+            "In Legend choose Manual (X,Y), X=1, Y=1.",
+            "In Canvas Settings decrease Right; increase total Width if necessary.",
+            "Select Apply; inspect both the screen and exported file for clipping, text overlap and readability."
+          ]
+        }
+      }
+    ]
+  }
+]

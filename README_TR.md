@@ -30,6 +30,14 @@ Ana proje belgesi İngilizce [`README.md`](README.md) dosyasıdır.
 - PNG, PDF, SVG, tablo, Python betiği ve notebook dışa aktarma yolları
 - Türkçe ve İngilizce kullanıcı arayüzü
 
+## Görselli kullanım kılavuzu
+
+Çevrimdışı HTML kılavuzu; panelleri, menüleri, açılır seçenekleri, grafik
+ayarlarını, fit ve dışa aktarmayı gerçek arayüz görüntüleriyle açıklar. Depoyu
+indirdikten sonra [`docs/guide/index.html`](docs/guide/index.html) dosyasını
+tarayıcıda açın; sunucu gerekmez. `docs/guide` klasörünü bir arada tutun.
+[English](docs/guide/en.html).
+
 ## Ekran görüntüleri
 
 Aşağıdaki ekran görüntüleri gerçek NumeriPlot arayüzünden, yalnızca depoda
@@ -161,6 +169,16 @@ atlamayın. Karantina kaldırma komutunu rutin kurulum adımı olarak kullanmay�
    rezidüleri inceleyin.
 6. Çalışma projesini **Dosya → Projeyi Kaydet** ile kaydedin. Gerektiğinde
    grafik, tablo, Python betiği veya notebook çıktısını ayrıca alın.
+
+X otomatik üretildiğinde eksik veya sayısal olmayan Y değerleri çıkarılır;
+kalan gözlemler 1'den başlayarak ardışık numaralandırılır. Ölçüm zamanlarını
+veya gözlemler arasındaki boşlukları korumak için açık bir X sütunu kullanın.
+
+Fitler ağırlıksızdır: gösterilen hata çubukları fit hesabına katılmaz.
+Başlangıç parametreleri sonlu sayılar olmalıdır. Sonsuz X/Y değerleri ve
+geçersiz model sonuçları reddedilir; sabit Y verisinde R² tanımsız olarak
+gösterilir. Parametre belirsizliği uyarısı, elde edilen eğrinin dikkatle
+incelenmesi gerektiğini belirtir; yakınsama tek başına modeli doğrulamaz.
 
 ## Veri ve proje dosyaları
 

@@ -1,0 +1,378 @@
+{
+  "overview": {
+    "tr": {
+      "src": "assets/overview-tr.png",
+      "width": 1440,
+      "height": 1000,
+      "pins": [
+        {
+          "number": 1,
+          "target": "panels",
+          "x": 1.1111111111111112,
+          "y": 4.3
+        },
+        {
+          "number": 2,
+          "target": "layers",
+          "x": 1.1111111111111112,
+          "y": 32.3
+        },
+        {
+          "number": 3,
+          "target": "text",
+          "x": 1.1111111111111112,
+          "y": 59.4
+        },
+        {
+          "number": 4,
+          "target": "fit",
+          "x": 1.1111111111111112,
+          "y": 62.9
+        },
+        {
+          "number": 5,
+          "target": "table",
+          "x": 26.805555555555557,
+          "y": 3.9
+        }
+      ]
+    },
+    "en": {
+      "src": "assets/overview-en.png",
+      "width": 1440,
+      "height": 1000,
+      "pins": [
+        {
+          "number": 1,
+          "target": "panels",
+          "x": 1.1111111111111112,
+          "y": 4.3
+        },
+        {
+          "number": 2,
+          "target": "layers",
+          "x": 1.1111111111111112,
+          "y": 32.3
+        },
+        {
+          "number": 3,
+          "target": "text",
+          "x": 1.1111111111111112,
+          "y": 59.4
+        },
+        {
+          "number": 4,
+          "target": "fit",
+          "x": 1.1111111111111112,
+          "y": 62.9
+        },
+        {
+          "number": 5,
+          "target": "table",
+          "x": 26.805555555555557,
+          "y": 3.9
+        }
+      ]
+    }
+  },
+  "menus-file": {
+    "tr": {
+      "src": "assets/menus-file-tr.png",
+      "width": 338,
+      "height": 286
+    },
+    "en": {
+      "src": "assets/menus-file-en.png",
+      "width": 292,
+      "height": 286
+    }
+  },
+  "menus-view": {
+    "tr": {
+      "src": "assets/menus-view-tr.png",
+      "width": 160,
+      "height": 23
+    },
+    "en": {
+      "src": "assets/menus-view-en.png",
+      "width": 160,
+      "height": 23
+    }
+  },
+  "menus-plot": {
+    "tr": {
+      "src": "assets/menus-plot-tr.png",
+      "width": 189,
+      "height": 94
+    },
+    "en": {
+      "src": "assets/menus-plot-en.png",
+      "width": 193,
+      "height": 94
+    }
+  },
+  "menus-language": {
+    "tr": {
+      "src": "assets/menus-language-tr.png",
+      "width": 160,
+      "height": 46
+    },
+    "en": {
+      "src": "assets/menus-language-en.png",
+      "width": 160,
+      "height": 46
+    }
+  },
+  "panels": {
+    "tr": {
+      "src": "assets/panels-tr.png",
+      "width": 362,
+      "height": 276
+    },
+    "en": {
+      "src": "assets/panels-en.png",
+      "width": 362,
+      "height": 276
+    }
+  },
+  "layers": {
+    "tr": {
+      "src": "assets/layers-tr.png",
+      "width": 362,
+      "height": 267
+    },
+    "en": {
+      "src": "assets/layers-en.png",
+      "width": 362,
+      "height": 267
+    }
+  },
+  "text": {
+    "tr": {
+      "src": "assets/text-tr.png",
+      "width": 365,
+      "height": 502
+    },
+    "en": {
+      "src": "assets/text-en.png",
+      "width": 362,
+      "height": 502
+    }
+  },
+  "table": {
+    "tr": {
+      "src": "assets/table-tr.png",
+      "width": 1440,
+      "height": 1000
+    },
+    "en": {
+      "src": "assets/table-en.png",
+      "width": 1440,
+      "height": 1000
+    }
+  },
+  "table-roles": {
+    "tr": {
+      "src": "assets/table-roles-tr.png",
+      "width": 193,
+      "height": 163
+    },
+    "en": {
+      "src": "assets/table-roles-en.png",
+      "width": 172,
+      "height": 163
+    }
+  },
+  "table-context": {
+    "tr": {
+      "src": "assets/table-context-tr.png",
+      "width": 174,
+      "height": 94
+    },
+    "en": {
+      "src": "assets/table-context-en.png",
+      "width": 170,
+      "height": 94
+    }
+  },
+  "symbols": {
+    "tr": {
+      "src": "assets/symbols-tr.png",
+      "width": 282,
+      "height": 282
+    },
+    "en": {
+      "src": "assets/symbols-en.png",
+      "width": 282,
+      "height": 282
+    }
+  },
+  "report": {
+    "tr": {
+      "src": "assets/report-tr.png",
+      "width": 1440,
+      "height": 1000
+    },
+    "en": {
+      "src": "assets/report-en.png",
+      "width": 1440,
+      "height": 1000
+    }
+  },
+  "settings-axes": {
+    "tr": {
+      "src": "assets/settings-axes-tr.png",
+      "width": 850,
+      "height": 1100
+    },
+    "en": {
+      "src": "assets/settings-axes-en.png",
+      "width": 850,
+      "height": 1100
+    }
+  },
+  "settings-appearance": {
+    "tr": {
+      "src": "assets/settings-appearance-tr.png",
+      "width": 850,
+      "height": 1100
+    },
+    "en": {
+      "src": "assets/settings-appearance-en.png",
+      "width": 850,
+      "height": 1100
+    }
+  },
+  "settings-legend": {
+    "tr": {
+      "src": "assets/settings-legend-tr.png",
+      "width": 850,
+      "height": 1100
+    },
+    "en": {
+      "src": "assets/settings-legend-en.png",
+      "width": 850,
+      "height": 1100
+    }
+  },
+  "settings-styles": {
+    "tr": {
+      "src": "assets/settings-styles-tr.png",
+      "width": 850,
+      "height": 1100
+    },
+    "en": {
+      "src": "assets/settings-styles-en.png",
+      "width": 850,
+      "height": 1100
+    }
+  },
+  "settings-canvas": {
+    "tr": {
+      "src": "assets/settings-canvas-tr.png",
+      "width": 850,
+      "height": 1100
+    },
+    "en": {
+      "src": "assets/settings-canvas-en.png",
+      "width": 850,
+      "height": 1100
+    }
+  },
+  "notation-options": {
+    "tr": {
+      "src": "assets/notation-options-tr.png",
+      "width": 153,
+      "height": 129
+    },
+    "en": {
+      "src": "assets/notation-options-en.png",
+      "width": 153,
+      "height": 129
+    }
+  },
+  "legend-options": {
+    "tr": {
+      "src": "assets/legend-options-tr.png",
+      "width": 279,
+      "height": 106
+    },
+    "en": {
+      "src": "assets/legend-options-en.png",
+      "width": 285,
+      "height": 106
+    }
+  },
+  "settings-styles-global": {
+    "tr": {
+      "src": "assets/settings-styles-global-tr.png",
+      "width": 850,
+      "height": 1100
+    },
+    "en": {
+      "src": "assets/settings-styles-global-en.png",
+      "width": 850,
+      "height": 1100
+    }
+  },
+  "settings-styles-histogram": {
+    "tr": {
+      "src": "assets/settings-styles-histogram-tr.png",
+      "width": 850,
+      "height": 1000
+    },
+    "en": {
+      "src": "assets/settings-styles-histogram-en.png",
+      "width": 850,
+      "height": 1000
+    }
+  },
+  "settings-styles-bar": {
+    "tr": {
+      "src": "assets/settings-styles-bar-tr.png",
+      "width": 850,
+      "height": 1000
+    },
+    "en": {
+      "src": "assets/settings-styles-bar-en.png",
+      "width": 850,
+      "height": 1000
+    }
+  },
+  "fit": {
+    "tr": {
+      "src": "assets/fit-tr.png",
+      "width": 400,
+      "height": 350
+    },
+    "en": {
+      "src": "assets/fit-en.png",
+      "width": 400,
+      "height": 350
+    }
+  },
+  "import": {
+    "tr": {
+      "src": "assets/import-tr.png",
+      "width": 980,
+      "height": 780
+    },
+    "en": {
+      "src": "assets/import-en.png",
+      "width": 980,
+      "height": 780
+    }
+  },
+  "data-operations": {
+    "tr": {
+      "src": "assets/data-operations-tr.png",
+      "width": 920,
+      "height": 580
+    },
+    "en": {
+      "src": "assets/data-operations-en.png",
+      "width": 920,
+      "height": 580
+    }
+  }
+}

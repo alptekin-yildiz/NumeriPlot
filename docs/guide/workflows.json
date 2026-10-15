@@ -1,0 +1,621 @@
+[
+  {
+    "id": "menus",
+    "title": {
+      "tr": "Menüler",
+      "en": "Menus"
+    },
+    "intro": {
+      "tr": "Üst menü çubuğu dosya, görünüm, grafik ayarları ve arayüz dilini yönetir. Ayarların kapsamı seçili panele veya tüm kanvasa göre değişebilir.",
+      "en": "The menu bar handles files, view options, plot settings, and interface language. Settings may apply to the selected panel or the whole canvas."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Dosya",
+          "en": "File"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Veri Yükle…",
+              "en": "Load Data…"
+            },
+            "description": {
+              "tr": "CSV, TXT veya Excel dosyasını içe aktarır; içe aktarma penceresindeki seçimleri uygular ve mevcut tabloyu, grafikleri, fitleri ve metin öğelerini yenisiyle değiştirir. Önce gerekliyse projeyi kaydedin. Aç kısayolu kullanılır.",
+              "en": "Imports a CSV, TXT, or Excel file using the import dialog settings. It replaces the current table, plots, fits, and text items, so save the project first if needed. Uses the standard Open shortcut."
+            }
+          },
+          {
+            "label": {
+              "tr": "Sütun Ekle…",
+              "en": "Append Columns…"
+            },
+            "description": {
+              "tr": "İçe aktarılan sütunları mevcut tablonun sağına ekler. Aynı adlı sütunlara _2, _3 gibi ekler verilir; satır sayısı farklıysa kısa sütunların eksik kalan hücreleri boş olur.",
+              "en": "Adds imported columns to the right of the current table. Duplicate names receive suffixes such as _2 or _3; if row counts differ, the shorter data receives empty cells."
+            }
+          },
+          {
+            "label": {
+              "tr": "Projeyi Aç…",
+              "en": "Open Project…"
+            },
+            "description": {
+              "tr": "NumeriPlot proje dosyasını açar. Proje dosyalarında desteklenen şema 1.0 kullanılır.",
+              "en": "Opens a NumeriPlot project file. Supported project files use schema 1.0."
+            }
+          },
+          {
+            "label": {
+              "tr": "Projeyi Kaydet / Farklı Kaydet…",
+              "en": "Save Project / Save Project As…"
+            },
+            "description": {
+              "tr": "Tabloyu ve çalışma alanı durumunu proje dosyasına kaydeder; Farklı Kaydet yeni konum veya ad seçtirir. Kaydet standart Save kısayolunu kullanır.",
+              "en": "Saves the table and workspace state to a project file; Save Project As chooses a new name or location. Save uses the standard Save shortcut."
+            }
+          },
+          {
+            "label": {
+              "tr": "Grafiği Dışa Aktar…",
+              "en": "Export Figure…"
+            },
+            "description": {
+              "tr": "Geçerli grafiği görüntü dosyası olarak dışa aktarır.",
+              "en": "Exports the current figure as an image file."
+            }
+          },
+          {
+            "label": {
+              "tr": "Tabloyu Dışa Aktar…",
+              "en": "Export Table…"
+            },
+            "description": {
+              "tr": "Geçerli veri tablosunu dışa aktarır.",
+              "en": "Exports the current data table."
+            }
+          },
+          {
+            "label": {
+              "tr": "Veri İşlemleri…",
+              "en": "Data Operations…"
+            },
+            "description": {
+              "tr": "Seçilen sütunlarda hesaplama yapıp sonuç sütunu ekler veya seyreltme için seçili sütunu yerinde günceller.",
+              "en": "Calculates results from selected columns and adds result columns, or updates the selected column in place for decimation."
+            }
+          },
+          {
+            "label": {
+              "tr": "Python Betiğini Dışa Aktar… / Notebook'u Dışa Aktar…",
+              "en": "Export Python Script… / Export Notebook…"
+            },
+            "description": {
+              "tr": "Geçerli grafiğin yeniden oluşturulmasına yönelik Python veya notebook dosyası üretir.",
+              "en": "Creates a Python script or notebook for reproducing the current plot."
+            }
+          },
+          {
+            "label": {
+              "tr": "Hakkında / Çıkış",
+              "en": "About / Exit"
+            },
+            "description": {
+              "tr": "Hakkında uygulama bilgisini gösterir. Çıkış uygulamayı kapatır; kaydedilmemiş değişiklik varsa kaydetme, atma veya iptal seçenekleri sunulur. Çıkış standart Quit kısayolunu kullanır.",
+              "en": "About shows application information. Exit closes the application; if there are unsaved changes, you can save, discard, or cancel. Exit uses the standard Quit shortcut."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Görünüm, Grafik ve Dil",
+          "en": "View, Plot, and Language"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Görünüm → Koyu Tema",
+              "en": "View → Dark Theme"
+            },
+            "description": {
+              "tr": "Açık ve koyu arayüz temasını değiştirir.",
+              "en": "Switches between light and dark interface themes."
+            }
+          },
+          {
+            "label": {
+              "tr": "Grafik → Eksenler",
+              "en": "Plot → Axes"
+            },
+            "description": {
+              "tr": "Aktif panelin eksen aralıkları, ölçeği, tikleri ve etiketleri gibi ayarlarını açar.",
+              "en": "Opens axis settings such as ranges, scales, ticks, and labels for the active panel."
+            }
+          },
+          {
+            "label": {
+              "tr": "Grafik → Görünüm / Stiller",
+              "en": "Plot → Appearance / Styles"
+            },
+            "description": {
+              "tr": "Görünüm seçenekleri aktif panelin grafik görünümünü; Stiller seri çizim stillerini düzenler.",
+              "en": "Appearance controls the active panel's plot appearance; Styles edits series drawing styles."
+            }
+          },
+          {
+            "label": {
+              "tr": "Grafik → Kanvas",
+              "en": "Plot → Canvas"
+            },
+            "description": {
+              "tr": "Grafik kanvasının boyut ve panel yerleşimi gibi genel ayarlarını açar.",
+              "en": "Opens figure-wide settings such as canvas size and panel spacing."
+            }
+          },
+          {
+            "label": {
+              "tr": "Dil → Türkçe / English",
+              "en": "Language → Türkçe / English"
+            },
+            "description": {
+              "tr": "Arayüz dilini değiştirir. Grafik verisini değiştirmez.",
+              "en": "Changes the interface language without changing plotted data."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "table",
+    "title": {
+      "tr": "Veri Tablosu",
+      "en": "Data Table"
+    },
+    "intro": {
+      "tr": "Tablo içeriği tüm panellerin kullandığı ortak veridir. Başlık ve hücre menüleri, sağ tıklanan başlık veya seçimin türüne göre farklı işlemler sunar. Üst araç satırında rol şablonları, çizim türü, rol sıfırlama, rollere göre grafik ekleme ve son tablo işlemini geri alma kontrolleri bulunur.",
+      "en": "The table is shared data used by all panels. Header and cell context menus offer different actions depending on the clicked header or selection. The toolbar also has role templates, plot type, reset roles, add plots from roles, and undo last table action."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Sütun başlığı menüsü",
+          "en": "Column header menu"
+        },
+        "text": {
+          "tr": "Sütun başlığına sağ tıklayarak rol atayın veya adı değiştirin. Başlığa çift tıklama rolü seçenekler arasında döndürür.",
+          "en": "Right-click a column header to assign a role or rename it. Double-clicking the header cycles through roles."
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Yok, X, Y Sol, Y Sağ, X Hata, Y Hata",
+              "en": "None, X, Y Left, Y Right, X Error, Y Error"
+            },
+            "description": {
+              "tr": "Grafik serilerinin kaynak sütun rollerini belirtir. Rol ataması sütun içeriğini dönüştürmez; çizim öncesinde sayısal olmayan değerlerin nasıl ele alınacağı çizim türüne bağlıdır.",
+              "en": "Marks source-column roles for plotted series. Assigning a role does not transform column contents; how nonnumeric values are handled during plotting depends on plot type."
+            }
+          },
+          {
+            "label": {
+              "tr": "Rol şablonları",
+              "en": "Role templates"
+            },
+            "description": {
+              "tr": "Şablonlar: Tümünü temizle; ilk sütun X ve kalanların tümü Y Sol; dönüşümlü X/Y Sol; tümü Y Sol; X ardından Y/Y Hata çiftleri; X, X Hata ardından Y/Y Hata çiftleri. Şablon uygulaması onay ister. Sayısal olmayan sütunlara Y/Hata rolü atanmaz; uygun olmayan sütunlar atlanır.",
+              "en": "Templates: Clear all; first column X and remaining columns Y Left; alternating X/Y Left; all Y Left; X followed by Y/Y Error pairs; X, X Error followed by Y/Y Error pairs. Applying a template asks for confirmation. Nonnumeric columns are skipped for Y/error roles."
+            }
+          },
+          {
+            "label": {
+              "tr": "Çizim türü ve rollere göre grafik",
+              "en": "Plot type and add from roles"
+            },
+            "description": {
+              "tr": "Çizim türleri saçılım, çizgi, saçılım+çizgi, bar ve histogramdır. Rollere göre grafik ekleme, atanmış X/Y/hata rollerini kullanarak aktif panele çizimler ekler.",
+              "en": "Plot types are scatter, line, scatter plus line, bar, and histogram. Add from roles creates drawings in the active panel using assigned X/Y/error roles."
+            }
+          },
+          {
+            "label": {
+              "tr": "Rolleri Sıfırla / Son Tablo İşlemini Geri Al",
+              "en": "Reset Roles / Undo Last Table Action"
+            },
+            "description": {
+              "tr": "Rolleri sıfırlamak yalnız rol atamalarını temizler. Geri Al, desteklenen en son tek tablo değişikliğini geri yükler; yeni veri yükleme veya sütun ekleme gibi işlemler bu tek adımlık geri almayı temizler.",
+              "en": "Reset Roles clears only role assignments. Undo restores the most recent supported table mutation; actions such as loading data or appending columns clear this one-level undo."
+            }
+          },
+          {
+            "label": {
+              "tr": "Sütun Adını Değiştir",
+              "en": "Rename Column"
+            },
+            "description": {
+              "tr": "Adı boş bırakamaz veya mevcut başka bir sütun adıyla çakıştıramazsınız. Mevcut serilerin o sütuna olan kaynak bağlantıları yeni ada taşınır.",
+              "en": "The name cannot be blank or duplicate another column. Existing series references to that source column follow the new name."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Tablo gövdesi menüsü",
+          "en": "Table body menu"
+        },
+        "text": {
+          "tr": "Seçim yalnız satırlardan, yalnız sütunlardan veya hücrelerden oluşmasına göre farklı komutlar gösterilir. Silme ve hücreleri NaN yapma işlemleri onay ister.",
+          "en": "Available commands depend on whether the selection consists of rows, columns, or cells. Deletion and setting cells to NaN require confirmation."
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Satır seçimi",
+              "en": "Row selection"
+            },
+            "description": {
+              "tr": "Seçili satırları siler veya seçimin üstüne/altına boş satır ekler.",
+              "en": "Deletes selected rows or inserts blank rows above or below the selection."
+            }
+          },
+          {
+            "label": {
+              "tr": "Sütun seçimi",
+              "en": "Column selection"
+            },
+            "description": {
+              "tr": "Seçili sütunları siler veya soluna/sağına boş sütun ya da indeks sütunu ekler. Tüm sütunları silmek engellenir.",
+              "en": "Deletes selected columns or inserts a blank or index column to their left or right. Deleting every column is blocked."
+            }
+          },
+          {
+            "label": {
+              "tr": "Hücre seçimi ve yapıştırma",
+              "en": "Cell selection and paste"
+            },
+            "description": {
+              "tr": "Seçili hücreleri NaN yapabilir, hücreleri silip aynı sütundaki alttaki değerleri yukarı kaydırabilir veya satır ekleyebilir. Sekmeyle ayrılmış veriyi panodan yapıştırabilirsiniz; yapıştırma mevcut sütun sınırını aşan değerleri kırpar ve hedef gerekirse yeni satırlar ekler. Tablo düzenleme, silme, yapıştırma ve ekleme işlemleri son tablo işlemi olarak geri alınabilir.",
+              "en": "Sets selected cells to NaN, deletes cells and shifts later values upward within each column, or inserts rows. Tab-separated clipboard data can be pasted; values beyond the current column boundary are trimmed and rows are added when needed. Table edits, deletion, paste, and insertion can be undone as the last table action."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "panels",
+    "title": {
+      "tr": "Paneller",
+      "en": "Panels"
+    },
+    "intro": {
+      "tr": "Bir kanvas birden fazla grafik paneli içerebilir. Aktif panel listede kalın yazılır; seri ve metin listeleri aktif panele göre gösterilir.",
+      "en": "A canvas can contain multiple plot panels. The active panel is bold in the list; the series and text lists show items for that panel."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Aktif panel ve düzen",
+          "en": "Active panel and layout"
+        },
+        "text": {
+          "tr": "Panel listesinde seçim yapmak veya panele tıklamak aktif paneli değiştirir; panele çift tıklama kanvas içindeyse aktif paneli seçip Eksen ayarlarını açar. Düzen seçicisi 1×1, 1×2, 2×1, 2×2, 3×1, 1×3, 3×2, 2×3 ve Özel seçeneklerini sunar. Özel düzen için satır/sütun sayısı ayrıca girilir; en fazla 12 panel desteklenir.",
+          "en": "Selecting a panel in the list or clicking its plot area makes it active; double-clicking inside a panel selects it and opens Axes settings. Layout choices are 1×1, 1×2, 2×1, 2×2, 3×1, 1×3, 3×2, 2×3, and Custom. Custom layout asks for row and column counts and supports up to 12 panels."
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Paneli Yeniden Adlandır",
+              "en": "Rename Panel"
+            },
+            "description": {
+              "tr": "Aktif panelin görünen adını değiştirir.",
+              "en": "Changes the active panel's display name."
+            }
+          },
+          {
+            "label": {
+              "tr": "Paneli Temizle",
+              "en": "Clear Panel"
+            },
+            "description": {
+              "tr": "Onaydan sonra aktif paneldeki serileri, fitleri ve metinleri kaldırır; tablodaki veriyi silmez.",
+              "en": "After confirmation, removes the active panel's series, fits, and text. It does not delete table data."
+            }
+          },
+          {
+            "label": {
+              "tr": "Yerleşimi Değiştir",
+              "en": "Change Layout"
+            },
+            "description": {
+              "tr": "Yeni düzende karşılığı olmayan panellerdeki seriler ve metinler ilk panele taşınır.",
+              "en": "Series and text from panels that no longer fit the new layout are moved to the first panel."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "layers",
+    "title": {
+      "tr": "Grafik Katmanları ve Seriler",
+      "en": "Plot Layers and Series"
+    },
+    "intro": {
+      "tr": "Katman/seri listesi aktif panelin çizimlerini gösterir. Bir satır seçerek o seriyi düzenleyin; Sil düğmesi seçili seriyi kaldırır, kaynak tablo sütunlarını korur.",
+      "en": "The layer/series list shows drawings in the active panel. Select a row to edit that series; Delete removes the selected series while keeping its source table columns."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Seri ekleme ve yönetme",
+          "en": "Adding and managing series"
+        },
+        "steps": {
+          "tr": [
+            "Veri Tablosu sekmesinde sütun başlıklarına sağ tıklayarak X/Y ve gerekiyorsa hata rollerini atayın.",
+            "Tablonun üzerindeki Tip listesinden Sembol, Çizgi, Sembol / Çizgi, Bar veya Histogram seçin ve Grafik Ekle’ye basın.",
+            "Katman Yönetimi listesindeki seri adına çift tıklayarak yeniden adlandırın. Çizim görünümünü Grafik → Stiller üzerinden değiştirin; Sil yalnız seçili çizimi kaldırır."
+          ],
+          "en": [
+            "In Data Table, right-click column headers to assign X/Y and optional error roles.",
+            "Use the Type list above the table to choose Scatter, Line, Scatter / Line, Bar, or Histogram, then select Add Plot.",
+            "Double-click a series name in Layer Management to rename it. Change its appearance through Plot → Styles; Delete removes only the selected drawing."
+          ]
+        },
+        "text": {
+          "tr": "Bir sütun birden çok seride kullanılabilir. Seri kaldırma tabloyu değiştirmez.",
+          "en": "A column can be used in more than one series. Removing a series does not change the table."
+        }
+      }
+    ]
+  },
+  {
+    "id": "text",
+    "title": {
+      "tr": "Metinler ve Panel Etiketleri",
+      "en": "Text and Panel Labels"
+    },
+    "intro": {
+      "tr": "Tek tek metin öğeleri aktif panele aittir. Otomatik panel etiketleri ise tüm kanvasa ait tek bir ayardır ve etkinleştirildiğinde her panelde gösterilir. Metin silme onay ister; otomatik etiketleri kapatmak tek tek metin öğelerini silmez.",
+      "en": "Individual text items belong to the active panel. Automatic panel labels are one canvas-wide setting and appear on every panel when enabled. Deleting a text item asks for confirmation; turning off automatic labels does not delete individual text items."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Metin ekle, düzenle ve sil",
+          "en": "Add, edit, and delete text"
+        },
+        "steps": {
+          "tr": [
+            "Metin alanına içeriği yazın; gerekirse Ω düğmesiyle sembol seçin.",
+            "Koordinat türünü seçin: Eksen koordinatlarında (0,0) panel çerçevesinin sol altı, (1,1) sağ üstüdür. Veri koordinatlarında X/Y kutuları çizilen eksenlerdeki veri değerleridir.",
+            "Konum, yatay/dikey hizalama, boyut, yazı tipi, açı, kalın, italik ve matematik gösterimi seçeneklerini ayarlayın. Dokuz konum ön ayarı koordinat türünü Eksen olarak değiştirir.",
+            "Yeni bir öğe için Ekle'yi; listeden seçilmiş öğenin değişikliklerini uygulamak için Güncelle'yi kullanın. Seçili öğeyi silmek için Sil'i seçip onaylayın."
+          ],
+          "en": [
+            "Enter the text; use the Ω button to choose a symbol if needed.",
+            "Choose coordinates: in Axes coordinates, (0,0) is the panel's lower-left and (1,1) its upper-right. In Data coordinates, X/Y are values on the plotted axes.",
+            "Set position, horizontal/vertical alignment, size, font, angle, bold, italic, and math rendering. The nine position presets switch the coordinate mode to Axes.",
+            "Choose Add for a new item or Update to apply changes to the selected item. Choose Delete and confirm to remove the selected item."
+          ]
+        },
+        "text": {
+          "tr": "Matematik gösterimi özel biçimlendirme içindir; girdinin geçerli matematik sözdizimi olmalıdır.",
+          "en": "Math rendering is for mathematical formatting; the input must use valid math syntax."
+        }
+      },
+      {
+        "heading": {
+          "tr": "Sentetik veri notu örneğini silme",
+          "en": "Delete the synthetic-data note example"
+        },
+        "steps": {
+          "tr": [
+            "Örnek projeyi açın: examples/NumeriPlot_example_project.json.",
+            "Sol panelde Metin Yönetimi bölümünü açın.",
+            "Listeden 'Synthetic data only · seed 20260831' öğesini seçin, Sil'i seçin ve onaylayın.",
+            "Dosya → Projeyi Farklı Kaydet ile bir kopya kaydedin."
+          ],
+          "en": [
+            "Open the example project: examples/NumeriPlot_example_project.json.",
+            "Expand Text Management in the left panel.",
+            "Select 'Synthetic data only · seed 20260831' in the list, choose Delete, and confirm.",
+            "Save a copy with File → Save Project As."
+          ]
+        }
+      },
+      {
+        "heading": {
+          "tr": "Otomatik panel etiketleri",
+          "en": "Automatic panel labels"
+        },
+        "text": {
+          "tr": "Otomatik etiket seçeneği panel numarası/harfi etiketini her panelde gösterir. Biçim, konum, hizalama, boyut, kalınlık ve italiklik ayarlanabilir; varsayılan olarak kapalıdır.",
+          "en": "The automatic label option displays a panel number/letter label on each panel. Its format, position, alignment, size, bold, and italic settings are configurable; it is off by default."
+        }
+      }
+    ]
+  },
+  {
+    "id": "import",
+    "title": {
+      "tr": "Veri İçe Aktarma",
+      "en": "Data Import"
+    },
+    "intro": {
+      "tr": "Veri Yükle veya Sütun Ekle komutuyla CSV, TXT ya da Excel dosyası seçin. İçe aktarma penceresindeki canlı önizlemeyi kontrol edip yalnız istediğiniz sütunları içe alın.",
+      "en": "Choose a CSV, TXT, or Excel file with Load Data or Append Columns. Check the live preview in the import dialog and import only the columns you need."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "İçe aktarma penceresi",
+          "en": "Import dialog"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Ayırıcı ve kodlama",
+              "en": "Separator and encoding"
+            },
+            "description": {
+              "tr": "CSV/TXT için otomatik algılama veya virgül, noktalı virgül, sekme ve boşluk ayırıcılarını seçin. Kodlama seçenekleri UTF-8, Latin-1, CP1252 ve UTF-8-SIG'dir. Excel dosyalarında ayırıcı ve kodlama uygulanmaz.",
+              "en": "For CSV/TXT, choose automatic detection or comma, semicolon, tab, or space. Encoding choices are UTF-8, Latin-1, CP1252, and UTF-8-SIG. Separator and encoding do not apply to Excel files."
+            }
+          },
+          {
+            "label": {
+              "tr": "Satır yapısı",
+              "en": "Row structure"
+            },
+            "description": {
+              "tr": "Başlık satırını açıp kapatın ve satır numarasını belirtin. İsteğe bağlı olarak birim satırını seçin; birimleri başlıklara ekleyebilir veya satırı atlayabilirsiniz. Açıklama satırı seçeneği, başlık/birimden sonraki belirtilen sayıda satırı atlar.",
+              "en": "Enable or disable a header and specify its row. Optionally select a units row; units can be appended to column names while the row is skipped. The extra rows option skips the specified number of rows after the header/units."
+            }
+          },
+          {
+            "label": {
+              "tr": "Önizleme ve sütun seçimi",
+              "en": "Preview and column selection"
+            },
+            "description": {
+              "tr": "Ham ve ayrıştırılmış önizlemeleri karşılaştırın; sütunları dahil edin/çıkarın ve her sütunun kullanım türünü sayısal veya metin olarak seçin. Önizleme en fazla 200 satır gösterir.",
+              "en": "Compare raw and parsed previews, include or exclude columns, and choose Numeric or Text use for each column. The preview shows up to 200 rows."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Tabloya etkisi",
+          "en": "Effect on the table"
+        },
+        "text": {
+          "tr": "Veri Yükle mevcut çalışma tablosunu ve onun çizim/fit/metin durumunu temizleyerek yeni veriyi yükler. Sütun Ekle mevcut tablonun sağına ekler; satır sayısı farklıysa eksik hücreler boş kalır. Beklenmeyen biçimlerde önizlemeyi ve sütun tiplerini içe aktarmadan önce doğrulayın.",
+          "en": "Load Data replaces the current working table and clears its plots, fits, and text. Append Columns adds to the right; rows without matching values are left empty. Check the preview and column types before importing unfamiliar file layouts."
+        }
+      }
+    ]
+  },
+  {
+    "id": "data-operations",
+    "title": {
+      "tr": "Veri İşlemleri",
+      "en": "Data Operations"
+    },
+    "intro": {
+      "tr": "Dosya → Veri İşlemleri penceresinde kategori ve işlemi seçin, kaynak sütunları ve parametreleri belirleyin, Önizleme'yi inceleyin, ardından Uygula'yı seçin. İşlemler sütun konumuna göre çalışır; X sütunu kullanmak gereken yerlerde ayrıca seçilir. Bunlar genel sayısal dönüşümlerdir; yöntem seçimi tek başına bilimsel uygunluk sağlamaz.",
+      "en": "Open File → Data Operations, choose a category and operation, select source columns and parameters, inspect Preview, then choose Apply. Operations use row positions; select an X column where required. These are general numerical transformations; choosing an operation does not establish scientific suitability."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "İşlemler ve hesaplama anlamları",
+          "en": "Operations and calculation meanings"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Ölçekleme",
+              "en": "Scaling"
+            },
+            "description": {
+              "tr": "Normalize: en küçük değeri 0, en büyüğü 1 olacak şekilde ölçekler (sabit sütunda sıfırlar). Standardize: ortalamayı çıkarıp standart sapmaya böler (sabit sütunda bölen 1 alınır). Min-Max: kullanıcı alt/üst sınırlarına doğrusal ölçekler; sabit sütun alt sınır değerini alır.",
+              "en": "Normalize maps the minimum to 0 and maximum to 1 (a constant column becomes zeros). Standardize subtracts the mean and divides by standard deviation (a constant column uses 1 as divisor). Min-Max linearly maps to user-specified bounds; a constant column becomes the lower bound."
+            }
+          },
+          {
+            "label": {
+              "tr": "Dönüşüm",
+              "en": "Transform"
+            },
+            "description": {
+              "tr": "log10 ve ln yalnız pozitif değerlerde tanımlıdır; diğer değerleri NaN yapar. Karekök negatifleri NaN yapar. Mutlak değer |x|, Ters 1/x (sıfırda NaN), Üs x^n hesaplar; kesirli üs negatif girdilerde geçersiz sonuç verebilir.",
+              "en": "log10 and ln are defined only for positive values and turn other values into NaN. Square root turns negative values into NaN. Absolute value computes |x|; Reciprocal computes 1/x (zero becomes NaN); Power computes x^n and may be invalid for negative inputs with fractional exponents."
+            }
+          },
+          {
+            "label": {
+              "tr": "Türev ve kümülatif işlemler",
+              "en": "Calculus and cumulative operations"
+            },
+            "description": {
+              "tr": "Türev ve kümülatif trapez integrali için X sütunu seçimi zorunludur; np.gradient Y'yi bu X'e göre yaklaşık türevler, integrali kümülatif_trapez yöntemiyle hesaplar ve başlangıcı 0 alır. Kümülatif toplam NaN değerleri atlayarak toplar.",
+              "en": "An X column is required for Gradient and cumulative trapezoidal integration. Gradient approximates Y's derivative with respect to that X using np.gradient; integration uses the cumulative trapezoid method and starts at 0. Cumulative sum skips NaN values."
+            }
+          },
+          {
+            "label": {
+              "tr": "Fark ve kayan pencere",
+              "en": "Difference and rolling window"
+            },
+            "description": {
+              "tr": "Fark, belirtilen periyottaki önceki değeri çıkarır; başlangıçta NaN oluşur. Hareketli ortalama pencere içinde en az bir geçerli değerle; hareketli standart sapma en az iki değerle hesaplanır. Standart sapma örnek standart sapmasıdır.",
+              "en": "Difference subtracts the value the chosen period earlier; initial rows become NaN. Rolling mean uses at least one valid value per window; rolling standard deviation needs at least two values and is the sample standard deviation."
+            }
+          },
+          {
+            "label": {
+              "tr": "İki sütun",
+              "en": "Two columns"
+            },
+            "description": {
+              "tr": "Topla A+B, Çıkar A−B, Çarp A×B, Böl A/B ve Oran (%) 100×A/B hesaplar. Sıfır bölen sonuçlarını NaN yapar. Sütunlar satır sırasıyla eşleştirilir; satırların aynı ölçüme karşılık geldiğini doğrulayın.",
+              "en": "Computes A+B, A−B, A×B, A/B, or 100×A/B. A zero divisor produces NaN. Columns are paired by row position; verify that corresponding rows represent matching observations."
+            }
+          },
+          {
+            "label": {
+              "tr": "Seyreltme",
+              "en": "Decimation"
+            },
+            "description": {
+              "tr": "Periyodik Örnekleme her n'inci değeri seçer. Pencere İndirgemesi ardışık, örtüşmeyen pencerelerin ortalamasını, medyanını, minimumunu veya maksimumunu üretir; son kısa pencere de kullanılır. Çıktı kısalır ve yalnız sayısal sütunların tümüne ya da seçili sütuna yeni sütun olarak/yeni değerlerin üzerine uygulanabilir. Yerinde uygulama önizlemeden sonraki onayı gerektirir; tüm sütunlara yerinde uygulama geri alınamaz.",
+              "en": "Every-n sampling selects every nth value. Window reduction computes the mean, median, minimum, or maximum of consecutive non-overlapping windows; a final short window is included. Output is shorter. It can target the selected column or all numeric columns, either as new columns or in place. In-place changes require confirmation after preview; all-column in-place updates cannot be undone."
+            }
+          },
+          {
+            "label": {
+              "tr": "Pik bulma",
+              "en": "Peak finding"
+            },
+            "description": {
+              "tr": "SciPy find_peaks ile yerel maksimumları veya ters çevrilmiş sinyaldeki yerel minimumları bulur. Minimum yükseklik, seçili sütunun aralığının yüzdesi; minimum mesafe örnek sayısıdır. Sınır uçları yerel pik olarak değerlendirilmez. X sütunu seçilirse bulunan X ve Y değerleri iki sütuna yazılır; aksi halde yalnız pik noktalarında değer, diğer satırlarda NaN olan tek sütun üretilir.",
+              "en": "Uses SciPy find_peaks to locate local maxima or, after sign reversal, local minima. Minimum height is a percentage of the selected column's range; minimum distance is in samples. Endpoints are not treated as local peaks. With an X column, peak X and Y values go into two output columns; otherwise one column contains values only at detected peaks and NaN elsewhere."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Önizleme, çıktı ve sınırlamalar",
+          "en": "Preview, output, and limitations"
+        },
+        "steps": {
+          "tr": [
+            "İşlemin A sütununu ve gerekiyorsa B/X sütununu seçin. Sayısal olmayan hücreler sayıya çevrilirken NaN olur.",
+            "Parametreleri girin ve Önizleme'yi seçin. Tek sütun sonuçlarında ilk 10 satır; pik işleminde bulunan piklerin ilk 10'u gösterilir.",
+            "Yeni sütun adlarını belirleyin ve Uygula'yı seçin. Adlar boş veya mevcut sütunlarla aynı olamaz.",
+            "Özellikle türev/integral için birimleri, örnek aralığını ve X'in sıralamasını; seyreltme için veri sırasını; tüm çıktılar için NaN ve son pencere davranışını bağımsız olarak kontrol edin."
+          ],
+          "en": [
+            "Choose column A and, where required, column B/X. Values that cannot be converted to numbers become NaN.",
+            "Set parameters and choose Preview. Single-column results show the first 10 rows; peak detection shows the first 10 detected peaks.",
+            "Choose output column names and select Apply. Names cannot be blank or match existing columns.",
+            "For gradient/integration, check units, sampling spacing, and X ordering; for decimation, check row order; for all outputs, inspect NaNs and final-window behavior independently."
+          ]
+        },
+        "text": {
+          "tr": "Önizleme sonuçları hesaplamanın örnek görünümüdür; doğru model, parametreler, birimler veya çıkarım için doğrulama yerine geçmez. İşlemler proje verisini etkiler; önemli değişikliklerden önce projeyi kaydedin.",
+          "en": "Preview is a sample view of the calculation; it does not validate the model, parameters, units, or scientific inference. Operations change project data; save the project before important transformations."
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,592 @@
+[
+  {
+    "id": "start",
+    "title": {
+      "tr": "İlk grafik, adım adım",
+      "en": "Your first plot, step by step"
+    },
+    "intro": {
+      "tr": "NumeriPlot 0.1.0 Public Beta için çevrim dışı kullanım kılavuzu. Ekran görüntüleri gerçek uygulamadan, yalnızca deterministik sentetik verilerle alınmıştır.",
+      "en": "Offline guide for NumeriPlot 0.1.0 Public Beta. Screenshots come from the actual application using only deterministic synthetic data."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Bu kılavuz nasıl kullanılır?",
+          "en": "How to use this guide"
+        },
+        "text": {
+          "tr": "Soldaki içerik listesinden bir bölüm seçin veya arama kutusuna bir işlem yazın. Görselleri büyütmek için tıklayın; Esc ile kapatın. Türkçe/English bağlantısı aynı bölümü diğer dilde açar. Kılavuz çevrim dışı çalışır; dış bağlantılar internet gerektirir.",
+          "en": "Choose a section from the contents or search for a task. Click images to enlarge; press Esc to close. The Türkçe/English link opens the same section in the other language. The guide works offline; external links require internet."
+        }
+      },
+      {
+        "heading": {
+          "tr": "Hazır örnekle başlayın",
+          "en": "Start with the supplied example"
+        },
+        "steps": {
+          "tr": [
+            "Dosya → Proje Aç… ile examples/NumeriPlot_example_project.json dosyasını açın. Bu dosya bir veri CSV’si değil, hazır çalışma alanıdır.",
+            "Grafik sekmesinde gözlemleri ve Gauss eğrisini inceleyin. Analiz Raporu sekmesinden kaydedilmiş fitin parametrelerini ve rezidülerini okuyun.",
+            "Metin Yönetimi başlığına tıklayıp örnekteki Synthetic data only yazısını seçin. Güncelle ile değiştirin veya Sil ile kaldırın.",
+            "Örneği korumak için Dosya → Projeyi Farklı Kaydet… ile kendi kopyanızı oluşturun. Ardından grafiği PNG, PDF veya SVG olarak dışa aktarın."
+          ],
+          "en": [
+            "Use File → Open Project… to open examples/NumeriPlot_example_project.json. This is a saved workspace, not a CSV data import.",
+            "Inspect the observations and Gaussian curve in Plot. Open Analysis Report to inspect the saved fit parameters and residuals.",
+            "Expand Text Management and select the Synthetic data only annotation. Change it with Update or remove it with Delete.",
+            "Keep the original example by using File → Save Project As… for your copy. Export the figure separately as PNG, PDF, or SVG."
+          ]
+        }
+      },
+      {
+        "heading": {
+          "tr": "CSV’den yeni grafik oluşturun",
+          "en": "Create a new plot from CSV"
+        },
+        "steps": {
+          "tr": [
+            "Önce açık projenizi kaydedin. Veri Yükle… ile examples/data/noisy_linear.csv dosyasını seçin; önizlemede x ve y sütunlarını kontrol edin.",
+            "Veri Tablosu’nda x başlığına sağ tıklayıp X, y başlığına sağ tıklayıp Y Sol rolünü atayın.",
+            "Grafik türünü seçin, Grafik Ekle’ye basın ve Grafik sekmesine geçin. Eksen başlıklarına ölçüm adlarını ve birimlerini ekleyin.",
+            "Analiz ve Fit bölümünü açın. Seriyi ve Doğrusal modeli seçip Fit’e basın. Başlangıç değerlerini girin; raporu ve rezidüleri değerlendirin."
+          ],
+          "en": [
+            "Save your current project first. Use Load Data… for examples/data/noisy_linear.csv and check the x and y columns in the preview.",
+            "In Data Table, right-click the x header and assign X; right-click y and assign Y Left.",
+            "Choose a plot type, select Add Plot, then open Plot. Add measurement names and units to the axis labels.",
+            "Expand Analysis & Fit. Select the series and Linear model, then Fit. Enter starting values and review the report and residuals."
+          ]
+        }
+      },
+      {
+        "heading": {
+          "tr": "Sürüm ve kullanım sınırları",
+          "en": "Version and scope"
+        },
+        "text": {
+          "tr": "İlk paket Apple Silicon, macOS 12+ için imzasız public betadır. Diğer platformlar için paket/release doğrulaması sunulmaz. Bu kılavuz depodaki güncel 0.1.0 çalışma ağacını anlatır; önceden indirilmiş bir paket son yerel düzeltmeleri içermeyebilir. Veriler yerel işlenir; uygulama çalışırken AI hizmeti kullanmaz.",
+          "en": "The first package is an unsigned public beta for Apple Silicon, macOS 12+. Other platforms do not have packaged release validation. This guide describes the current 0.1.0 repository worktree; an earlier downloaded package may lack recent local fixes. Data is processed locally; the running app does not use AI services."
+        }
+      }
+    ]
+  },
+  {
+    "id": "overview",
+    "title": {
+      "tr": "Arayüz haritası",
+      "en": "Interface map"
+    },
+    "intro": {
+      "tr": "Numaralı bağlantılar gerçek ekran görüntüsü üzerinde ilgili kılavuz bölümüne gider. Sol bölümlerin başlıklarına tıklayarak açıp kapatabilirsiniz.",
+      "en": "Numbered links on the real screenshot open the relevant guide section. Click a left-hand section heading to expand or collapse it."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Önce neyi seçtiğinize bakın",
+          "en": "Check the selection first"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "1 · Paneller",
+              "en": "1 · Panels"
+            },
+            "description": {
+              "tr": "Hangi alt grafikte çalıştığınızı belirler. Bir panel, bütün kanvas değildir.",
+              "en": "Determines which subplot you are working on. A panel is not the whole canvas."
+            }
+          },
+          {
+            "label": {
+              "tr": "2 · Katman Yönetimi",
+              "en": "2 · Layer Management"
+            },
+            "description": {
+              "tr": "Aktif paneldeki veri serilerini gösterir. Fit öncesinde hedef seriyi seçin.",
+              "en": "Lists data series in the active panel. Select the target series before fitting."
+            }
+          },
+          {
+            "label": {
+              "tr": "3 · Metin Yönetimi",
+              "en": "3 · Text Management"
+            },
+            "description": {
+              "tr": "Aktif paneldeki serbest metinleri yönetir. Otomatik panel etiketlerinin ayarları bütün paneller için ortaktır.",
+              "en": "Manages free text in the active panel. Automatic panel-label settings are shared by all panels."
+            }
+          },
+          {
+            "label": {
+              "tr": "4 · Analiz ve Fit",
+              "en": "4 · Analysis & Fit"
+            },
+            "description": {
+              "tr": "Model seçimi, Fit ve kaydedilmiş fitlerin listesidir. Sayısal rapor sağdaki ayrı sekmededir.",
+              "en": "Contains model selection, Fit, and saved fits. The numerical report is in a separate right-hand tab."
+            }
+          },
+          {
+            "label": {
+              "tr": "5 · Sekmeler",
+              "en": "5 · Tabs"
+            },
+            "description": {
+              "tr": "Veri Tablosu: ortak ham tablo. Grafik: çizim. Analiz Raporu: seçili fitin parametre ve rezidüleri.",
+              "en": "Data Table: shared data. Plot: figure. Analysis Report: parameters and residuals for the selected fit."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Seçim ve kısayollar",
+          "en": "Selection and shortcuts"
+        },
+        "text": {
+          "tr": "Panel içinde çift tıklamak o panelin Eksenler ayarlarını, panel dışındaki boş kanvasa çift tıklamak Kanvas Ayarları’nı açar. Sol bölmeler ekran boyuna sığmazsa aşağı kaydırın. macOS yerel menü çubuğu konumu, burada gösterilen Qt ekran görüntüsünden farklı olabilir.",
+          "en": "Double-click inside a panel to open its Axes settings; double-click empty canvas outside panels for Canvas Settings. Scroll the left sidebar if its controls do not fit. The native macOS menu-bar position may differ from these Qt screenshots."
+        }
+      }
+    ]
+  },
+  {
+    "id": "fit",
+    "title": {
+      "tr": "Eğri uydurma ve analiz raporu",
+      "en": "Curve fitting and analysis report"
+    },
+    "intro": {
+      "tr": "Fit, seçili veri serisine seçilen matematiksel modeli uydurur. Optimizasyonun yakınsaması bilimsel geçerlilik kanıtı değildir.",
+      "en": "A fit adjusts the selected mathematical model to the selected data series. Optimizer convergence is not evidence of scientific validity."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Fit işlemi",
+          "en": "Run a fit"
+        },
+        "steps": {
+          "tr": [
+            "Aktif paneli, ardından Katman Yönetimi listesinden veri serisini seçin. Analiz ve Fit başlığını açın.",
+            "Model açılır listesinden uygun formülü seçin. Fit düğmesi, formülü ve başlangıç parametrelerini gösterir; her başlangıç değeri varsayılan olarak 1.0’dır.",
+            "Parametreleri veri ölçeğinize göre girin. Boş/metin/NaN/sonsuz girişler kabul edilmez; hatalı alan düzeltilmeden pencere onaylanmaz.",
+            "Sonucu Grafik ve Analiz Raporu’nda inceleyin. Fit listesinde çift tıklayarak adını değiştirin; fitin Sil düğmesi veri serisini değil seçili fit eğrisini kaldırır."
+          ],
+          "en": [
+            "Select the active panel, then a data series in Layer Management. Expand Analysis & Fit.",
+            "Choose a formula from the model dropdown. Fit opens the formula and starting parameters; each initial value defaults to 1.0.",
+            "Enter estimates suitable for the scale of your data. Blank, text, NaN, or infinite entries are not accepted; correct the field before accepting.",
+            "Inspect Plot and Analysis Report. Double-click a fit to rename it; the fit Delete button removes the selected fit curve, not the data series."
+          ]
+        }
+      },
+      {
+        "heading": {
+          "tr": "Yerleşik model listesi",
+          "en": "Built-in model list"
+        },
+        "text": {
+          "tr": "Adın yanında yazan formülü esas alın. Gauss modeli taban terimi içermez; Üstel Doyum adlı modelin formülü A − B·(x+1)^(-k) biçimindedir.",
+          "en": "Use the displayed formula as the definition. Gaussian has no baseline term; the model named Exponential Saturation uses A − B·(x+1)^(-k)."
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Doğrusal",
+              "en": "Linear"
+            },
+            "description": {
+              "tr": "y = a·x + b  |  Eğim (a) ve kesen (b) parametreli basit doğrusal fit",
+              "en": "y = a·x + b  |  Simple linear fit with slope (a) and intercept (b)"
+            }
+          },
+          {
+            "label": {
+              "tr": "Gauss Dağılımı",
+              "en": "Gaussian Distribution"
+            },
+            "description": {
+              "tr": "y = A·exp(-(x-μ)²/2σ²)  |  Pik yüksekliği (A), merkez (μ) ve genişlik (σ)",
+              "en": "y = A·exp(-(x-μ)²/2σ²)  |  Peak height (A), center (μ) and width (σ)"
+            }
+          },
+          {
+            "label": {
+              "tr": "Güç Yasası",
+              "en": "Power Law"
+            },
+            "description": {
+              "tr": "y = K·xⁿ  |  Kıvam indeksi (K) ve akış indeksi (n)",
+              "en": "y = K·xⁿ  |  Consistency index (K) and flow index (n)"
+            }
+          },
+          {
+            "label": {
+              "tr": "Üstel Bozunma",
+              "en": "Exponential Decay"
+            },
+            "description": {
+              "tr": "y = A·exp(-x/τ) + y₀  |  Genlik (A), zaman sabiti (τ) ve taban değer (y₀)",
+              "en": "y = A·exp(-x/τ) + y₀  |  Amplitude (A), time constant (τ) and offset (y₀)"
+            }
+          },
+          {
+            "label": {
+              "tr": "Üstel Doyum",
+              "en": "Exponential Saturation"
+            },
+            "description": {
+              "tr": "y = A - B·(x+1)⁻ᵏ  |  Doyum limiti (A), ölçek (B) ve hız üssü (k)",
+              "en": "y = A - B·(x+1)⁻ᵏ  |  Saturation limit (A), scale (B) and rate exponent (k)"
+            }
+          },
+          {
+            "label": {
+              "tr": "Tek Üstel Doyum",
+              "en": "Single Exponential Saturation"
+            },
+            "description": {
+              "tr": "y(n) = y₀ + A₁·(1 - exp(-n/λ₁))  |  Taban (y₀), genlik (A₁) ve karakteristik çevrim (λ₁)",
+              "en": "y(n) = y₀ + A₁·(1 - exp(-n/λ₁))  |  Baseline (y₀), amplitude (A₁), and characteristic cycle (λ₁)"
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Aralık, ağırlıklar ve sınırlar",
+          "en": "Range, weights, and bounds"
+        },
+        "text": {
+          "tr": "Grafik üzerinde yatay sürükleme fitin X aralığını seçer; durum çubuğundaki aralığı kontrol edin. Bu aralık uygulama içinde ortak tutulur, panel değiştirince kendiliğinden temizlenmez. Tüm seri için soldan sağa tüm X aralığını yeniden seçin. Bu sürümde ayrı bir aralık sıfırlama düğmesi yoktur. Fitler ağırlıksızdır; X/Y hata çubukları optimizasyona katılmaz. Parametre alt/üst sınırı girilen bir arayüz yoktur.",
+          "en": "Drag horizontally across the plot to select an X range; check the status bar. The range is shared within the running application and does not automatically clear when switching panels. Reselect the full X extent to fit all observations. This version has no separate range-reset button. Fits are unweighted: X/Y error bars are not used by the optimizer. There is no UI for entering lower or upper parameter bounds."
+        }
+      },
+      {
+        "heading": {
+          "tr": "Raporu yorumlama",
+          "en": "Reading the report"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Parametreler",
+              "en": "Parameters"
+            },
+            "description": {
+              "tr": "Modelin tanımındaki sırayla raporlanır. İşaret, birim ve büyüklüklerinin fiziksel anlamını kontrol edin.",
+              "en": "Reported in the order defined by the model. Check the physical meaning of their signs, units, and magnitudes."
+            }
+          },
+          {
+            "label": {
+              "tr": "N ve rezidüler",
+              "en": "N and residuals"
+            },
+            "description": {
+              "tr": "N, kullanılan nokta sayısıdır. Rezidü gözlenen Y − model Y değeridir; rezidü grafiğinde yapı veya eğilim arayın.",
+              "en": "N is the number of fitted observations. A residual is observed Y minus model Y; inspect the residual plot for structure or trends."
+            }
+          },
+          {
+            "label": {
+              "tr": "R²",
+              "en": "R²"
+            },
+            "description": {
+              "tr": "1 − SSE/SST. Sabit Y verisinde tanımsızdır; negatif olabilir. Tek başına model seçimi veya doğruluk ölçütü değildir.",
+              "en": "1 − SSE/SST. Undefined for constant Y; may be negative. It is not a standalone criterion for model choice or correctness."
+            }
+          },
+          {
+            "label": {
+              "tr": "RMSE, Ort. Hata, Std",
+              "en": "RMSE, Mean Error, Std"
+            },
+            "description": {
+              "tr": "RMSE kareli rezidülerin ortalamasının kareköküdür. Ort. Hata rezidü ortalaması; Std, rezidülerin örnek standart sapmasıdır (N−1).",
+              "en": "RMSE is the square root of the mean squared residual. Mean Error is the residual mean; Std is the sample standard deviation of residuals (N−1)."
+            }
+          },
+          {
+            "label": {
+              "tr": "Parametre belirsizliği uyarısı",
+              "en": "Parameter uncertainty warning"
+            },
+            "description": {
+              "tr": "Eğri çizilmiş olsa bile belirsizlik tahmini güvenilir olmayabilir. Veri miktarını, modelin ayırt edilebilirliğini ve başlangıç değerlerini değerlendirin.",
+              "en": "Even when a curve is drawn, uncertainty estimation may be unreliable. Review data quantity, parameter identifiability, and starting values."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Bilimsel kontrol",
+          "en": "Scientific checks"
+        },
+        "text": {
+          "tr": "Modelin veri alanını, seçilen aralığı, başlangıç tahminlerini, birimleri ve rezidüleri kontrol edin. Bilinen parametreli sentetik veri veya bağımsız bir hesapla karşılaştırın. Geçersiz model sonuçları ve sonsuz girdiler reddedilir. Yazılım klinik, güvenlik-kritik, düzenleyici veya sertifikasyon hesapları için doğrulanmış değildir.",
+          "en": "Check the model domain, selected range, starting estimates, units, and residuals. Compare against synthetic data with known parameters or an independent calculation. Invalid model results and infinite inputs are rejected. The software is not validated for clinical, safety-critical, regulatory, or certification calculations."
+        }
+      }
+    ]
+  },
+  {
+    "id": "symbols",
+    "title": {
+      "tr": "Simgeler ve matematik yazımı",
+      "en": "Symbols and mathematical text"
+    },
+    "intro": {
+      "tr": "Simgeler bir işlemin kısa işaretidir; yanında yazan metin ve etkin seçim, neyin değişeceğini belirler.",
+      "en": "Icons are shorthand for actions; the accompanying text and current selection determine what changes."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Sık kullanılan simgeler",
+          "en": "Common symbols"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Ω",
+              "en": "Ω"
+            },
+            "description": {
+              "tr": "Bağlı metin alanına sembol eklemek için paleti açar. Seçilen sembol imlecin olduğu yere eklenir.",
+              "en": "Opens the symbol palette for the associated text field. The selected symbol is inserted at the cursor."
+            }
+          },
+          {
+            "label": {
+              "tr": "▶ / ▼",
+              "en": "▶ / ▼"
+            },
+            "description": {
+              "tr": "Bölüm başlığında kapalı/açık durumu gösterir. Fit düğmesindeki ▶ ise işlemi başlatır.",
+              "en": "On a section heading these indicate collapsed/expanded state. The ▶ on Fit runs the operation."
+            }
+          },
+          {
+            "label": {
+              "tr": "▲ / ▼",
+              "en": "▲ / ▼"
+            },
+            "description": {
+              "tr": "Sayısal alanın değerini artırır/azaltır; değeri doğrudan da yazabilirsiniz.",
+              "en": "Increase/decrease a numeric field; you can also enter a value directly."
+            }
+          },
+          {
+            "label": {
+              "tr": "K / İ · B / I",
+              "en": "K / İ · B / I"
+            },
+            "description": {
+              "tr": "Metni kalın veya italik yapar. Metin Yönetimi’nde değişiklikten sonra Güncelle gerekir.",
+              "en": "Make text bold or italic. In Text Management, use Update after editing."
+            }
+          },
+          {
+            "label": {
+              "tr": "xⁿ / xₙ",
+              "en": "xⁿ / xₙ"
+            },
+            "description": {
+              "tr": "^{} veya _{} şablonunu ekler; imleç parantezin içine yerleşir. Örneğin x^{2} veya x_{0}; uygun alanın Math Modu seçeneğini açın.",
+              "en": "Insert ^{} or _{} with the cursor inside the braces. For example x^{2} or x_{0}; enable Math Mode for the relevant field."
+            }
+          },
+          {
+            "label": {
+              "tr": "α β μ σ Ω ± × ° Å",
+              "en": "α β μ σ Ω ± × ° Å"
+            },
+            "description": {
+              "tr": "Paletten doğrudan Unicode karakter eklenir. Yazı tipinin karakteri desteklemesi gerekir. ² gibi hazır üst indisler Math Modu olmadan da metin olarak kullanılabilir.",
+              "en": "Insert Unicode characters directly. The font must support them. Ready-made superscripts such as ² can be used as plain text without Math Mode."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Örnek: eksen birimi",
+          "en": "Example: an axis unit"
+        },
+        "text": {
+          "tr": "Eksen başlığına Sıcaklık (°C) yazmak için ° sembolünü paletten seçin. Sembol seçimi sayısal birim dönüşümü yapmaz; yalnız metni değiştirir. Sembol paletinin bazı başlık ve ipuçları İngilizce arayüzde de Türkçe kalabilir.",
+          "en": "For an axis title such as Temperature (°C), insert ° from the palette. Choosing a symbol does not convert numerical units; it only changes text. Some palette titles and tooltips may remain Turkish in the English interface."
+        }
+      }
+    ]
+  },
+  {
+    "id": "save-export",
+    "title": {
+      "tr": "Proje kaydı ve dışa aktarma",
+      "en": "Saving projects and exporting"
+    },
+    "intro": {
+      "tr": "Proje dosyası düzenlemeye devam etmek içindir. Grafik, tablo ve kod çıktıları ayrı amaçlarla üretilir.",
+      "en": "A project file lets you resume editing. Figure, table, and code exports serve separate purposes."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Hangi çıktıyı seçmeliyim?",
+          "en": "Which output should I choose?"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Proje JSON · şema 1.0",
+              "en": "Project JSON · schema 1.0"
+            },
+            "description": {
+              "tr": "Verinin gömülü kopyasını, serileri, fitleri, metinleri ve görünüm ayarlarını saklar. Kaydet mevcut hedefi; Farklı Kaydet yeni hedefi kullanır. Eski örnek veya araştırma dosyanızı korumak için yeni ad seçin.",
+              "en": "Stores an embedded data copy, series, fits, text, and display settings. Save uses the current destination; Save As chooses another. Use a new name to keep the original."
+            }
+          },
+          {
+            "label": {
+              "tr": "PNG / PDF / SVG",
+              "en": "PNG / PDF / SVG"
+            },
+            "description": {
+              "tr": "PNG piksel görüntüdür; PDF ve SVG vektör biçimleridir. Kanvas boyutu ve DPI çıktı görünümünü etkiler. Dışa aktarılan dosyayı hedef uygulamada kontrol edin.",
+              "en": "PNG is raster; PDF and SVG are vector formats. Canvas size and DPI affect output appearance. Inspect the exported file in its destination application."
+            }
+          },
+          {
+            "label": {
+              "tr": "CSV / XLSX",
+              "en": "CSV / XLSX"
+            },
+            "description": {
+              "tr": "Geçerli tabloyu dışa aktarır; grafik stillerini veya proje durumunu taşımaz.",
+              "en": "Exports the current table, without plot styles or project state."
+            }
+          },
+          {
+            "label": {
+              "tr": "Python / notebook",
+              "en": "Python / notebook"
+            },
+            "description": {
+              "tr": "Grafiği kodla yeniden üretmek ve incelemek için .py / .ipynb oluşturur. Çalıştırmak için uygun Python ortamı gerekir; üretilen kodu ve sonuçları kontrol edin.",
+              "en": "Creates .py / .ipynb files to inspect and reproduce plots in code. Execution needs a suitable Python environment; review the generated code and results."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Önemli sınır: dışa aktarılan fit",
+          "en": "Important limit: exported fits"
+        },
+        "text": {
+          "tr": "Python dışa aktarımı model kaynağı bulunursa kaynak serinin tüm noktalarında fiti yeniden hesaplayabilir; arayüzde seçtiğiniz dar fit aralığının aynen uygulandığını varsaymayın. Notebook kaydedilmiş fit eğrisini kullanır. Aralıkla fit yaptıysanız dışa aktarılan kodu ve eğriyi özellikle karşılaştırın.",
+          "en": "Python export may refit all points in the source series when model source is available; do not assume it preserves a restricted UI fit range. The notebook uses the stored fit curve. If you fitted a restricted range, explicitly compare the exported code and curve."
+        }
+      },
+      {
+        "heading": {
+          "tr": "Kaydetme ve gizlilik",
+          "en": "Saving and privacy"
+        },
+        "text": {
+          "tr": "Tamamlanan kayıt geçici dosyadan hedefe aktarılır; bu, yazma hatasında eski içeriği korumayı amaçlar. Yine de bağımsız yedek tutun. Proje dosyasının ham verinizi içerdiğini unutmayın. Paylaşmadan önce özel verileri ve kişisel yolları çıkarın.",
+          "en": "A completed save replaces the destination from a temporary file, helping protect old contents on write failure. Still keep independent backups. Project files contain your data; remove private data and personal paths before sharing."
+        }
+      }
+    ]
+  },
+  {
+    "id": "troubleshooting",
+    "title": {
+      "tr": "Sık sorular ve güvenli destek",
+      "en": "FAQ and safe support"
+    },
+    "intro": {
+      "tr": "Önce küçük sentetik örnekle deneyin. Hata bildirimine özel araştırma veya öğrenci verisi eklemeyin.",
+      "en": "Start with a small synthetic example. Do not include private research or student data in a report."
+    },
+    "blocks": [
+      {
+        "heading": {
+          "tr": "Hızlı yanıtlar",
+          "en": "Quick answers"
+        },
+        "rows": [
+          {
+            "label": {
+              "tr": "Grafikteki Synthetic data only yazısı nereden geldi?",
+              "en": "Where did Synthetic data only come from?"
+            },
+            "description": {
+              "tr": "Hazır örnekte kaydedilmiş bir metin öğesidir; filigran değildir. Metin Yönetimi → listeden seç → Sil → onayla.",
+              "en": "It is a saved text item in the example, not a watermark. Text Management → select in list → Delete → confirm."
+            }
+          },
+          {
+            "label": {
+              "tr": "X yokken boş Y satırları neden aralık bırakmıyor?",
+              "en": "Why do missing Y rows leave no gaps without X?"
+            },
+            "description": {
+              "tr": "Otomatik X, geçerli Y değerlerini 1..n numaralandırır. Ölçüm aralıklarını korumak için açık bir X sütunu sağlayın.",
+              "en": "Automatic X numbers valid Y values 1..n. Supply an explicit X column to preserve measurement gaps."
+            }
+          },
+          {
+            "label": {
+              "tr": "Ayarı değiştirdim, beklediğim seri değişmedi.",
+              "en": "I changed a setting but the wrong series changed."
+            },
+            "description": {
+              "tr": "Aktif paneli ve Stiller listesindeki seçimi kontrol edin. Global Mod bütün paneller değil, aktif panelin uygun veri serileri içindir.",
+              "en": "Check the active panel and selection in Styles. Global Mode targets eligible data series in the active panel, not all panels."
+            }
+          },
+          {
+            "label": {
+              "tr": "Fit başarısız / R² tanımsız.",
+              "en": "Fit fails / R² is undefined."
+            },
+            "description": {
+              "tr": "En az iki geçerli nokta ve farklı X gerekir. Sonlu değerleri, model alanını, aralığı ve başlangıç tahminlerini kontrol edin. Sabit Y için R² tanımsızdır.",
+              "en": "At least two valid points with distinct X are needed. Check finite values, model domain, range, and initial estimates. R² is undefined for constant Y."
+            }
+          },
+          {
+            "label": {
+              "tr": "Kurulum veya kaynak koddan açılış sorunu",
+              "en": "Installation or source-start problem"
+            },
+            "description": {
+              "tr": "README ve SUPPORT belgelerindeki kurulum adımlarını izleyin. Sürüm, işletim sistemi/mimari ve hata mesajını kaydedin; paylaşmadan önce kişisel yolları temizleyin. Güvenlik uyarılarını atlamak veya rastgele bağımlılık sürümleri denemek yerine destek isteyin.",
+              "en": "Follow the installation steps in README and SUPPORT. Record the version, OS/architecture, and exact error; remove personal paths before sharing. Ask for support rather than bypassing security warnings or trying arbitrary dependency versions."
+            }
+          }
+        ]
+      },
+      {
+        "heading": {
+          "tr": "Bildirim için gerekenler",
+          "en": "What to include in a report"
+        },
+        "text": {
+          "tr": "Sürüm, işletim sistemi/mimari, ZIP mi kaynak kod mu, adımlar, beklenen ve gerçekleşen davranış ve küçük sentetik örnek. Normal sorunları uygun GitHub issue şablonuyla bildirin; güvenlik veya hassas veri konularında SECURITY.md yolunu izleyin. Loglar otomatik yüklenmez; paylaşmadan önce temizleyin.",
+          "en": "Include version, OS/architecture, ZIP versus source, steps, expected and actual behavior, and a small synthetic example. Use the matching GitHub issue template for ordinary problems; follow SECURITY.md for vulnerabilities or sensitive reports. Logs are not uploaded automatically; sanitize them before sharing."
+        }
+      }
+    ]
+  }
+]

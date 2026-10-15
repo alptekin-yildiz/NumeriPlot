@@ -29,6 +29,13 @@ Türkçe özet için [README_TR.md](README_TR.md) dosyasına bakın.
 - PNG, PDF, SVG, table, Python script, and notebook export paths
 - Turkish and English user interfaces
 
+## Illustrated user guide
+
+The offline HTML guide covers panels, menus, dropdowns, plot settings, fitting,
+and exports with real interface screenshots. Download the repository, then open
+[`docs/guide/en.html`](docs/guide/en.html) in a browser; no server is required.
+Keep the `docs/guide` folder together. [Türkçe](docs/guide/index.html).
+
 ## Screenshots
 
 The screenshots below were captured from the real NumeriPlot interface using
@@ -155,6 +162,16 @@ step.
    values, and residuals.
 6. Save the working project with **File → Save Project**. Export the figure,
    table, Python script, or notebook separately when needed.
+
+When X is automatic, missing or nonnumeric Y entries are removed and the
+remaining observations are numbered consecutively from 1. Supply an explicit
+X column to preserve measurement times or gaps between observations.
+
+Fits are unweighted: displayed error bars do not enter the fit calculation.
+Initial parameter values must be finite numbers. Infinite X/Y values and
+invalid model results are rejected; for constant Y data, R² is undefined and
+is reported as such. A parameter-uncertainty warning means that a returned
+curve still needs careful review; convergence alone does not validate a model.
 
 ## Data and project files
 
