@@ -32,11 +32,6 @@ PROJECT_PATH = (
 )
 
 
-@pytest.fixture(scope="module")
-def qapp():
-    app = QApplication.instance() or QApplication([])
-    yield app
-
 
 def _open_example(window, monkeypatch):
     errors = []

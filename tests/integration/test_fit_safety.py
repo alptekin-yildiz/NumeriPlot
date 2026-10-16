@@ -8,7 +8,7 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 import numpy as np
 import pandas as pd
 import pytest
-from PyQt6.QtWidgets import QApplication, QDialog, QLabel, QMessageBox
+from PyQt6.QtWidgets import QDialog, QLabel, QMessageBox
 
 from lang import get_language, set_language, t
 from src.ui.dialogs import FitDialog
@@ -16,10 +16,6 @@ from src.ui.main_window import MainWindow
 from src.ui.main_window import core
 from src.ui.python_exporter import export_as_notebook, export_as_python
 
-
-@pytest.fixture(scope="module")
-def qapp():
-    return QApplication.instance() or QApplication([])
 
 
 @pytest.fixture

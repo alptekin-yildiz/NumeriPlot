@@ -5,7 +5,7 @@ from pathlib import Path
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 import pytest
-from PyQt6.QtWidgets import QApplication, QFileDialog, QMessageBox
+from PyQt6.QtWidgets import QFileDialog, QMessageBox
 
 from src.ui.main_window import MainWindow
 
@@ -16,11 +16,6 @@ PROJECT_PATH = (
     / "NumeriPlot_example_project.json"
 )
 
-
-@pytest.fixture(scope="module")
-def qapp():
-    app = QApplication.instance() or QApplication([])
-    yield app
 
 
 def test_synthetic_example_project_opens_and_round_trips(

@@ -6,7 +6,7 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 import numpy as np
 import pytest
-from PyQt6.QtWidgets import QApplication, QFileDialog, QMessageBox
+from PyQt6.QtWidgets import QFileDialog, QMessageBox
 
 from src.ui.main_window import MainWindow
 from src.version import WINDOW_TITLE
@@ -18,11 +18,6 @@ FIXTURE_PATH = (
     / "legacy_v2_project.json"
 )
 
-
-@pytest.fixture(scope="module")
-def qapp():
-    app = QApplication.instance() or QApplication([])
-    yield app
 
 
 def test_legacy_v2_project_opens_and_saves_as_schema_v1(

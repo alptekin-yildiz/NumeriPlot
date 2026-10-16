@@ -5,16 +5,11 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 import numpy as np
 import pandas as pd
 import pytest
-from PyQt6.QtWidgets import QApplication, QFormLayout, QMessageBox
+from PyQt6.QtWidgets import QFormLayout, QMessageBox
 
 from src.analysis.data_manager import DataManager
 from src.ui.data_ops_dialog import DataOpsDialog
 
-
-@pytest.fixture(scope="module")
-def qapp():
-    app = QApplication.instance() or QApplication([])
-    yield app
 
 
 @pytest.mark.parametrize(
