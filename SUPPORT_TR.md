@@ -3,7 +3,7 @@
 Bu belge NumeriPlot kullanıcıları için güvenli ilk sorun giderme adımlarını
 içerir. İngilizce sürüm için [`SUPPORT.md`](SUPPORT.md) belgesine bakın.
 
-NumeriPlot 0.1.0 bir Public Beta sürümüdür. Orijinal verileri ve önemli proje
+NumeriPlot 0.1.x bir Public Beta sürümüdür. Orijinal verileri ve önemli proje
 dosyalarının bağımsız yedeklerini saklayın; sayısal sonuçları ayrıca doğrulayın.
 
 ## Sorun gidermeden önce
@@ -23,6 +23,8 @@ kişisel yolları veya temizlenmemiş logları herkese açık olarak paylaşmay�
 
 ### macOS ZIP
 
+Önceki paketler içindir; hazır 0.1.1 ZIP’i planlanmıyor.
+
 Resmî ZIP talimatları bir NumeriPlot release'i yayımlandıktan sonra geçerlidir.
 ZIP'in resmî GitHub Release sayfasından geldiğini doğrulayın ve dosyayı açmadan
 önce SHA-256 checksum değerinin tamamını yayımlanan `.sha256` dosyasıyla
@@ -36,18 +38,9 @@ belirten bir uyarıyı atlamayın.
 
 ### Kaynak kod
 
-NumeriPlot Python 3.11 veya üzerini gerektirir. Depo kökünde şunları çalıştırın:
-
-```bash
-bash setup.sh
-source venv/bin/activate
-python3 main.py
-```
-
-Kurulum başarısız olursa `python3 --version` ile Python sürümünü doğrulayın,
-ilk bağımlılık indirmesinde internet erişimi bulunduğunu kontrol edin ve hata
-mesajının tamamını saklayın. Paylaşmadan önce kimlik bilgilerini ve kişisel
-yolları temizleyin.
+0.1.1 için [Mac kaynak kurulum kılavuzunu](docs/SOURCE_INSTALL_TR.md) izleyin.
+Python 3.11, günlük açılış ve doğrulama makinesinde görülen özel SciPy açılış
+hatası anlatılıyor. Daha yeni Python sürümleri otomatik olarak doğrulanmış sayılmaz.
 
 ## Veri içe aktarma
 

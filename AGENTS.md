@@ -2,7 +2,7 @@
 
 These instructions apply to AI agents answering user questions or changing
 files anywhere in this repository. Keep public explanations focused on the
-current NumeriPlot identity, version 0.1.0, and project schema 1.0.
+current NumeriPlot identity, version 0.1.1, and project schema 1.0.
 
 ## Sources of truth
 

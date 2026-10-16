@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.1 - Unreleased (Public Beta)
+
+- Distribute 0.1.1 as source code; no prebuilt Mac ZIP is planned. Add
+  bilingual installation, daily-use, troubleshooting, and optional local-build guides.
+- Highlight first-time setup in both READMEs and the web guide. Add a
+  double-click Mac launcher for an installed source checkout, with setup and
+  startup-failure guidance.
+- Save projects atomically so a failed write preserves the previous file.
+- Reject non-finite fit inputs, invalid initial parameters, and invalid model
+  results; report R² as undefined for constant observations.
+- Explain unweighted fitting and parameter-uncertainty warnings in both UI
+  languages. Fit formulas and project schema 1.0 are unchanged.
+- Add an illustrated Turkish/English offline and online user guide with
+  18 sections, 52 synthetic-data screenshots, search, and image enlargement.
+- Document automatic X numbering and fit limitations in both READMEs.
+- Expand regression coverage for saving and fitting.
+- Set the 0.1.1 Apple Silicon package minimum to macOS 14, matching its
+  bundled native libraries; exclude local source bytecode caches from the app.
+
 ## 0.1.0 - 2026-08-31 (Public Beta)
 
 - Prepared the NumeriPlot application identity for its first public beta.

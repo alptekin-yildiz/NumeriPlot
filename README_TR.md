@@ -6,8 +6,18 @@ NumeriPlot; özellikle öğrenciler ve araştırmacılar için geliştirilen, bi
 grafik çizimi, veri işleme ve eğri uydurma amaçlı özgür ve açık kaynaklı bir
 masaüstü uygulamasıdır.
 
-> **Public Beta uyarısı:** NumeriPlot 0.1.0, public beta pre-release olarak
-> kullanıma sunulmuştur. Arayüzler, iş akışları ve proje dosyası biçimi
+## İlk kez mi kullanıyorsunuz?
+
+**[Mac’te kur ve kullan →](docs/SOURCE_INSTALL_TR.md)**
+
+Kod yazmanız veya uygulamayı derlemeniz gerekmez. Kılavuz, kaynak kodu
+indirmeyi ve bir defalık kurulumu adım adım anlatır. Kurulumdan sonra
+Finder’da **`NumeriPlot.command` dosyasına çift tıklayın**; programın
+grafik arayüzü açılır. Başlatıcıyı proje klasöründe tutun.
+
+> **Public Beta uyarısı:** NumeriPlot 0.1.1 Public Beta hazırlık aşamasındadır.
+> 0.1.1 kaynak kod olarak dağıtılacak; hazır Mac ZIP’i planlanmıyor.
+> Arayüzler, iş akışları ve proje dosyası biçimi
 > değişebilir. Araştırma, eğitim veya raporlama amacıyla kullanılacak sayısal
 > sonuçları bağımsız olarak doğrulayın.
 
@@ -76,46 +86,58 @@ QT_QPA_PLATFORM=offscreen python3 examples/capture_screenshots.py
 
 ## Durum ve platformlar
 
-İlk public beta ikili paketi doğrulama amacıyla pre-release olarak
-[resmî GitHub Releases sayfasında](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
-sunulmaktadır.
+**0.1.1 Public Beta kaynak kod dağıtımı için hazırlanıyor.** Hazır 0.1.1 Mac
+uygulama ZIP’i yayımlanması planlanmıyor. Kullanıcı bağımlılıkları kendi
+bilgisayarına kurar ve normal masaüstü arayüzünü kaynak koddan çalıştırır.
+Proje şeması **1.0** olarak kalır.
 
-| Ortam | 0.1.0 durumu |
+| Ortam | Mevcut doğrulama |
 | --- | --- |
-| Apple Silicon, macOS 12 veya üzeri | Public beta pre-release mevcut; imzasız ve noter onaysız |
-| Intel Mac | 0.1.0 için paket planlanmıyor |
-| Windows ve Linux | Şu anda paket veya release doğrulaması sunulmuyor |
-| Python 3.11 veya üzeri | Kaynak/geliştirme yolu; ilk release doğrulaması Apple Silicon macOS hedeflidir |
+| Apple Silicon, macOS 27.0.1, Python 3.11.1 | Kaynak kod akışı ve otomatik testler yerelde kontrol edildi; belgelenmiş SciPy çözümüne bakın |
+| Diğer macOS veya Python sürümleri | Bu çalışmada bağımsız olarak doğrulanmadı |
+| Intel Mac, Windows, Linux | Eşdeğer kaynak veya paket doğrulaması yapıldığı iddia edilmiyor |
 
-Uygulamanın başka bir platformda kaynaktan açılması, o platformun NumeriPlot
-release kontrol listesinden geçtiği anlamına gelmez.
+[Önceki 0.1.0 pre-release](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
+eski bir uygulama paketi içerir. 0.1.1 düzeltmelerini içermez ve aşağıdaki
+kurulum yolunun parçası değildir. Mevcut release dosyaları kaldırılmadı.
 
 ## Kaynaktan çalıştırma
 
-Python 3.11 veya üzeri ile ilk bağımlılık indirmesi için internet erişimi
-gereklidir. Halka açık depo açıldıktan sonra:
+[Adım adım Mac kurulum kılavuzuyla](docs/SOURCE_INSTALL_TR.md) başlayın
+([English](docs/SOURCE_INSTALL.md)). Python kurulumu, Git kullanmadan kaynak
+indirme, ilk kurulum, günlük açılış, sorun giderme ve güncelleme anlatılıyor.
+Günlük kullanım için `.app` oluşturmak gerekmez.
+
+Python 3.11 kuruluysa Git bilen kullanıcılar aşağıdaki komutları sırayla
+çalıştırabilir. Hata olursa durun ve kılavuzdaki sorun giderme bölümünü izleyin:
 
 ```bash
 git clone https://github.com/alptekin-yildiz/NumeriPlot.git
 cd NumeriPlot
-bash setup.sh
+python3.11 -m venv venv
 source venv/bin/activate
+bash setup.sh
 python3 main.py
 ```
 
-Setup betiği yerel bir sanal ortam oluşturur ve `requirements.txt` içinde
-tanımlanan runtime bağımlılıklarını kurar.
-
-Otomatik release kapısı ayrıca sabitlenmiş geliştirme araçlarını gerektirir.
-Aynı ortama kurup şu komutları çalıştırın:
+Sonraki açılışlarda aynı kaynak klasörüne geçip şu komutu çalıştırın:
 
 ```bash
-bash setup.sh --dev
+./venv/bin/python main.py
+```
+
+Katkı verenler geliştirme araçlarını aynı ortama kurup tam kontrolü çalıştırır.
+Gerekirse kılavuzdaki SciPy çözümünü kontrol öncesinde uygulayın:
+
+```bash
 source venv/bin/activate
+bash setup.sh --dev
 bash release_check.sh
 ```
 
 ## macOS ZIP kurulumu
+
+**Yalnız önceki 0.1.0 paketi için.** 0.1.1 için yukarıdaki kaynak kurulumunu izleyin.
 
 Bu adımlar [NumeriPlot GitHub Releases sayfasındaki](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
 resmî `v0.1.0` pre-release dosyaları için geçerlidir:

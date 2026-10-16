@@ -6,8 +6,8 @@
       "en": "Your first plot, step by step"
     },
     "intro": {
-      "tr": "NumeriPlot 0.1.0 Public Beta için çevrim dışı kullanım kılavuzu. Ekran görüntüleri gerçek uygulamadan, yalnızca deterministik sentetik verilerle alınmıştır.",
-      "en": "Offline guide for NumeriPlot 0.1.0 Public Beta. Screenshots come from the actual application using only deterministic synthetic data."
+      "tr": "NumeriPlot 0.1.1 Public Beta için çevrim dışı kullanım kılavuzu. Ekran görüntüleri aynı arayüzü kullanan 0.1.0 kaynak sürümünden, yalnızca deterministik sentetik verilerle alınmıştır. 0.1.1 için kaynak koddan kurulum yolu kullanılır; hazır Mac ZIP’i planlanmıyor.",
+      "en": "Offline guide for NumeriPlot 0.1.1 Public Beta. Screenshots were captured from the 0.1.0 source version with the same interface, using only deterministic synthetic data. Version 0.1.1 uses source installation; no prebuilt Mac ZIP is planned."
     },
     "blocks": [
       {
@@ -66,8 +66,8 @@
           "en": "Version and scope"
         },
         "text": {
-          "tr": "İlk paket Apple Silicon, macOS 12+ için imzasız public betadır. Diğer platformlar için paket/release doğrulaması sunulmaz. Bu kılavuz depodaki güncel 0.1.0 çalışma ağacını anlatır; önceden indirilmiş bir paket son yerel düzeltmeleri içermeyebilir. Veriler yerel işlenir; uygulama çalışırken AI hizmeti kullanmaz.",
-          "en": "The first package is an unsigned public beta for Apple Silicon, macOS 12+. Other platforms do not have packaged release validation. This guide describes the current 0.1.0 repository worktree; an earlier downloaded package may lack recent local fixes. Data is processed locally; the running app does not use AI services."
+          "tr": "0.1.1 kaynak kod dağıtımı için hazırlanıyor. Kaynak kurulum adımları üstteki Kurulum bağlantısındadır. Yerel kontrol Apple Silicon, macOS 27.0.1 ve Python 3.11.1 ile yapıldı; diğer ortamların doğrulandığı iddia edilmez. Bu kılavuz güncel 0.1.1 kaynaklarını anlatır; önceki 0.1.0 paketi son düzeltmeleri içermez. Veriler yerel işlenir; uygulama çalışırken AI hizmeti kullanmaz.",
+          "en": "Version 0.1.1 is being prepared for source distribution. Use the Installation link above for setup. Local checks used Apple Silicon, macOS 27.0.1 and Python 3.11.1; other environments are not claimed as validated. This guide describes current 0.1.1 sources; the previous 0.1.0 package lacks recent fixes. Data is processed locally; the running app does not use AI services."
         }
       }
     ]

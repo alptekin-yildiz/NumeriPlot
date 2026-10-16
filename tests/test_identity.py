@@ -11,6 +11,7 @@ from src.version import (
     CHANNEL_LABEL,
     DISPLAY_VERSION,
     LOG_FILENAME,
+    MACOS_MINIMUM_VERSION,
     ORGANIZATION_NAME,
     VERSION,
     WINDOW_TITLE,
@@ -23,11 +24,11 @@ def test_numeriplot_public_beta_identity():
     assert APP_SLUG == "NumeriPlot"
     assert APP_SUBTITLE == "Scientific Plotting, Data Analysis and Curve Fitting"
     assert ORGANIZATION_NAME == "NumeriPlot Project"
-    assert VERSION == "0.1.0"
+    assert VERSION == "0.1.1"
     assert CHANNEL_LABEL == "Public Beta"
-    assert APP_VERSION == "0.1.0-beta"
-    assert DISPLAY_VERSION == "Public Beta v0.1.0"
-    assert WINDOW_TITLE == "NumeriPlot Public Beta v0.1.0"
+    assert APP_VERSION == "0.1.1-beta"
+    assert DISPLAY_VERSION == "Public Beta v0.1.1"
+    assert WINDOW_TITLE == "NumeriPlot Public Beta v0.1.1"
 
 
 def test_packaging_and_log_names_follow_canonical_identity():
@@ -35,7 +36,8 @@ def test_packaging_and_log_names_follow_canonical_identity():
     assert BUNDLE_SHORT_VERSION == VERSION
     assert BUNDLE_VERSION == VERSION
     assert LOG_FILENAME == "numeriplot.log"
-    assert ZIP_BASENAME == "NumeriPlot_v0.1.0_macOS.zip"
+    assert ZIP_BASENAME == "NumeriPlot_v0.1.1_macOS.zip"
+    assert MACOS_MINIMUM_VERSION == "14.0"
 
 
 def test_localized_product_names_follow_canonical_identity():

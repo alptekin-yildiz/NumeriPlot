@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from src.version import VERSION
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -39,7 +41,7 @@ def test_citation_metadata_uses_canonical_public_identity():
 
     assert "cff-version: 1.2.0" in citation
     assert "title: NumeriPlot" in citation
-    assert "version: 0.1.0" in citation
+    assert f"version: {VERSION}" in citation
     assert "license: GPL-3.0-only" in citation
     assert "repository-code: https://github.com/alptekin-yildiz/NumeriPlot" in citation
 

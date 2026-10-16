@@ -6,8 +6,18 @@ NumeriPlot is a free and open-source desktop application for scientific
 plotting, data processing, and curve fitting, designed primarily for students
 and researchers.
 
-> **Public Beta notice:** NumeriPlot 0.1.0 is available as a public beta
-> pre-release. Interfaces, workflows, and the project-file format may still
+## First time here?
+
+**[Install and use on Mac →](docs/SOURCE_INSTALL.md)** · [Türkçe kurulum →](docs/SOURCE_INSTALL_TR.md)
+
+No coding or application build is required. Follow the guide to download
+the source and complete the one-time setup. Afterwards, **double-click
+`NumeriPlot.command` in Finder** to open the desktop interface. Keep the
+launcher inside the project folder.
+
+> **Public Beta notice:** NumeriPlot 0.1.1 Public Beta is under preparation.
+> Distribution for 0.1.1 will be source code; no prebuilt Mac ZIP is planned.
+> Interfaces, workflows, and the project-file format may still
 > change. Independently verify numerical results before using them in research,
 > teaching, or reports.
 
@@ -73,46 +83,58 @@ QT_QPA_PLATFORM=offscreen python3 examples/capture_screenshots.py
 
 ## Status and platforms
 
-The first public beta binary is available from the
-[official GitHub Releases page](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
-as a pre-release for validation.
+**0.1.1 Public Beta is being prepared for source-code distribution.** No
+prebuilt 0.1.1 Mac application ZIP is planned. Users install dependencies on
+their own computer and run the normal desktop interface from source.
+Project schema remains **1.0**.
 
-| Environment | 0.1.0 status |
+| Environment | Current validation |
 | --- | --- |
-| Apple Silicon, macOS 12 or newer | Public beta pre-release available; unsigned and not notarized |
-| Intel Mac | No packaged build is planned for 0.1.0 |
-| Windows and Linux | No packaged build or release validation is currently provided |
-| Python 3.11 or newer | Source/development route; first release validation targets Apple Silicon macOS |
+| Apple Silicon, macOS 27.0.1, Python 3.11.1 | Source workflow and automated tests checked locally; see the documented SciPy workaround |
+| Other macOS versions or Python versions | Not independently validated by this check |
+| Intel Mac, Windows, Linux | No equivalent source or packaged-release validation is claimed |
 
-A successful source start on another platform does not mean that platform has
-passed the NumeriPlot release checklist.
+The historical [0.1.0 pre-release](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
+contains an older binary. It does not include the 0.1.1 fixes and is not the
+installation route described below. Existing release assets have not been removed.
 
 ## Run from source
 
-Python 3.11 or newer and internet access for the initial dependency download
-are required. After the public repository is opened, clone it and run:
+Start with the [step-by-step Mac installation guide](docs/SOURCE_INSTALL.md)
+([Türkçe](docs/SOURCE_INSTALL_TR.md)). It explains installing Python, downloading
+source without Git, first setup, daily launch, troubleshooting, and updates.
+No `.app` build is required for everyday use.
+
+With Python 3.11 installed, Git users can run the following commands one at a
+time. Stop on errors; use the guide's troubleshooting instructions:
 
 ```bash
 git clone https://github.com/alptekin-yildiz/NumeriPlot.git
 cd NumeriPlot
-bash setup.sh
+python3.11 -m venv venv
 source venv/bin/activate
+bash setup.sh
 python3 main.py
 ```
 
-The setup script creates a local virtual environment and installs the declared
-runtime dependencies from `requirements.txt`.
-
-The automated release gate also requires the pinned development tools. Install
-them into the same environment and run:
+For later launches, enter the same source folder and run:
 
 ```bash
-bash setup.sh --dev
+./venv/bin/python main.py
+```
+
+For contributors, install development tools into the same environment and
+run the full checks. Apply the guide's SciPy workaround first if required:
+
+```bash
 source venv/bin/activate
+bash setup.sh --dev
 bash release_check.sh
 ```
 
 ## Install the macOS ZIP
+
+**Historical 0.1.0 instructions only.** For 0.1.1 use the source guide above.
 
 These instructions apply to the official `v0.1.0` pre-release assets on the
 [NumeriPlot GitHub Releases page](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0):

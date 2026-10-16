@@ -2,9 +2,9 @@
 
 ## Supported versions
 
-NumeriPlot 0.1.0 is still under release preparation, so no public binary is
-currently supported. After publication, security fixes will target the latest
-0.1.x release unless a release note states otherwise.
+Security fixes target the latest published NumeriPlot 0.1.x Public Beta
+release unless a release note states otherwise. Version 0.1.1 is currently
+under preparation; it is not yet a published release.
 
 ## Reporting a vulnerability
 
@@ -32,4 +32,4 @@ a guaranteed response or remediation time. Please avoid public disclosure
 until a reasonable coordination attempt has been made.
 
 For ordinary bugs and support questions that contain no sensitive information,
-use the public issue tracker after the repository is opened.
+use the public issue tracker.

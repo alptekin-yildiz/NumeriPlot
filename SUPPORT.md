@@ -3,7 +3,7 @@
 This guide covers safe first-line troubleshooting for NumeriPlot users. For a
 Turkish version, see [`SUPPORT_TR.md`](SUPPORT_TR.md).
 
-NumeriPlot 0.1.0 is a Public Beta. Keep the original data and independent
+NumeriPlot 0.1.x is a Public Beta. Keep the original data and independent
 backups of important project files, and independently verify numerical results.
 
 ## Before troubleshooting
@@ -23,6 +23,8 @@ credentials, personal paths, or an unredacted log.
 
 ### macOS ZIP
 
+Historical packages only; no prebuilt 0.1.1 ZIP is planned.
+
 Official ZIP instructions apply after a NumeriPlot release is published. Check
 that the ZIP came from the official GitHub Release page and compare its full
 SHA-256 checksum with the published `.sha256` file before opening it.
@@ -34,17 +36,9 @@ bypass a warning that says the app is damaged or contains malware.
 
 ### Source checkout
 
-NumeriPlot requires Python 3.11 or newer. From the repository root, run:
-
-```bash
-bash setup.sh
-source venv/bin/activate
-python3 main.py
-```
-
-If setup fails, confirm the Python version with `python3 --version`, check that
-the initial dependency download has internet access, and keep the complete
-error message. Before sharing it, remove credentials and personal paths.
+For 0.1.1, follow the [Mac source installation guide](docs/SOURCE_INSTALL.md).
+It covers Python 3.11, daily launch, and the specific SciPy load failure observed
+on the validation host. Newer Python versions are not automatically validated.
 
 ## Data import
 

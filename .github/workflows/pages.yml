@@ -46,7 +46,7 @@ jobs:
               shutil.copy2(image, target / 'assets' / image.name)
           for page in target.glob('*.html'):
               text = page.read_text(encoding='utf-8')
-              for name in ('README.md', 'README_TR.md', 'SUPPORT.md', 'SUPPORT_TR.md', 'SECURITY.md'):
+              for name in ('README.md', 'README_TR.md', 'SUPPORT.md', 'SUPPORT_TR.md', 'SECURITY.md', 'docs/SOURCE_INSTALL.md', 'docs/SOURCE_INSTALL_TR.md'):
                   text = text.replace('../../' + name, 'https://github.com/alptekin-yildiz/NumeriPlot/blob/main/' + name)
               page.write_text(text, encoding='utf-8')
           PY

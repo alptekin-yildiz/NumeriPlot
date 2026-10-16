@@ -14,6 +14,7 @@ from src.version import (
     BUNDLE_ID,
     BUNDLE_SHORT_VERSION,
     BUNDLE_VERSION,
+    MACOS_MINIMUM_VERSION,
     VERSION,
 )
 
@@ -25,9 +26,12 @@ a = Analysis(
         ('LICENSE', '.'),
         ('THIRD_PARTY_NOTICES.md', '.'),
         ('licenses', 'licenses'),
-        ('lang', 'lang'),
-        ('models', 'models'),
-        ('src', 'src'),
+        # Include source needed for model inspection without local bytecode caches.
+        *[
+            (str(path), str(path.parent.relative_to(project_root)))
+            for folder in ('lang', 'models', 'src')
+            for path in sorted((project_root / folder).rglob('*.py'))
+        ],
     ],
     hiddenimports=[
         'PyQt6.QtCore',
@@ -112,7 +116,7 @@ app = BUNDLE(
         'CFBundleVersion': BUNDLE_VERSION,
         'CFBundleIdentifier': BUNDLE_ID,
         'NSHighResolutionCapable': True,
-        'LSMinimumSystemVersion': '12.0',
+        'LSMinimumSystemVersion': MACOS_MINIMUM_VERSION,
         'NSPrincipalClass': 'NSApplication',
         'NSAppleScriptEnabled': False,
     },

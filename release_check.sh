@@ -74,6 +74,7 @@ print(f"DISPLAY_VERSION={DISPLAY_VERSION}")
 PY
 
 step "Shell script syntax check"
+bash -n NumeriPlot.command
 bash -n setup.sh
 bash -n build_macos.sh
 bash -n release_check.sh

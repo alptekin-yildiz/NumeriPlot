@@ -11,13 +11,13 @@ Bu klasörü ve görsellerini bir arada tutun. Kurulum, internet veya sunucu
 gerekmez. GitHub HTML kaynağını gösterir; kılavuzu okumak için depoyu indirin.
 Depo belgelerine verilen bağlantılar için tüm depo klasörü gereklidir.
 
-The guide describes the current NumeriPlot 0.1.0 source and schema 1.0.
+The guide describes the current NumeriPlot 0.1.1 source and schema 1.0.
 Older packaged builds may differ. Screenshots come from real Qt widgets with
 synthetic data, using the Fusion style; native macOS appearance may differ.
 Search, image enlargement, language switching, and print controls run locally.
 All text remains readable without JavaScript.
 
-Kılavuz mevcut NumeriPlot 0.1.0 kaynak kodunu ve şema 1.0'ı açıklar.
+Kılavuz mevcut NumeriPlot 0.1.1 kaynak kodunu ve şema 1.0'ı açıklar.
 Önceki uygulama paketleri farklı olabilir. Görseller gerçek Qt bileşenlerinden,
 sentetik veriyle ve Fusion stiliyle alınır; macOS görünümü farklı olabilir.
 Arama, görsel büyütme, dil geçişi ve yazdırma yerel olarak çalışır.
