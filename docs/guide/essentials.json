@@ -66,8 +66,8 @@
           "en": "Version and scope"
         },
         "text": {
-          "tr": "0.1.1 kaynak kod dağıtımı için hazırlanıyor. Kaynak kurulum adımları üstteki Kurulum bağlantısındadır. Yerel kontrol Apple Silicon, macOS 27.0.1 ve Python 3.11.1 ile yapıldı; diğer ortamların doğrulandığı iddia edilmez. Bu kılavuz güncel 0.1.1 kaynaklarını anlatır; önceki 0.1.0 paketi son düzeltmeleri içermez. Veriler yerel işlenir; uygulama çalışırken AI hizmeti kullanmaz.",
-          "en": "Version 0.1.1 is being prepared for source distribution. Use the Installation link above for setup. Local checks used Apple Silicon, macOS 27.0.1 and Python 3.11.1; other environments are not claimed as validated. This guide describes current 0.1.1 sources; the previous 0.1.0 package lacks recent fixes. Data is processed locally; the running app does not use AI services."
+          "tr": "0.1.1 kaynak kod olarak dağıtılır. Kaynak kurulum adımları üstteki Kurulum bağlantısındadır. Yerel kontrol Apple Silicon, macOS 27.0.1 ve Python 3.11.1 ile yapıldı; diğer ortamların doğrulandığı iddia edilmez. Bu kılavuz güncel 0.1.1 kaynaklarını anlatır; önceki 0.1.0 paketi son düzeltmeleri içermez. Veriler yerel işlenir; uygulama çalışırken AI hizmeti kullanmaz.",
+          "en": "Version 0.1.1 is distributed as source code. Use the Installation link above for setup. Local checks used Apple Silicon, macOS 27.0.1 and Python 3.11.1; other environments are not claimed as validated. This guide describes current 0.1.1 sources; the previous 0.1.0 package lacks recent fixes. Data is processed locally; the running app does not use AI services."
         }
       }
     ]

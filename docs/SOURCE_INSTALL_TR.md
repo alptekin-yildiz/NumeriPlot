@@ -40,9 +40,10 @@ varsa Homebrew kurmanız gerekmez. Sistem Python’unu silmeyin veya değiştirm
 ## 2. Kaynak kodu indirin
 
 1. [NumeriPlot deposunu](https://github.com/alptekin-yildiz/NumeriPlot) açın.
-2. **Code → Download ZIP** ile kaynak kodunu indirin. Bu, hazır uygulama ZIP’i
-   değildir. `main` dalı gelişmeye devam eder; sürümü sabitlemek için belirli
-   bir commitin kaynak arşivini kullanabilirsiniz.
+2. [0.1.1 yayın sayfasında](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.1)
+   **Assets → Source code (zip)** bağlantısıyla kaynak kodu indirin. Bu, hazır
+   uygulama ZIP’i değildir. Depodaki **Code → Download ZIP** ise gelişmeye devam
+   eden `main` dalını indirir; bu kılavuz için 0.1.1 arşivini tercih edin.
 3. ZIP’i açıp klasörü kalıcı bir yere taşıyın. İçinde `main.py`, `setup.sh` ve
    `requirements.txt` bulunmalıdır.
 4. Terminal’e `cd` yazıp bir boşluk bırakın, Finder’daki bu klasörü Terminal’e

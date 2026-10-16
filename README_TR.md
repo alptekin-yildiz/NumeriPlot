@@ -15,8 +15,8 @@ indirmeyi ve bir defalık kurulumu adım adım anlatır. Kurulumdan sonra
 Finder’da **`NumeriPlot.command` dosyasına çift tıklayın**; programın
 grafik arayüzü açılır. Başlatıcıyı proje klasöründe tutun.
 
-> **Public Beta uyarısı:** NumeriPlot 0.1.1 Public Beta hazırlık aşamasındadır.
-> 0.1.1 kaynak kod olarak dağıtılacak; hazır Mac ZIP’i planlanmıyor.
+> **Public Beta uyarısı:** NumeriPlot 0.1.1 bir Public Beta sürümüdür.
+> 0.1.1 kaynak kod olarak dağıtılır; hazır Mac ZIP’i içermez.
 > Arayüzler, iş akışları ve proje dosyası biçimi
 > değişebilir. Araştırma, eğitim veya raporlama amacıyla kullanılacak sayısal
 > sonuçları bağımsız olarak doğrulayın.
@@ -86,8 +86,8 @@ QT_QPA_PLATFORM=offscreen python3 examples/capture_screenshots.py
 
 ## Durum ve platformlar
 
-**0.1.1 Public Beta kaynak kod dağıtımı için hazırlanıyor.** Hazır 0.1.1 Mac
-uygulama ZIP’i yayımlanması planlanmıyor. Kullanıcı bağımlılıkları kendi
+**0.1.1 Public Beta kaynak kod olarak dağıtılır.** Hazır 0.1.1 Mac
+uygulama ZIP’i içermez. Kullanıcı bağımlılıkları kendi
 bilgisayarına kurar ve normal masaüstü arayüzünü kaynak koddan çalıştırır.
 Proje şeması **1.0** olarak kalır.
 

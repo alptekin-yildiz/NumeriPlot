@@ -40,9 +40,10 @@ Homebrew. Do not remove or modify Apple's system Python.
 ## 2. Download the source
 
 1. Open the [NumeriPlot repository](https://github.com/alptekin-yildiz/NumeriPlot).
-2. Choose **Code → Download ZIP**. This is source code, not a prebuilt app.
-   The `main` branch changes over time; use a specific commit's source archive
-   when you need to keep the source revision fixed.
+2. On the [0.1.1 release page](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.1),
+   choose **Assets → Source code (zip)**. This is source code, not a prebuilt
+   application. **Code → Download ZIP** on the repository downloads the moving
+   `main` branch; prefer the 0.1.1 archive for this guide.
 3. Extract the archive and move the folder to a permanent location. It must
    contain `main.py`, `setup.sh`, and `requirements.txt`.
 4. Type `cd` followed by a space in Terminal, drag that folder from Finder

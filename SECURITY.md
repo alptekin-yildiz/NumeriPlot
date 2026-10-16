@@ -3,8 +3,8 @@
 ## Supported versions
 
 Security fixes target the latest published NumeriPlot 0.1.x Public Beta
-release unless a release note states otherwise. Version 0.1.1 is currently
-under preparation; it is not yet a published release.
+release unless a release note states otherwise. Version 0.1.1 is a source-only
+Public Beta release.
 
 ## Reporting a vulnerability
 

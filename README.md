@@ -15,8 +15,8 @@ the source and complete the one-time setup. Afterwards, **double-click
 `NumeriPlot.command` in Finder** to open the desktop interface. Keep the
 launcher inside the project folder.
 
-> **Public Beta notice:** NumeriPlot 0.1.1 Public Beta is under preparation.
-> Distribution for 0.1.1 will be source code; no prebuilt Mac ZIP is planned.
+> **Public Beta notice:** NumeriPlot 0.1.1 is a Public Beta.
+> Version 0.1.1 is distributed as source code, without a prebuilt Mac ZIP.
 > Interfaces, workflows, and the project-file format may still
 > change. Independently verify numerical results before using them in research,
 > teaching, or reports.
@@ -83,8 +83,8 @@ QT_QPA_PLATFORM=offscreen python3 examples/capture_screenshots.py
 
 ## Status and platforms
 
-**0.1.1 Public Beta is being prepared for source-code distribution.** No
-prebuilt 0.1.1 Mac application ZIP is planned. Users install dependencies on
+**0.1.1 Public Beta is distributed as source code.** No
+prebuilt 0.1.1 Mac application ZIP is included. Users install dependencies on
 their own computer and run the normal desktop interface from source.
 Project schema remains **1.0**.
 

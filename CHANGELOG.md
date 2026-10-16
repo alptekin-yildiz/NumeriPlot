@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.1 - Unreleased (Public Beta)
+## 0.1.1 - 2026-10-16 (Public Beta)
 
 - Distribute 0.1.1 as source code; no prebuilt Mac ZIP is planned. Add
   bilingual installation, daily-use, troubleshooting, and optional local-build guides.
@@ -15,7 +15,8 @@
 - Add an illustrated Turkish/English offline and online user guide with
   18 sections, 52 synthetic-data screenshots, search, and image enlargement.
 - Document automatic X numbering and fit limitations in both READMEs.
-- Expand regression coverage for saving and fitting.
+- Expand regression coverage for saving and fitting. Keep one Qt application
+  alive across GUI test modules to avoid CI teardown crashes.
 - Set the 0.1.1 Apple Silicon package minimum to macOS 14, matching its
   bundled native libraries; exclude local source bytecode caches from the app.
 
