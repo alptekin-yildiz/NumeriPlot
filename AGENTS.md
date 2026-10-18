@@ -2,7 +2,7 @@
 
 These instructions apply to AI agents answering user questions or changing
 files anywhere in this repository. Keep public explanations focused on the
-current NumeriPlot identity, version 0.1.1, and project schema 1.0.
+current NumeriPlot identity, version 0.2.0, and project schema 1.0.
 
 ## Sources of truth
 
@@ -21,7 +21,7 @@ current NumeriPlot identity, version 0.1.1, and project schema 1.0.
 
 1. Reply in the user's language when it is Turkish or English.
 2. Establish the NumeriPlot version, operating system and architecture, and
-   whether the user installed a ZIP or runs from source.
+   whether the user installed the macOS app (disk image) or runs from source.
 3. Classify the question as installation, import, plotting, fitting, project
    files, export, privacy, or development.
 4. Follow the relevant support guide and give short, numbered, reversible
@@ -57,6 +57,8 @@ certification calculations.
 - `lang/`: Turkish and English UI resources.
 - `tests/`: unit, integration, GUI workflow, and public-metadata tests.
 - `examples/`: deterministic synthetic datasets and reproducible screenshots.
+- `tools/`: macOS app packaging helpers (bundle policy, license notices, bundle
+  checks, release source archives).
 - `.github/`: CI and contributor-facing templates.
 
 ## Development workflow
@@ -118,8 +120,15 @@ the tools, scope, human review, and validation performed. Do not paste private
 prompts or sensitive context into issues or pull requests.
 
 An AI tool cannot provide the human DCO certification. The contributor must
-understand the change, have the right to submit it under `GPL-3.0-only`, and add
-their own `Signed-off-by` line.
+understand the change and have the right to submit it under `GPL-3.0-only`; the
+`Signed-off-by` line is the contributor's own certification. An agent may add
+the maintainer's `Signed-off-by` line only when the maintainer explicitly asks
+it to make that commit on their behalf.
+
+Never add AI authorship lines such as `Co-Authored-By` trailers or "Generated
+with" footers. An AI tool assists; the human contributor remains the author.
+Describe material AI assistance in the commit message body or pull request
+instead.
 
 ## Actions requiring explicit maintainer approval
 

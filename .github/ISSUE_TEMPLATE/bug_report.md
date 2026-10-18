@@ -20,7 +20,7 @@ screenshots.
 
 ### Installation method
 
-<!-- macOS ZIP or source checkout. -->
+<!-- macOS app (disk image) or source checkout. -->
 
 ### macOS version and hardware
 

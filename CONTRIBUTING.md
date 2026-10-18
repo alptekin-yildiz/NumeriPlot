@@ -68,7 +68,10 @@ pull request.
 Check AI-assisted output for correctness, security, public-code similarity, and
 license compatibility. AI assistance does not establish scientific validity or
 the right to submit third-party material. Only the human contributor can make
-the DCO certification and add their own `Signed-off-by` line.
+the DCO certification; the `Signed-off-by` line is the contributor's own. A
+maintainer may explicitly ask an AI agent to add it to a commit they have
+authorized. Do not list AI tools as authors or co-authors, for example in
+`Co-Authored-By` trailers; describe the assistance instead.
 
 Contributors retain copyright in their contributions and agree to provide them
 under the repository's `GPL-3.0-only` license. NumeriPlot uses a Developer

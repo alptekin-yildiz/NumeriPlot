@@ -1,11 +1,16 @@
 # NumeriPlot’u Mac’te kaynak koddan kurma ve kullanma
 
+> **Apple Silicon Mac'iniz mi var?** Bu kılavuza gerek yok: hazır uygulamayı
+> [Mac kurulum kılavuzuyla](MACOS_INSTALL_TR.md) kurun.
+
 [English](SOURCE_INSTALL.md) · [Kullanım kılavuzu](https://alptekin-yildiz.github.io/NumeriPlot/)
 
-0.1.1 için dağıtım yolu kaynak koddur; hazır Mac uygulama ZIP’i yayımlanması
-planlanmıyor. Kurulumdan sonra NumeriPlot, grafik ve tabloları olan normal bir
-masaüstü penceresinde açılır. Kullanmak için kod yazmanız veya `.app` üretmeniz
-gerekmez. İlk kurulumda Terminal’e birkaç komut girilir; sonraki açılış daha kısadır.
+Bu kılavuz NumeriPlot 0.2.0'ı kaynak koddan çalıştırmak içindir: Intel Mac,
+Windows ve Linux kullanıcıları (kendi emekleriyle) ve geliştiriciler için.
+Adımlar Mac için yazıldı; diğer sistemlerde benzerdir ama doğrulanmadı.
+Kurulumdan sonra NumeriPlot, grafik ve tabloları olan normal bir masaüstü
+penceresinde açılır. İlk kurulumda Terminal’e birkaç komut girilir; sonraki
+açılış daha kısadır.
 
 ## 1. Gerekenler
 
@@ -40,11 +45,12 @@ varsa Homebrew kurmanız gerekmez. Sistem Python’unu silmeyin veya değiştirm
 ## 2. Kaynak kodu indirin
 
 1. [NumeriPlot deposunu](https://github.com/alptekin-yildiz/NumeriPlot) açın.
-2. [0.1.1 yayın sayfasında](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.1)
-   **Assets → Source code (zip)** bağlantısıyla kaynak kodu indirin. Bu, hazır
-   uygulama ZIP’i değildir. Depodaki **Code → Download ZIP** ise gelişmeye devam
-   eden `main` dalını indirir; bu kılavuz için 0.1.1 arşivini tercih edin.
-3. ZIP’i açıp klasörü kalıcı bir yere taşıyın. İçinde `main.py`, `setup.sh` ve
+2. [0.2.0 yayın sayfasında](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.2.0)
+   **Assets → Source code (zip)** bağlantısıyla kaynak kodu indirin. Bu, Mac
+   uygulamasının disk görüntüsü (`.dmg`) değildir. Depodaki **Code → Download ZIP**
+   ise gelişmeye devam eden `main` dalını indirir; bu kılavuz için 0.2.0 arşivini tercih edin.
+3. ZIP’i açıp klasörü örneğin ev klasörünüzde oluşturduğunuz `NumeriPlot-kaynak` klasörüne taşıyın.
+   İlk kurulum için iCloud ile eşitlenmeyen yerel bir klasör seçin. İçinde `main.py`, `setup.sh` ve
    `requirements.txt` bulunmalıdır.
 4. Terminal’e `cd` yazıp bir boşluk bırakın, Finder’daki bu klasörü Terminal’e
    sürükleyin ve Enter’a basın. Bu işlem Terminal’i proje klasörüne geçirir;
@@ -65,6 +71,10 @@ hata verirse sonraki adıma geçmeden sorun giderme bölümüne bakın.
 İlki yalnız bu projeye ait `venv` ortamını oluşturur; ikincisi bu ortamı
 etkinleştirir. Üçüncüsü bağımlılıkları `requirements.txt` sürümleriyle indirir.
 NumeriPlot bağımlılıkları sistem Python’una değil bu klasöre kurulur.
+Kurulum sonunda açılış denetimi yapılır. macOS 27 / Apple Silicon / Python 3.11
+ortamında bilinen SciPy hatası saptanırsa aynı sürümün uyumlu paketi otomatik
+kurulur ve kontrol tekrarlanır. Başka hatalarda kurulum tamamlandı sayılmaz;
+ayrıntılar `venv/runtime-check.log` dosyasındadır. Paylaşmadan kişisel yolları çıkarın.
 
 ```bash
 python3.11 -m venv venv
@@ -78,6 +88,12 @@ Ardından uygulamayı başlatın:
 python3 main.py
 ```
 
+Yazı tipi önbelleği kurulumdaki açılış denetimi sırasında oluşturulabilir.
+Kurulum ve açılış süresi bilgisayara ve önbelleğe göre değişir; sabit süre garantisi yoktur.
+Kurulumu daha sonra tekrarlamak için bu klasörde `bash setup.sh` çalıştırın.
+Betik mevcut `venv` ortamını önceden etkinleştirmenize gerek kalmadan kullanır.
+Yeni ortam oluştururken önce `python3.11`, ardından sürümü en az 3.11 olan
+`python3` denenir. Mevcut ortam bozuksa mesajı izleyip yeni bir kaynak kopyasında kurulum yapın.
 Pencere açılırken Terminal açık kalsın. Program açıldıktan sonra normal
 menüleri, dosya seçicileri ve fareyi kullanırsınız. Her açılışta kurulum
 yapılmaz. Günlük kullanım için `--dev`, test araçları veya PyInstaller gerekmez.
@@ -90,7 +106,7 @@ Programı kullanırken Terminal penceresi açık kalsın; programı kapattıktan
 sonra bu pencereyi kapatabilirsiniz. Her açılışta kurulum yapılmaz.
 
 Dosyayı proje klasöründen çıkarmayın. Kolay erişim için Finder’da dosyayı seçip
-**Dosya → Takma Ad Yarat** ile oluşturduğunuz takma adı masaüstüne taşıyabilirsiniz.
+**Dosya → Arma Yap** ile oluşturduğunuz armayı masaüstüne taşıyabilirsiniz.
 
 Başlatıcı kurulumu eksik bulursa kılavuzun yerini gösterir. Dosya çalıştırma
 izni nedeniyle açılamıyorsa proje klasöründe aşağıdaki komutu bir kez çalıştırın;
@@ -100,8 +116,24 @@ bu yalnız başlatıcıya çalıştırma izni verir:
 chmod +x NumeriPlot.command
 ```
 
-macOS güvenlik uyarısı gösterirse [belgelenmiş Gatekeeper adımlarına](../README_TR.md)
-bakın; hasarlı uygulama veya zararlı yazılım uyarısını aşmayın.
+### İlk çift tıklamada macOS uyarısı
+
+İnternetten indirilen imzasız `NumeriPlot.command` ilk açılışta engellenebilir;
+bu durum testte görüldü. Apple’ın geliştiriciyi/zararlı yazılım içermediğini
+**doğrulayamadığını** belirten uyarıda önce **Bitti** ile pencereyi kapatın;
+**Çöp Sepeti’ne Taşı** dosyayı kaldırır. Yalnız dosyayı resmî NumeriPlot deposundan
+indirdiğinizi doğrulayıp çalıştırmaya karar verdiyseniz **Sistem Ayarları →
+Gizlilik ve Güvenlik** bölümündeki bu dosyaya ait **Yine de Aç** seçeneğini
+kullanın ve sonraki onayı inceleyin. Bu işlem yazılımın güvenli olduğunu kanıtlamaz.
+Bu düğme açma denemesinden sonraki yaklaşık bir saat boyunca kullanılabilir;
+görünmüyorsa dosyaya yeniden çift tıklamayı deneyin. macOS oturum parolanızı
+isteyebilir. Bkz. [Mac Kullanma Kılavuzu (İngilizce)](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac).
+
+**Hasarlı dosya, saptanmış zararlı yazılım veya bilgisayara zarar vereceği**
+uyarısında devam etmeyin. Karantina kaldırma komutu kullanmayın.
+Bu kaynak başlatıcısı için eski 0.1.0 `.app` paketinin checksum adımları geçerli değildir.
+[Apple’ın açıklaması](https://support.apple.com/tr-tr/102445).
+
 Terminal’den açmayı tercih ederseniz proje klasöründe şu komutu kullanın:
 
 ```bash
@@ -113,8 +145,9 @@ Taşımanız gerekiyorsa yeni bir kaynak kopyasında kurulumu tekrarlayın.
 
 ## 5. İlk kullanım kontrolü
 
-**Dosya → Proje Aç…** ile `examples/NumeriPlot_example_project.json` dosyasını
-açın. Grafik ve Analiz Raporu sekmelerine bakın. **Projeyi Farklı Kaydet…** ile
+**Dosya → 🧪 Örnek Projeyi Aç** ile sentetik örnek projeyi açın. Aynı dosya
+kaynak klasöründe `examples/NumeriPlot_example_project.json` olarak durur ve
+**Dosya → Proje Aç…** ile de açılabilir. Grafik ve Analiz Raporu sekmelerine bakın. **Projeyi Farklı Kaydet…** ile
 kendi kopyanızı proje klasörü dışında saklayın. Bu örnek yalnız sentetik veri
 içerir. Veri yükleme, fit ve dışa aktarma için
 [görselli kılavuzu](https://alptekin-yildiz.github.io/NumeriPlot/) izleyin.
@@ -134,6 +167,10 @@ olarak yeniden hesaplanmaz.
   dosyasını değiştirmeyin; tam hata ile [destek kılavuzuna](../SUPPORT_TR.md) bakın.
 
 ### Apple Silicon / Python 3.11: SciPy `_spropack` veya `__thread_bss` hatası
+
+Kurulum aşağıdaki hatayı belirtilen ortamda otomatik denetler ve düzeltir.
+Kurulum tamamlanamadıysa önce `bash setup.sh` komutunu yeniden çalıştırın.
+Aşağıdaki elle düzeltme, otomatik işlem başarısız olursa kullanılabilir.
 
 Yerel denemede SciPy 1.15.2’nin macOS 14 wheel’i bu açılış hatasını verdi.
 Aynı sürümün macOS 12 arm64 wheel’iyle açılış ve testler geçti. **Yalnız bu
@@ -187,15 +224,16 @@ Gerekmişse SciPy düzeltmesini geliştirme kurulumundan sonra yeniden uygulayı
 bash release_check.sh
 ```
 
-Paketleme komutu proje klasöründeki mevcut `build/` ve `dist/` çıktılarını
-**siler ve yeniden oluşturur**; bu klasörlerde saklanacak dosya bırakmayın:
+Paketleme komutu `build/` ve `dist/` içinde yalnızca kendi çıktılarını (uygulama
+derleme klasörleri, disk görüntüsü ve sağlama dosyası) yeniler:
 
 ```bash
 bash build_macos.sh
 ```
 
-Sonuç `dist/NumeriPlot.app` ve sürüm numaralı ZIP’tir. Paketleme dosyası macOS
-14 alt sınırını kullanır; başka mimarilerde evrensel paket üretildiği varsayılmaz.
+Sonuç `dist/NumeriPlot-<sürüm>-macOS-AppleSilicon.dmg` ve `.sha256` dosyasıdır.
+Derleme bir Apple Silicon Mac gerektirir ve macOS 14 veya üstü için arm64
+uygulama üretir.
 Apple Developer ID imzası veya noter onayı eklenmez. Hasarlı uygulama/zararlı
 yazılım uyarısını aşmayın. Oluşturduğunuz paketi **başkalarına dağıtmak** ayrı
 bir adımdır ve [üçüncü taraf dağıtım koşullarını](../THIRD_PARTY_NOTICES.md)

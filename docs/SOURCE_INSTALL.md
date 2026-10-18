@@ -1,11 +1,15 @@
 # Install and use NumeriPlot from source on a Mac
 
+> **Have an Apple Silicon Mac?** You do not need this guide: install the
+> ready-made app with the [Mac installation guide](MACOS_INSTALL.md).
+
 [Türkçe](SOURCE_INSTALL_TR.md) · [User guide](https://alptekin-yildiz.github.io/NumeriPlot/en.html)
 
-The distribution route for 0.1.1 is source code; no prebuilt Mac application
-ZIP is planned. NumeriPlot opens as a normal desktop window with plots and
-tables. You do not need to write code or build an `.app` to use it. Initial
-setup takes a few Terminal commands; subsequent launches are shorter.
+This guide runs NumeriPlot 0.2.0 from source: for Intel Mac, Windows, and
+Linux users (at their own effort) and for developers. The steps are written
+for a Mac; other systems are similar but not validated. NumeriPlot opens as a
+normal desktop window with plots and tables. Initial setup takes a few
+Terminal commands; subsequent launches are shorter.
 
 ## 1. Requirements
 
@@ -40,11 +44,12 @@ Homebrew. Do not remove or modify Apple's system Python.
 ## 2. Download the source
 
 1. Open the [NumeriPlot repository](https://github.com/alptekin-yildiz/NumeriPlot).
-2. On the [0.1.1 release page](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.1),
-   choose **Assets → Source code (zip)**. This is source code, not a prebuilt
-   application. **Code → Download ZIP** on the repository downloads the moving
-   `main` branch; prefer the 0.1.1 archive for this guide.
-3. Extract the archive and move the folder to a permanent location. It must
+2. On the [0.2.0 release page](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.2.0),
+   choose **Assets → Source code (zip)**. This is source code, not the Mac
+   app's disk image (`.dmg`). **Code → Download ZIP** on the repository
+   downloads the moving `main` branch; prefer the 0.2.0 archive for this guide.
+3. Extract the archive and move the folder to a local location, such as a
+   `NumeriPlot-source` folder inside your home folder. Prefer a folder not synced with iCloud for initial setup. It must
    contain `main.py`, `setup.sh`, and `requirements.txt`.
 4. Type `cd` followed by a space in Terminal, drag that folder from Finder
    into Terminal, then press Return. This changes Terminal's working folder;
@@ -65,6 +70,9 @@ fails, consult troubleshooting before proceeding.
 The first creates the project's `venv` environment; the second activates it.
 The third downloads dependencies at the versions in `requirements.txt`.
 NumeriPlot's dependencies are installed into this folder, not system Python.
+Setup also checks startup imports. On macOS 27 / arm64 / Python 3.11, the
+known SciPy wheel error triggers an explained same-version repair and a
+second check. Other errors stop setup; see section 6.
 
 ```bash
 python3.11 -m venv venv
@@ -78,6 +86,12 @@ Then launch the application:
 python3 main.py
 ```
 
+Font caches may be built during setup's startup check. Setup and launch times
+depend on the computer and cache state; no fixed launch time is guaranteed.
+To repeat setup later, run `bash setup.sh` in this folder. It uses the existing
+`venv` without requiring activation first. For a new environment, it tries
+`python3.11`, then a `python3` of version 3.11 or later. If the existing
+environment is broken, follow the message and install in a fresh source copy.
 Keep Terminal open while the app runs. Use the normal menus, file dialogs,
 and mouse once it opens. Setup is not needed at every launch. Everyday use
 does not require `--dev`, test tools, or PyInstaller.
@@ -100,8 +114,25 @@ project folder; it only grants execution permission to the launcher:
 chmod +x NumeriPlot.command
 ```
 
-For a macOS security warning, see the [documented Gatekeeper steps](../README.md).
-Do not bypass a damaged-app or malware warning. If you prefer Terminal,
+### macOS warning on the first double-click
+
+The downloaded unsigned `NumeriPlot.command` may be blocked on its first launch;
+this occurred in testing. If Apple says it **cannot verify** the developer or
+whether the file contains malware, dismiss the warning with **Done** first;
+**Move to Trash** removes the file. Only if you have verified the download came
+from the official NumeriPlot repository and decide to trust it, use **System
+Settings → Privacy & Security → Open Anyway** for this file and review the
+confirmation. This does not establish that the software is safe.
+The button is available for about an hour after the opening attempt; if it
+is missing, try double-clicking the file again. macOS may ask for your login
+password. See the [Mac User Guide](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac).
+
+Do not proceed on a **damaged-file, detected-malware, or will-damage-your-computer**
+warning. Do not remove quarantine attributes. Checksums for the old 0.1.0 `.app`
+package do not apply to this source launcher.
+[Apple’s guidance](https://support.apple.com/en-ie/102445).
+
+If you prefer Terminal,
 run this from the project folder:
 
 ```bash
@@ -113,9 +144,10 @@ portable. If you need to move it, repeat setup in a new source copy.
 
 ## 5. Check your first session
 
-Use **File → Open Project…** to open
-`examples/NumeriPlot_example_project.json`. Inspect Plot and Analysis Report.
-Use **Save Project As…** to save your own copy outside the source folder.
+Use **File → 🧪 Open Example Project** to open the synthetic example project.
+The same file is `examples/NumeriPlot_example_project.json` in the source
+folder and also opens with **File → Open Project…**. Inspect Plot and Analysis
+Report. Use **Save Project As…** to save your own copy outside the source folder.
 This example uses synthetic data only. Follow the
 [illustrated guide](https://alptekin-yildiz.github.io/NumeriPlot/en.html) for
 import, fitting, and exports.
@@ -132,6 +164,12 @@ choose a model, and select **Fit**. Existing fits do not recalculate automatical
 - **No matching package version / compiler requested:** check Python version
   and architecture. Do not substitute arbitrary dependency versions in
   `requirements.txt`; consult [support](../SUPPORT.md) with the exact error.
+
+Setup checks startup imports. Only on macOS 27 / arm64 / Python 3.11,
+if the known SciPy error is detected, it installs the compatible wheel of the
+same version and checks again. Other failures stop setup; details are in
+`venv/runtime-check.log`. Remove personal paths before sharing it. Try
+`bash setup.sh` again first; manual recovery below is a fallback.
 
 ### Apple Silicon / Python 3.11: SciPy `_spropack` or `__thread_bss` failure
 
@@ -188,16 +226,16 @@ Reapply the SciPy workaround after development setup if necessary. Then run the 
 bash release_check.sh
 ```
  The build
-command **deletes and recreates** existing `build/` and `dist/` folders in the
-project directory; do not keep files you need in those output folders:
+command replaces only its own outputs in `build/` and `dist/` (the app build
+folders, the disk image, and its checksum):
 
 ```bash
 bash build_macos.sh
 ```
 
-Output is `dist/NumeriPlot.app` and a versioned ZIP. The packaging spec sets
-macOS 14 as the minimum; do not assume builds on other architectures produce
-a universal application. No Apple Developer ID signature or notarization is
+The result is `dist/NumeriPlot-<version>-macOS-AppleSilicon.dmg` with a
+`.sha256` file. The build requires an Apple Silicon Mac and produces an arm64
+app for macOS 14 or later. No Apple Developer ID signature or notarization is
 added. Do not bypass a damaged-app or malware warning. **Redistributing** your
 package is a separate action and requires reviewing the
 [third-party distribution conditions](../THIRD_PARTY_NOTICES.md); this section

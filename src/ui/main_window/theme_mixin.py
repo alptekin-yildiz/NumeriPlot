@@ -35,6 +35,8 @@ class MainWindowThemeMixin:
         if hasattr(self, "act_append_cols"):
             self.act_append_cols.setText(t("action_append_cols"))
         self.act_open_proj.setText(t("action_open_project"))
+        if hasattr(self, "act_open_example"):
+            self.act_open_example.setText(t("action_open_example"))
         self.act_save_proj.setText(t("action_save_project"))
         if hasattr(self, "act_save_proj_as"):
             self.act_save_proj_as.setText(t("action_save_project_as"))

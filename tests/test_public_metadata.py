@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 from src.version import VERSION
@@ -21,6 +22,8 @@ def test_required_public_release_documents_exist():
         "THIRD_PARTY_NOTICES.md",
         "CHANGELOG.md",
         "licenses/LGPL-3.0-only.txt",
+        "docs/MACOS_INSTALL.md",
+        "docs/MACOS_INSTALL_TR.md",
     }
 
     missing = sorted(path for path in required if not (ROOT / path).is_file())
@@ -46,6 +49,21 @@ def test_citation_metadata_uses_canonical_public_identity():
     assert "repository-code: https://github.com/alptekin-yildiz/NumeriPlot" in citation
 
 
+def test_mac_install_guides_show_existing_images_and_safe_first_launch():
+    for name, minimum_images, labels in (
+        ("docs/MACOS_INSTALL_TR.md", 5, ("Bitti", "Yine de Aç", "Çöp Sepeti'ne Taşı")),
+        ("docs/MACOS_INSTALL.md", 1, ("Done", "Open Anyway", "Move to Trash")),
+    ):
+        guide = (ROOT / name).read_text(encoding="utf-8")
+        images = re.findall(r"!\[[^\]]+\]\(([^)]+)\)", guide)
+        assert len(images) >= minimum_images, name
+        for image in images:
+            assert (ROOT / "docs" / image).is_file(), (name, image)
+        for label in labels:
+            assert label in guide, (name, label)
+        assert "xattr" in guide  # only as a warning not to use it
+
+
 def test_packaged_app_includes_license_materials():
     spec = (ROOT / "NumeriPlot.spec").read_text(encoding="utf-8")
 
@@ -60,7 +78,7 @@ def test_readmes_cover_phase_4_user_guidance():
 
     for heading in (
         "## Screenshots",
-        "## Install the macOS ZIP",
+        "## Install the macOS app",
         "### Gatekeeper and the unsigned beta",
         "## First workflow",
         "## Data and project files",
@@ -69,7 +87,7 @@ def test_readmes_cover_phase_4_user_guidance():
 
     for heading in (
         "## Ekran görüntüleri",
-        "## macOS ZIP kurulumu",
+        "## macOS uygulamasını kurma",
         "### Gatekeeper ve imzasız beta",
         "## İlk iş akışı",
         "## Veri ve proje dosyaları",

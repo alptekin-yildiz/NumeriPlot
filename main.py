@@ -1,7 +1,9 @@
 import sys
 import os
 import logging
+import time
 import traceback
+from logging.handlers import RotatingFileHandler
 from pathlib import Path
 from datetime import datetime
 
@@ -33,16 +35,86 @@ def _setup_logging() -> Path:
     log_dir.mkdir(parents=True, exist_ok=True)
     log_file = log_dir / LOG_FILENAME
 
-    logging.basicConfig(
-        level=logging.DEBUG,
-        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S",
-        handlers=[
-            logging.FileHandler(log_file, encoding="utf-8"),
-            logging.StreamHandler(sys.stdout),   # terminal açıksa orada da göster
-        ],
+    file_handler = RotatingFileHandler(
+        log_file, maxBytes=2 * 1024 * 1024, backupCount=3, encoding="utf-8",
     )
+    file_handler.setLevel(logging.INFO)
+    console = logging.StreamHandler(sys.stderr)
+    console.setLevel(logging.WARNING)
+    console.addFilter(lambda record: not getattr(record, 'file_only', False))
+    # Full tracebacks stay in the bounded log; the console stays readable.
+    class ConsoleFormatter(logging.Formatter):
+        def format(self, record):
+            first_line = (record.getMessage().splitlines() or [""])[0]
+            return f"{record.levelname}: {first_line}"
+
+    console.setFormatter(ConsoleFormatter())
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        handlers=[file_handler, console],
+        force=True,
+    )
+    for name in ("matplotlib", "PIL"):
+        logging.getLogger(name).setLevel(logging.ERROR)
     return log_file
+
+
+# ── Paket içi Matplotlib önbelleği ────────────────────────────────────────────
+def _matplotlib_cache_dir() -> Path:
+    if sys.platform == "darwin":
+        base = Path.home() / "Library" / "Caches"
+    elif sys.platform == "win32":
+        base = Path(os.environ.get("LOCALAPPDATA") or Path.home() / "AppData" / "Local")
+    else:
+        base = Path(os.environ.get("XDG_CACHE_HOME") or Path.home() / ".cache")
+    return base / APP_SLUG / "matplotlib"
+
+
+def _use_persistent_matplotlib_cache():
+    """Keep Matplotlib's font cache between launches of the packaged app.
+
+    PyInstaller's runtime hook points MPLCONFIGDIR at a new temporary folder on
+    every launch, so the font cache was rebuilt each time.
+    Matplotlib rebuilds a cache itself when it no longer matches the app.
+    """
+    hook_dir = os.environ.get("MPLCONFIGDIR")
+    cache_dir = _matplotlib_cache_dir()
+    try:
+        cache_dir.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        return None  # keep PyInstaller's temporary folder
+    os.environ["MPLCONFIGDIR"] = str(cache_dir)
+    if hook_dir and Path(hook_dir) != cache_dir:
+        try:
+            os.rmdir(hook_dir)  # still empty: Matplotlib is not imported yet
+        except OSError:
+            pass
+    return cache_dir
+
+
+def _build_matplotlib_font_cache():
+    """Build or read the packaged app's font cache without ``system_profiler``.
+
+    On macOS, Matplotlib also asks ``system_profiler SPFontsDataType`` for the
+    installed fonts. That query takes about 10 s, while the font folders that
+    Matplotlib scans anyway yield the same fonts. Matplotlib treats a failed
+    query as an empty list, so only this slow step is skipped.
+    """
+    import subprocess
+
+    check_output = subprocess.check_output
+
+    def without_system_profiler(args, *pargs, **kwargs):
+        if args and args[0] == "system_profiler":
+            raise OSError("NumeriPlot skips the slow system_profiler font query")
+        return check_output(args, *pargs, **kwargs)
+
+    subprocess.check_output = without_system_profiler
+    try:
+        import matplotlib.font_manager  # builds the cache, or reads it later
+    finally:
+        subprocess.check_output = check_output
 
 
 # ── Global exception handler ──────────────────────────────────────────────────
@@ -57,7 +129,28 @@ def _make_exception_handler(log_file: Path):
             return
 
         tb_str = "".join(traceback.format_exception(exc_type, exc_value, exc_tb))
-        logger.critical("Yakalanmamış hata / Uncaught exception:\n%s", tb_str)
+        logger.critical("Yakalanmamış hata / Uncaught exception:\n%s", tb_str,
+                        extra={'file_only': True})
+
+        if QApplication.instance() is None:
+            # The Finder launcher supplies the recovery instructions once.
+            if getattr(sys, 'frozen', False):
+                recovery = "Kılavuz / Guide: docs/MACOS_INSTALL_TR.md / docs/MACOS_INSTALL.md\n"
+            elif os.environ.get('NUMERIPLOT_LAUNCHER') == '1':
+                recovery = ""
+            else:
+                recovery = (
+                    "Kurulumu yeniden çalıştırın: bash setup.sh / Run setup again: bash setup.sh\n"
+                    "Kılavuz bölüm 6 / Guide section 6: docs/SOURCE_INSTALL_TR.md / docs/SOURCE_INSTALL.md\n"
+                )
+            print(
+                "NumeriPlot açılamadı / NumeriPlot could not start.\n"
+                + recovery +
+                f"Log: {log_file}\n"
+                "Paylaşmadan kişisel yolları temizleyin / Remove personal paths before sharing.",
+                file=sys.stderr,
+            )
+            return
 
         # Kullanıcıya nazik hata penceresi
         try:
@@ -99,6 +192,10 @@ if __name__ == "__main__":
         base_dir = Path(sys._MEIPASS)
         sys.path.insert(0, str(base_dir))
         logger.info("PyInstaller modu — base: %s", base_dir)
+        logger.info("Matplotlib önbelleği: %s", _use_persistent_matplotlib_cache())
+        started = time.perf_counter()
+        _build_matplotlib_font_cache()
+        logger.info("Yazı tipi önbelleği hazır (%.1f sn)", time.perf_counter() - started)
     else:
         base_dir = Path(__file__).parent
         logger.info("Geliştirici modu — base: %s", base_dir)
@@ -122,5 +219,5 @@ if __name__ == "__main__":
         sys.exit(exit_code)
 
     except Exception:
-        logger.critical("Başlatma hatası:\n%s", traceback.format_exc())
-        raise
+        sys.excepthook(*sys.exc_info())
+        sys.exit(1)

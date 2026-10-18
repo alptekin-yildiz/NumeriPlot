@@ -17,6 +17,7 @@ STRINGS = {
     "action_save_project": "💾 Projeyi Kaydet",
     "action_save_project_as": "📝 Projeyi Farklı Kaydet…",
     "action_open_project": "📂 Proje Aç…",
+    "action_open_example": "🧪 Örnek Projeyi Aç",
     "action_export_image": "🖼 Görüntü Olarak Dışa Aktar…",
     "action_export_table": "📋 Veri Tablosunu Dışa Aktar…",
     "action_export_python": "🐍 Python Kodu Olarak Dışa Aktar…",
@@ -553,6 +554,7 @@ STRINGS = {
     "msg_load_success": "Proje yüklendi.",
     "msg_load_ok": "Proje yüklendi.",
     "msg_load_error": "Açma hatası:\n{err}",
+    "msg_example_missing": "Örnek proje bulunamadı:\n{path}",
     "msg_load_error_title": "Yükleme Hatası",
     "msg_project_schema_error": "Bu proje dosyası desteklenmeyen veya eksik bir şema sürümü kullanıyor.",
     

@@ -17,6 +17,7 @@ STRINGS = {
     "action_save_project": "💾 Save Project",
     "action_save_project_as": "📝 Save Project As…",
     "action_open_project": "📂 Open Project…",
+    "action_open_example": "🧪 Open Example Project",
     "action_export_image": "🖼 Export as Image…",
     "action_export_table": "📋 Export Data Table…",
     "action_export_python": "🐍 Export as Python Script…",
@@ -553,6 +554,7 @@ STRINGS = {
     "msg_load_success": "Project loaded.",
     "msg_load_ok": "Project loaded.",
     "msg_load_error": "Open error:\n{err}",
+    "msg_example_missing": "Example project not found:\n{path}",
     "msg_load_error_title": "Load Error",
     "msg_project_schema_error": "This project file uses an unsupported or missing schema version.",
     

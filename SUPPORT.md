@@ -3,7 +3,7 @@
 This guide covers safe first-line troubleshooting for NumeriPlot users. For a
 Turkish version, see [`SUPPORT_TR.md`](SUPPORT_TR.md).
 
-NumeriPlot 0.1.x is a Public Beta. Keep the original data and independent
+NumeriPlot 0.2.x is a Public Beta. Keep the original data and independent
 backups of important project files, and independently verify numerical results.
 
 ## Before troubleshooting
@@ -11,7 +11,7 @@ backups of important project files, and independently verify numerical results.
 Record the following information before asking for help:
 
 - the NumeriPlot version or commit;
-- whether you installed the macOS ZIP or run from source;
+- whether you installed the macOS app or run from source;
 - the operating system and version, plus the hardware architecture;
 - the exact steps, expected result, and actual result; and
 - the smallest synthetic input that reproduces the problem.
@@ -21,24 +21,35 @@ credentials, personal paths, or an unredacted log.
 
 ## Installation and startup
 
-### macOS ZIP
+### macOS app
 
-Historical packages only; no prebuilt 0.1.1 ZIP is planned.
+Follow the [Mac installation guide](docs/MACOS_INSTALL.md). The app requires
+an Apple Silicon Mac with macOS 14 or later. Download the disk image only from
+the official GitHub Release page; optionally compare its SHA-256 checksum with
+the published `.sha256` file before opening it.
 
-Official ZIP instructions apply after a NumeriPlot release is published. Check
-that the ZIP came from the official GitHub Release page and compare its full
-SHA-256 checksum with the published `.sha256` file before opening it.
+The app is unsigned and not notarized. At first launch macOS shows
+**“NumeriPlot” Not Opened**: choose **Done** (the blue default button is
+**Move to Trash**), then **System Settings → Privacy & Security → Open Anyway**,
+**Open Anyway** again in **Open “NumeriPlot”?**, and Touch ID or the password.
+The button appears for about an hour after the blocked attempt. Do not routinely remove
+quarantine attributes. Do not bypass a warning that says the app is damaged or
+contains malware.
 
-The first Public Beta is planned to be unsigned and not notarized. Follow the
-Gatekeeper steps in [`README.md`](README.md), including Control-clicking the app
-and choosing **Open**. Do not routinely remove quarantine attributes. Do not
-bypass a warning that says the app is damaged or contains malware.
+- The app opens within a few seconds. It keeps a Matplotlib font cache in
+  `~/Library/Caches/NumeriPlot`, which may be deleted at any time. Clicking
+  the icon repeatedly while it opens can start a second copy.
+- Copy the app to **Applications** before opening it, rather than running it
+  from the disk image window.
+- Intel Macs and macOS 13 or earlier are not supported by the app; use the
+  source route below.
 
 ### Source checkout
 
-For 0.1.1, follow the [Mac source installation guide](docs/SOURCE_INSTALL.md).
-It covers Python 3.11, daily launch, and the specific SciPy load failure observed
-on the validation host. Newer Python versions are not automatically validated.
+For other computers and for development, follow the
+[source installation guide](docs/SOURCE_INSTALL.md). It covers Python 3.11,
+launching, and the specific SciPy load failure observed on the validation
+host. Newer Python versions are not automatically validated.
 
 ## Data import
 
@@ -124,3 +135,7 @@ After the public repository opens:
 Do not open a public issue for security-sensitive information. This independent
 academic project has limited maintainer capacity and does not guarantee a
 response time.
+
+Logs rotate across at most four files of 2 MiB each. In a source checkout,
+setup check failures are recorded in `venv/runtime-check.log`; remove personal
+paths and sensitive content before sharing.

@@ -35,13 +35,15 @@ Tüm `FAIL` maddeleri kapanmadan release adayı onaylanmaz.
 ## 3) Paketleme Smoke (manuel)
 
 1. `bash build_macos.sh`
-2. `dist/NumeriPlot.app` açılış kontrolü
+2. `dist/NumeriPlot-<version>-macOS-AppleSilicon.dmg` disk görüntüsünü açıp
+   uygulamayı Uygulamalar'a kopyalayarak açılış kontrolü
 3. Kritik akış hızlı kontrol:
    - veri yükleme
    - tablo düzenleme + geri al
    - grafik ekleme + fit
    - export (image/python/notebook/table)
-4. `dist/NumeriPlot_v<version>_macOS.zip` paylaşım paketi kontrolü
+4. `shasum -a 256 -c NumeriPlot-<version>-macOS-AppleSilicon.dmg.sha256`
+   ile paylaşım paketi kontrolü
 
 ## 4) Crash ve log doğrulama
 

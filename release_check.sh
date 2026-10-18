@@ -86,7 +86,7 @@ import py_compile
 from src.version import APP_SLUG
 
 paths = [pathlib.Path("main.py"), pathlib.Path(f"{APP_SLUG}.spec")]
-for folder in ("src", "lang", "models", "tests", "examples"):
+for folder in ("src", "lang", "models", "tests", "examples", "tools"):
     paths.extend(sorted(pathlib.Path(folder).rglob("*.py")))
 
 for p in paths:
@@ -96,7 +96,7 @@ print(f"Compiled {len(paths)} Python files.")
 PY
 
 step "Ruff correctness check"
-"${PYTHON_BIN}" -m ruff check --no-cache main.py src lang models tests examples
+"${PYTHON_BIN}" -m ruff check --no-cache main.py src lang models tests examples tools
 
 step "TR/EN key parity check"
 "${PYTHON_BIN}" - <<'PY'

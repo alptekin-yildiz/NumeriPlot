@@ -73,6 +73,53 @@ def test_synthetic_example_project_opens_and_round_trips(
         qapp.processEvents()
 
 
+def test_bundled_example_opens_without_becoming_the_save_target(
+    qapp, monkeypatch, tmp_path
+):
+    errors = []
+    save_dialogs = []
+    copy_path = tmp_path / "my_example_copy.json"
+
+    def choose_copy(*args, **_kwargs):
+        save_dialogs.append(args)
+        return str(copy_path), "JSON Files (*.json)"
+
+    monkeypatch.setattr(QFileDialog, "getSaveFileName", choose_copy)
+    monkeypatch.setattr(
+        QMessageBox,
+        "information",
+        lambda *_args, **_kwargs: QMessageBox.StandardButton.Ok,
+    )
+    monkeypatch.setattr(
+        QMessageBox,
+        "critical",
+        lambda _parent, _title, message, **_kwargs: errors.append(message),
+    )
+
+    example_before = PROJECT_PATH.read_bytes()
+    window = MainWindow()
+    try:
+        dialog_folder = window._last_dialog_dir
+        window.act_open_example.trigger()
+
+        assert errors == []
+        assert window.data_manager.df.shape == (101, 3)
+        assert len(window.fit_list) == 1
+        assert window._current_project_path is None
+        assert window._last_dialog_dir == dialog_folder
+
+        window.save_project_action()
+
+        assert len(save_dialogs) == 1
+        assert json.loads(copy_path.read_text(encoding="utf-8"))["schema_version"] == "1.0"
+        assert window._current_project_path == str(copy_path)
+        assert PROJECT_PATH.read_bytes() == example_before
+    finally:
+        window.close()
+        window.deleteLater()
+        qapp.processEvents()
+
+
 def test_unknown_project_schema_is_rejected_before_loading(
     qapp, monkeypatch, tmp_path
 ):

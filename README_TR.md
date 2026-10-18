@@ -8,18 +8,24 @@ masaüstü uygulamasıdır.
 
 ## İlk kez mi kullanıyorsunuz?
 
-**[Mac’te kur ve kullan →](docs/SOURCE_INSTALL_TR.md)**
+**[Mac’e kur →](docs/MACOS_INSTALL_TR.md)**
 
-Kod yazmanız veya uygulamayı derlemeniz gerekmez. Kılavuz, kaynak kodu
-indirmeyi ve bir defalık kurulumu adım adım anlatır. Kurulumdan sonra
-Finder’da **`NumeriPlot.command` dosyasına çift tıklayın**; programın
-grafik arayüzü açılır. Başlatıcıyı proje klasöründe tutun.
+1. [0.2.0 yayın sayfasından](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.2.0)
+   `NumeriPlot-0.2.0-macOS-AppleSilicon.dmg` dosyasını indirin.
+2. Dosyayı açın ve **NumeriPlot**'u **Applications** (Uygulamalar) klasörüne
+   sürükleyin.
+3. NumeriPlot'u Uygulamalar'dan açın. İlk seferde **Sistem Ayarları →
+   Gizlilik ve Güvenlik → Yine de Aç** ile bir kez izin verin; kılavuz her
+   adımı gösterir.
 
-> **Public Beta uyarısı:** NumeriPlot 0.1.1 bir Public Beta sürümüdür.
-> 0.1.1 kaynak kod olarak dağıtılır; hazır Mac ZIP’i içermez.
-> Arayüzler, iş akışları ve proje dosyası biçimi
-> değişebilir. Araştırma, eğitim veya raporlama amacıyla kullanılacak sayısal
-> sonuçları bağımsız olarak doğrulayın.
+Uygulama, macOS 14 veya üstü yüklü bir Apple Silicon Mac gerektirir. Python veya
+Terminal gerekmez. Diğer bilgisayarlarda NumeriPlot
+[kaynak koddan çalıştırılabilir](docs/SOURCE_INSTALL_TR.md).
+
+> **Public Beta uyarısı:** NumeriPlot 0.2.0 Public Beta, bağımsız bir Mac
+> uygulaması olarak dağıtılan ilk sürümdür. Arayüzler, iş akışları ve proje
+> dosyası biçimi değişebilir. Araştırma, eğitim veya raporlama amacıyla
+> kullanılacak sayısal sonuçları bağımsız olarak doğrulayın.
 
 NumeriPlot, Alptekin YILDIZ tarafından sürdürülen bağımsız bir akademik yazılım
 projesidir. İstanbul Teknik Üniversitesi yalnızca geliştiricinin akademik bağı
@@ -77,7 +83,8 @@ kökünden yeniden üretmek için:
 python3 examples/generate_examples.py
 ```
 
-Örnek proje **Dosya → Proje Aç…** yoluyla açılabilir. Bakımcılar aynı projeden
+Uygulamada örnek proje **Dosya → Örnek Projeyi Aç** ile açılır; kaynak kod
+klasöründe **Dosya → Proje Aç…** de kullanılabilir. Bakımcılar aynı projeden
 ekran görüntülerini şu komutla yeniden oluşturabilir:
 
 ```bash
@@ -86,27 +93,28 @@ QT_QPA_PLATFORM=offscreen python3 examples/capture_screenshots.py
 
 ## Durum ve platformlar
 
-**0.1.1 Public Beta kaynak kod olarak dağıtılır.** Hazır 0.1.1 Mac
-uygulama ZIP’i içermez. Kullanıcı bağımlılıkları kendi
-bilgisayarına kurar ve normal masaüstü arayüzünü kaynak koddan çalıştırır.
-Proje şeması **1.0** olarak kalır.
+**0.2.0 Public Beta, Apple Silicon için bir Mac uygulaması olarak dağıtılır.**
+Disk görüntüsünde her şeyi içinde taşıyan bir `NumeriPlot.app` bulunur; Python
+gerekmez. Uygulamada Apple'ın ücretli geliştirici imzası olmadığı için macOS
+ilk açılışta bir kez izin ister. Proje şeması **1.0** olarak kalır.
 
 | Ortam | Mevcut doğrulama |
 | --- | --- |
-| Apple Silicon, macOS 27.0.1, Python 3.11.1 | Kaynak kod akışı ve otomatik testler yerelde kontrol edildi; belgelenmiş SciPy çözümüne bakın |
-| Diğer macOS veya Python sürümleri | Bu çalışmada bağımsız olarak doğrulanmadı |
-| Intel Mac, Windows, Linux | Eşdeğer kaynak veya paket doğrulaması yapıldığı iddia edilmiyor |
+| Apple Silicon, macOS 27.0.1 | Uygulama derlendi, disk görüntüsünden kuruldu ve yerelde kontrol edildi |
+| Apple Silicon, macOS 14–26 | Paketteki kütüphanelerce desteklenir (en az macOS 14); bu sürümlerde denenmedi |
+| Intel Mac, Windows, Linux | Uygulama sunulmaz; kaynak koddan çalıştırmak mümkündür ama doğrulanmadı |
 
-[Önceki 0.1.0 pre-release](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
-eski bir uygulama paketi içerir. 0.1.1 düzeltmelerini içermez ve aşağıdaki
-kurulum yolunun parçası değildir. Mevcut release dosyaları kaldırılmadı.
+[0.1.0 pre-release](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
+sonraki düzeltmeleri içermeyen önceki bir uygulama paketi barındırır. Bunun
+yerine 0.2.0'ı kullanın.
 
 ## Kaynaktan çalıştırma
 
-[Adım adım Mac kurulum kılavuzuyla](docs/SOURCE_INSTALL_TR.md) başlayın
-([English](docs/SOURCE_INSTALL.md)). Python kurulumu, Git kullanmadan kaynak
-indirme, ilk kurulum, günlük açılış, sorun giderme ve güncelleme anlatılıyor.
-Günlük kullanım için `.app` oluşturmak gerekmez.
+Apple Silicon Mac'te önerilen yol yukarıdaki uygulamadır. Kaynaktan çalıştırma
+diğer bilgisayarlar (Intel Mac, Windows, Linux; kullanıcının kendi emeğiyle) ve
+geliştirme içindir. [Kaynak kurulum kılavuzu](docs/SOURCE_INSTALL_TR.md)
+([English](docs/SOURCE_INSTALL.md)) Python kurulumunu, Git kullanmadan kaynak
+indirmeyi, ilk kurulumu, açılışı, sorun gidermeyi ve güncellemeyi anlatır.
 
 Python 3.11 kuruluysa Git bilen kullanıcılar aşağıdaki komutları sırayla
 çalıştırabilir. Hata olursa durun ve kılavuzdaki sorun giderme bölümünü izleyin:
@@ -135,41 +143,43 @@ bash setup.sh --dev
 bash release_check.sh
 ```
 
-## macOS ZIP kurulumu
+## macOS uygulamasını kurma
 
-**Yalnız önceki 0.1.0 paketi için.** 0.1.1 için yukarıdaki kaynak kurulumunu izleyin.
+Gereksinim: macOS 14 veya üstü yüklü bir Apple Silicon (M1 ve sonrası) Mac.
+[Kurulum kılavuzu](docs/MACOS_INSTALL_TR.md) her adımı ayrıntılı anlatır.
 
-Bu adımlar [NumeriPlot GitHub Releases sayfasındaki](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
-resmî `v0.1.0` pre-release dosyaları için geçerlidir:
-
-1. `NumeriPlot_v0.1.0_macOS.zip` ve `.sha256` dosyasını yalnızca resmî
-   NumeriPlot GitHub Release sayfasından indirin.
-2. Terminal'de indirilen ZIP'in checksum değerini hesaplayın:
+1. `NumeriPlot-0.2.0-macOS-AppleSilicon.dmg` dosyasını yalnızca resmî
+   [0.2.0 yayın sayfasından](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.2.0)
+   indirin.
+2. İsteğe bağlı: `.sha256` dosyasını da indirip disk görüntüsünü Terminal'de
+   doğrulayın. Sonuçta `OK` yazmalıdır:
 
    ```bash
-   shasum -a 256 NumeriPlot_v0.1.0_macOS.zip
+   cd ~/Downloads
+   shasum -a 256 -c NumeriPlot-0.2.0-macOS-AppleSilicon.dmg.sha256
    ```
 
-   ZIP'i açmadan önce sonucun tamamını yayımlanan checksum ile karşılaştırın.
-3. ZIP'e çift tıklayın ve `NumeriPlot.app` dosyasını `Applications` klasörüne
-   taşıyın.
-4. `NumeriPlot.app` üzerinde Control-tıklayın veya sağ tıklayın, **Aç**
-   seçeneğini kullanın ve devam edip etmeyeceğinize karar vermeden önce macOS
-   uyarısını inceleyin.
+3. Disk görüntüsüne çift tıklayın ve **NumeriPlot**'u **Applications**
+   (Uygulamalar) klasörüne sürükleyin.
+4. NumeriPlot'u **Uygulamalar**'dan açın ve ilk seferde aşağıdaki bölümü izleyin.
+   Uygulama birkaç saniye içinde açılır.
 
 ### Gatekeeper ve imzasız beta
 
-Public beta build'i Apple Developer ID ile imzalanmamıştır ve Apple tarafından
-noter onayından geçirilmemiştir. Bu nedenle macOS geliştiriciyi tanıyamaz ve
-uygulamanın Apple tarafından zararlı yazılım açısından kontrol edildiğini
-doğrulayamaz.
+NumeriPlot ücretsizdir; Apple'ın ücretli geliştirici imzası (Developer ID) ve
+noter onayı yoktur. Bu nedenle macOS geliştiriciyi tanıyamaz ve ilk açılışı
+**“NumeriPlot” Açılmadı** mesajıyla durdurur. Bir kez izin verin:
 
-Uygulamayı açmayı denedikten sonra macOS hâlâ engelliyorsa önce dosyanın resmî
-release sayfasından geldiğini ve checksum değerinin eşleştiğini doğrulayın.
-Ardından devam etmeyi seçerseniz **Sistem Ayarları → Gizlilik ve Güvenlik**
-bölümünü açın, **Güvenlik** altındaki engellenen uygulama mesajını bulun,
-**Yine de Aç** seçeneğini kullanın ve onay penceresini inceleyin. Apple bu
-istisna yolunu
+1. Mesajda **Bitti**'yi seçin. Mavi renkli, öne çıkan düğme **Çöp Sepeti'ne
+   Taşı**'dır; onu seçmeyin.
+2. **Sistem Ayarları → Gizlilik ve Güvenlik** bölümünü açın, **Güvenlik**
+   kısmına kaydırın ve NumeriPlot mesajının yanındaki **Yine de Aç**'ı seçin.
+   Düğme, açma denemesinden sonra yaklaşık bir saat görünür.
+3. **“NumeriPlot” açılsın mı?** penceresinde **Yine de Aç**'ı seçin (yine
+   **Çöp Sepeti'ne Taşı**'yı değil), ardından Touch ID veya Mac parolanızla
+   onaylayın.
+
+Bundan sonra NumeriPlot normal açılır. Apple bu istisna yolunu
 [Bilinmeyen geliştiriciden gelen Mac uygulamasını açma](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac)
 sayfasında açıklar.
 
@@ -234,6 +244,9 @@ yazılır:
 ~/Library/Logs/NumeriPlot/numeriplot.log
 ```
 
+Uygulama ayrıca `~/Library/Caches/NumeriPlot` klasöründe Matplotlib yazı tipi
+önbelleği tutar; bu klasör istendiğinde silinebilir.
+
 Loglar otomatik olarak gönderilmez. Bir log veya proje dosyasını paylaşmadan
 önce özel araştırma verilerini, kişisel yolları, kimlik bilgilerini ve diğer
 hassas bilgileri temizleyin.
@@ -249,8 +262,8 @@ sertifikasyon amaçlı hesaplamalar için doğrulanmamıştır.
 ## Geliştirme süreci ve AI desteği
 
 NumeriPlot; uygulama geliştirme, test, dokümantasyon ve release hazırlığında
-OpenAI Codex dahil olmak üzere AI coding-agent araçlarından önemli ölçüde destek
-alınarak geliştirilmiştir. İnsan bakımcı projeyi yönlendirir, yayıma dönük
+OpenAI Codex ve Anthropic Claude Code dahil olmak üzere AI coding-agent
+araçlarından önemli ölçüde destek alınarak geliştirilmiştir. İnsan bakımcı projeyi yönlendirir, yayıma dönük
 değişiklikleri inceleyip kabul eder ve lisanslama, release'ler ve bilimsel
 iddialar için sorumluluğu taşır. AI desteği bilimsel doğruluğun kanıtı değildir;
 sayısal sonuçlar bağımsız olarak doğrulanmalıdır.
@@ -279,4 +292,7 @@ açık issue olarak paylaşmayın; [`SECURITY.md`](SECURITY.md) yolunu izleyin.
 NumeriPlot yalnızca GNU General Public License v3.0 altında lisanslanır. Tam
 metin için [`LICENSE`](LICENSE) dosyasına bakın. Üçüncü taraf bileşenler kendi
 lisansları altında kalır; ayrıntılar [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)
-dosyasındadır.
+dosyasındadır. Mac uygulaması Qt (LGPL v3), PyQt6 (GPL v3) ve diğer açık kaynak
+bileşenleri değiştirmeden içerir. Tam lisans metinleri uygulamada
+**Dosya → Hakkında → Üçüncü Taraf Lisansları** altındadır; GPL/LGPL
+bileşenlerinin kaynak arşivleri her yayınla birlikte yayımlanır.

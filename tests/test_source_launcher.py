@@ -45,3 +45,11 @@ def test_launch_from_other_directory_and_preserve_exit_status(checkout, exit_cod
     result = launch(checkout)
     assert result.returncode == exit_code
     assert ("Launch failed" in result.stdout) == bool(exit_code)
+
+
+def test_moved_launcher_explains_location(checkout):
+    (checkout / 'main.py').unlink()
+    result = launch(checkout)
+    assert result.returncode == 1
+    assert 'Finder alias' in result.stdout
+    assert 'First-time setup' not in result.stdout

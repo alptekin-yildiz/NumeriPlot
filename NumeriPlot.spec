@@ -17,6 +17,12 @@ from src.version import (
     MACOS_MINIMUM_VERSION,
     VERSION,
 )
+from tools.bundle_policy import is_excluded_entry
+
+# build_macos.sh collects these notices before PyInstaller runs.
+third_party_licenses = project_root / 'build' / 'third-party-licenses'
+if not (third_party_licenses / 'THIRD_PARTY_LICENSES.txt').is_file():
+    raise SystemExit('Third-party license notices are missing. Build with: bash build_macos.sh')
 
 a = Analysis(
     ['main.py'],
@@ -26,6 +32,8 @@ a = Analysis(
         ('LICENSE', '.'),
         ('THIRD_PARTY_NOTICES.md', '.'),
         ('licenses', 'licenses'),
+        (str(third_party_licenses), 'licenses/third-party'),
+        ('examples/NumeriPlot_example_project.json', 'examples'),
         # Include source needed for model inspection without local bytecode caches.
         *[
             (str(path), str(path.parent.relative_to(project_root)))
@@ -72,6 +80,10 @@ a = Analysis(
     cipher=block_cipher,
     noarchive=False,
 )
+
+# Qt parts that only unused plugins pull in (see tools/bundle_policy.py).
+a.binaries = [entry for entry in a.binaries if not is_excluded_entry(*entry)]
+a.datas = [entry for entry in a.datas if not is_excluded_entry(*entry)]
 
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 

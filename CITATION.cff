@@ -8,8 +8,8 @@ authors:
   - family-names: YILDIZ
     given-names: Alptekin
     affiliation: Istanbul Technical University
-version: 0.1.1
-date-released: 2026-10-16
+version: 0.2.0
+date-released: 2026-10-18
 license: GPL-3.0-only
 repository-code: https://github.com/alptekin-yildiz/NumeriPlot
 url: https://github.com/alptekin-yildiz/NumeriPlot
@@ -29,5 +29,5 @@ preferred-citation:
       given-names: Alptekin
       affiliation: Istanbul Technical University
   title: NumeriPlot
-  version: 0.1.1
+  version: 0.2.0
   url: https://github.com/alptekin-yildiz/NumeriPlot

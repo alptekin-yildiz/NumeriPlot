@@ -3,7 +3,7 @@
 Bu belge NumeriPlot kullanıcıları için güvenli ilk sorun giderme adımlarını
 içerir. İngilizce sürüm için [`SUPPORT.md`](SUPPORT.md) belgesine bakın.
 
-NumeriPlot 0.1.x bir Public Beta sürümüdür. Orijinal verileri ve önemli proje
+NumeriPlot 0.2.x bir Public Beta sürümüdür. Orijinal verileri ve önemli proje
 dosyalarının bağımsız yedeklerini saklayın; sayısal sonuçları ayrıca doğrulayın.
 
 ## Sorun gidermeden önce
@@ -11,7 +11,7 @@ dosyalarının bağımsız yedeklerini saklayın; sayısal sonuçları ayrıca d
 Yardım istemeden önce şu bilgileri kaydedin:
 
 - NumeriPlot sürümü veya commit kimliği;
-- macOS ZIP sürümünü mü yoksa kaynak kodu mu kullandığınız;
+- macOS uygulamasını mı yoksa kaynak kodu mu kullandığınız;
 - işletim sistemi ve sürümü ile donanım mimarisi;
 - izlenen adımlar, beklenen sonuç ve gerçekleşen sonuç; ve
 - sorunu yeniden oluşturan en küçük sentetik girdi.
@@ -21,26 +21,37 @@ kişisel yolları veya temizlenmemiş logları herkese açık olarak paylaşmay�
 
 ## Kurulum ve başlatma
 
-### macOS ZIP
+### macOS uygulaması
 
-Önceki paketler içindir; hazır 0.1.1 ZIP’i planlanmıyor.
+[Mac kurulum kılavuzunu](docs/MACOS_INSTALL_TR.md) izleyin. Uygulama, macOS 14
+veya üstü yüklü bir Apple Silicon Mac gerektirir. Disk görüntüsünü yalnızca
+resmî GitHub Release sayfasından indirin; isterseniz açmadan önce SHA-256
+değerini yayımlanan `.sha256` dosyasıyla karşılaştırın.
 
-Resmî ZIP talimatları bir NumeriPlot release'i yayımlandıktan sonra geçerlidir.
-ZIP'in resmî GitHub Release sayfasından geldiğini doğrulayın ve dosyayı açmadan
-önce SHA-256 checksum değerinin tamamını yayımlanan `.sha256` dosyasıyla
-karşılaştırın.
+Uygulama imzasız ve noter onaysızdır. İlk açılışta macOS
+**“NumeriPlot” Açılmadı** mesajını gösterir: **Bitti**'yi seçin (mavi varsayılan
+düğme **Çöp Sepeti'ne Taşı**'dır), ardından **Sistem Ayarları → Gizlilik ve
+Güvenlik → Yine de Aç**, **“NumeriPlot” açılsın mı?** penceresinde yine
+**Yine de Aç** ve Touch ID veya parola. Düğme, açma denemesinden sonra yaklaşık
+bir saat görünür. Karantina
+niteliklerini rutin olarak kaldırmayın. Uygulamanın hasarlı veya zararlı yazılım
+içerdiğini belirten bir uyarıyı atlamayın.
 
-İlk Public Beta'nın imzasız ve noter onaysız olması planlanmaktadır.
-[`README_TR.md`](README_TR.md) içindeki Gatekeeper adımlarını uygulayın; uygulama
-üzerinde Control-tıklayıp **Aç** seçeneğini kullanın. Karantina niteliklerini
-rutin olarak kaldırmayın. Uygulamanın hasarlı veya zararlı yazılım içerdiğini
-belirten bir uyarıyı atlamayın.
+- Uygulama birkaç saniye içinde açılır. Matplotlib yazı tipi önbelleğini
+  `~/Library/Caches/NumeriPlot` klasöründe tutar; bu klasör istendiğinde
+  silinebilir. Açılırken simgeye tekrar tekrar tıklamak ikinci bir kopya
+  başlatabilir.
+- Uygulamayı disk görüntüsü penceresinden çalıştırmak yerine önce
+  **Uygulamalar** klasörüne kopyalayın.
+- Intel Mac'ler ile macOS 13 ve öncesi uygulama tarafından desteklenmez;
+  aşağıdaki kaynak kod yolunu kullanın.
 
 ### Kaynak kod
 
-0.1.1 için [Mac kaynak kurulum kılavuzunu](docs/SOURCE_INSTALL_TR.md) izleyin.
-Python 3.11, günlük açılış ve doğrulama makinesinde görülen özel SciPy açılış
-hatası anlatılıyor. Daha yeni Python sürümleri otomatik olarak doğrulanmış sayılmaz.
+Diğer bilgisayarlar ve geliştirme için
+[kaynak kurulum kılavuzunu](docs/SOURCE_INSTALL_TR.md) izleyin. Python 3.11,
+açılış ve doğrulama makinesinde görülen özel SciPy açılış hatası anlatılıyor.
+Daha yeni Python sürümleri otomatik olarak doğrulanmış sayılmaz.
 
 ## Veri içe aktarma
 
@@ -128,3 +139,7 @@ Halka açık depo açıldıktan sonra:
 Güvenlik açısından hassas bilgileri herkese açık issue olarak göndermeyin. Bu
 bağımsız akademik projenin bakım kapasitesi sınırlıdır ve yanıt süresi garantisi
 yoktur.
+
+Loglar en çok 2 MiB’lık dört dosyada tutulur. Kaynak kod kurulumunda kurulum
+denetimi hataları `venv/runtime-check.log` dosyasındadır; paylaşmadan kişisel
+yolları ve hassas içerikleri çıkarın.

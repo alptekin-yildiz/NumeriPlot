@@ -35,6 +35,7 @@ from src.plotting.canvas import MplCanvas
 from src.analysis.data_manager import DataManager
 from src.analysis.fit_utils import prepare_fit_xy, evaluate_fit_model, fit_statistics
 from src.analysis.text_utils import format_panel_label, get_text_preset
+from src.app_paths import example_project_path
 from src.project_schema import ProjectSchemaError, read_project, write_project
 from src.ui.emoji_spinbox import EmojiDoubleSpinBox, EmojiSpinBox
 from src.ui.dialogs import FitDialog, PlotSettingsDialog, DataImportDialog
@@ -279,6 +280,9 @@ class MainWindow(MainWindowDialogsMixin, MainWindowThemeMixin, QMainWindow):
         self.act_open_proj = QAction(t("action_open_project"), self)
         self.act_open_proj.triggered.connect(self.open_project_action)
 
+        self.act_open_example = QAction(t("action_open_example"), self)
+        self.act_open_example.triggered.connect(self.open_example_project_action)
+
         self.act_save_proj = QAction(t("action_save_project"), self)
         self.act_save_proj.setShortcut(QKeySequence.StandardKey.Save)
         self.act_save_proj.triggered.connect(self.save_project_action)
@@ -300,6 +304,7 @@ class MainWindow(MainWindowDialogsMixin, MainWindowThemeMixin, QMainWindow):
         self._m_file.addAction(self.act_append_cols)
         self._m_file.addSeparator()
         self._m_file.addAction(self.act_open_proj)
+        self._m_file.addAction(self.act_open_example)
         self._m_file.addAction(self.act_save_proj)
         self._m_file.addAction(self.act_save_proj_as)
         self._m_file.addSeparator()
@@ -2814,6 +2819,17 @@ class MainWindow(MainWindowDialogsMixin, MainWindowThemeMixin, QMainWindow):
         )
         if not f:
             return
+        self._load_project_file(f)
+
+    def open_example_project_action(self):
+        """Open the bundled synthetic example; saving always asks for a new file."""
+        path = example_project_path()
+        if not path.is_file():
+            QMessageBox.critical(self, t("msg_error"), t("msg_example_missing").format(path=path))
+            return
+        self._load_project_file(str(path), is_example=True)
+
+    def _load_project_file(self, f, is_example=False):
         try:
             loaded_project = read_project(f)
             data = loaded_project.data
@@ -2949,10 +2965,12 @@ class MainWindow(MainWindowDialogsMixin, MainWindowThemeMixin, QMainWindow):
                 self.lst_report_fits.setCurrentRow(len(self.fit_list) - 1)
 
             QMessageBox.information(self, t("msg_success"), t("msg_load_ok"))
+            # The bundled example lives inside the app, which must stay unchanged.
             self._current_project_path = (
-                None if loaded_project.requires_save_as else f
+                None if is_example or loaded_project.requires_save_as else f
             )
-            self._remember_dialog_path(f)
+            if not is_example:
+                self._remember_dialog_path(f)
             self._is_modified = False
         except ProjectSchemaError:
             QMessageBox.critical(

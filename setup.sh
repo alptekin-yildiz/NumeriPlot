@@ -3,6 +3,7 @@
 # Usage: bash setup.sh [--dev]
 
 set -euo pipefail
+cd -- "$(dirname -- "$0")"
 
 INSTALL_DEV=0
 case "${1:-}" in
@@ -26,22 +27,41 @@ if [ "$#" -gt 1 ]; then
   exit 2
 fi
 
-PYTHON_BIN=$(command -v python3 || true)
+PYTHON_BIN=""
+if [ -d venv ]; then
+  if [ -x venv/bin/python3 ] && ./venv/bin/python3 -c 'import sys; sys.exit(sys.version_info < (3, 11))' 2>/dev/null; then
+    PYTHON_BIN="$PWD/venv/bin/python3"
+  else
+    echo "Mevcut sanal ortam çalışmıyor veya Python sürümü eski. Yeni bir kaynak kopyasında kurulum yapın."
+    echo "Existing virtual environment is broken or too old. Install in a fresh source copy."
+    echo "Kılavuz / Guide: docs/SOURCE_INSTALL_TR.md / docs/SOURCE_INSTALL.md"
+    exit 1
+  fi
+else
+  for candidate in python3.11 python3; do
+    candidate_path=$(command -v "$candidate" || true)
+    if [ -n "$candidate_path" ] && "$candidate_path" -c 'import sys; sys.exit(sys.version_info < (3, 11))' 2>/dev/null; then
+      PYTHON_BIN="$candidate_path"
+      break
+    fi
+  done
+fi
 if [ -z "${PYTHON_BIN}" ]; then
-  echo "ERROR: python3 not found. Install from https://www.python.org"
+  echo "Python 3.11+ bulunamadı / Python 3.11+ not found."
+  echo "Kılavuz / Guide: docs/SOURCE_INSTALL_TR.md / docs/SOURCE_INSTALL.md"
   exit 1
 fi
 
-META=$(${PYTHON_BIN} -c "from src.version import APP_NAME, DISPLAY_VERSION; print(f'{APP_NAME}|{DISPLAY_VERSION}')")
+META=$("${PYTHON_BIN}" -c "from src.version import APP_NAME, DISPLAY_VERSION; print(f'{APP_NAME}|{DISPLAY_VERSION}')")
 IFS='|' read -r APP_NAME DISPLAY_VERSION <<< "${META}"
 echo "================================================"
 echo " ${APP_NAME} — ${DISPLAY_VERSION}"
 echo " Setup starting..."
 echo "================================================"
 
-PY_VER=$(${PYTHON_BIN} -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-PY_MAJOR=$(${PYTHON_BIN} -c "import sys; print(sys.version_info.major)")
-PY_MINOR=$(${PYTHON_BIN} -c "import sys; print(sys.version_info.minor)")
+PY_VER=$("${PYTHON_BIN}" -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+PY_MAJOR=$("${PYTHON_BIN}" -c "import sys; print(sys.version_info.major)")
+PY_MINOR=$("${PYTHON_BIN}" -c "import sys; print(sys.version_info.minor)")
 
 echo "Python ${PY_VER} found."
 
@@ -52,11 +72,11 @@ fi
 
 if [ ! -d "venv" ]; then
   echo "Creating virtual environment..."
-  ${PYTHON_BIN} -m venv venv
+  "${PYTHON_BIN}" -m venv venv
 fi
 
 source venv/bin/activate
-VENV_PYTHON=$(command -v python3)
+VENV_PYTHON="$PWD/venv/bin/python3"
 
 echo "Installing dependencies..."
 "${VENV_PYTHON}" -m pip install --upgrade pip
@@ -66,6 +86,9 @@ if [ "${INSTALL_DEV}" -eq 1 ]; then
   echo "Installing development dependencies..."
   "${VENV_PYTHON}" -m pip install -r requirements-dev.txt
 fi
+
+echo "Checking startup imports / Açılış kontrolü..."
+"${VENV_PYTHON}" -m src.runtime_check --repair
 
 echo ""
 echo "================================================"

@@ -79,12 +79,12 @@
     "tr": {
       "src": "assets/menus-file-tr.png",
       "width": 338,
-      "height": 286
+      "height": 309
     },
     "en": {
       "src": "assets/menus-file-en.png",
       "width": 292,
-      "height": 286
+      "height": 309
     }
   },
   "menus-view": {

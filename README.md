@@ -8,18 +8,23 @@ and researchers.
 
 ## First time here?
 
-**[Install and use on Mac →](docs/SOURCE_INSTALL.md)** · [Türkçe kurulum →](docs/SOURCE_INSTALL_TR.md)
+**[Install on Mac →](docs/MACOS_INSTALL.md)** · [Türkçe kurulum →](docs/MACOS_INSTALL_TR.md)
 
-No coding or application build is required. Follow the guide to download
-the source and complete the one-time setup. Afterwards, **double-click
-`NumeriPlot.command` in Finder** to open the desktop interface. Keep the
-launcher inside the project folder.
+1. Download `NumeriPlot-0.2.0-macOS-AppleSilicon.dmg` from the
+   [0.2.0 release page](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.2.0).
+2. Open it and drag **NumeriPlot** onto **Applications**.
+3. Open NumeriPlot from Applications. The first time, allow it once under
+   **System Settings → Privacy & Security → Open Anyway**; the guide shows
+   every step.
 
-> **Public Beta notice:** NumeriPlot 0.1.1 is a Public Beta.
-> Version 0.1.1 is distributed as source code, without a prebuilt Mac ZIP.
-> Interfaces, workflows, and the project-file format may still
-> change. Independently verify numerical results before using them in research,
-> teaching, or reports.
+The app needs an Apple Silicon Mac with macOS 14 or later. No Python or
+Terminal is required. Other computers can
+[run NumeriPlot from source](docs/SOURCE_INSTALL.md).
+
+> **Public Beta notice:** NumeriPlot 0.2.0 Public Beta is the first release
+> distributed as a standalone Mac app. Interfaces, workflows, and the
+> project-file format may still change. Independently verify numerical
+> results before using them in research, teaching, or reports.
 
 NumeriPlot is an independent academic software project maintained by Alptekin
 YILDIZ. Istanbul Technical University is listed only as the developer's
@@ -74,8 +79,9 @@ fixed random seed. Regenerate the data and project from the repository root:
 python3 examples/generate_examples.py
 ```
 
-The example project can be opened with **File → Open Project…**. Maintainers
-can reproduce the screenshots from that project with:
+The app opens the example project with **File → Open Example Project**; from
+a source checkout, **File → Open Project…** opens it as well. Maintainers can
+reproduce the screenshots from that project with:
 
 ```bash
 QT_QPA_PLATFORM=offscreen python3 examples/capture_screenshots.py
@@ -83,27 +89,27 @@ QT_QPA_PLATFORM=offscreen python3 examples/capture_screenshots.py
 
 ## Status and platforms
 
-**0.1.1 Public Beta is distributed as source code.** No
-prebuilt 0.1.1 Mac application ZIP is included. Users install dependencies on
-their own computer and run the normal desktop interface from source.
-Project schema remains **1.0**.
+**0.2.0 Public Beta is distributed as a Mac app for Apple Silicon.** The disk
+image contains a self-contained `NumeriPlot.app`; Python is not required.
+The app has no paid Apple Developer ID signature, so macOS asks for permission
+once at first launch. Project schema remains **1.0**.
 
 | Environment | Current validation |
 | --- | --- |
-| Apple Silicon, macOS 27.0.1, Python 3.11.1 | Source workflow and automated tests checked locally; see the documented SciPy workaround |
-| Other macOS versions or Python versions | Not independently validated by this check |
-| Intel Mac, Windows, Linux | No equivalent source or packaged-release validation is claimed |
+| Apple Silicon, macOS 27.0.1 | App built, installed from the disk image, and checked locally |
+| Apple Silicon, macOS 14–26 | Supported by the bundled libraries (minimum macOS 14); not tested on these versions |
+| Intel Mac, Windows, Linux | No app is provided; running from source is possible but not validated |
 
-The historical [0.1.0 pre-release](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
-contains an older binary. It does not include the 0.1.1 fixes and is not the
-installation route described below. Existing release assets have not been removed.
+The [0.1.0 pre-release](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
+contains an earlier app package without the later fixes. Use 0.2.0 instead.
 
 ## Run from source
 
-Start with the [step-by-step Mac installation guide](docs/SOURCE_INSTALL.md)
-([Türkçe](docs/SOURCE_INSTALL_TR.md)). It explains installing Python, downloading
-source without Git, first setup, daily launch, troubleshooting, and updates.
-No `.app` build is required for everyday use.
+On an Apple Silicon Mac, the app above is the recommended route. Running from
+source is meant for other computers (Intel Mac, Windows, Linux; at your own
+effort) and for development. The [source installation guide](docs/SOURCE_INSTALL.md)
+([Türkçe](docs/SOURCE_INSTALL_TR.md)) explains installing Python, downloading
+source without Git, first setup, launching, troubleshooting, and updates.
 
 With Python 3.11 installed, Git users can run the following commands one at a
 time. Stop on errors; use the guide's troubleshooting instructions:
@@ -132,38 +138,40 @@ bash setup.sh --dev
 bash release_check.sh
 ```
 
-## Install the macOS ZIP
+## Install the macOS app
 
-**Historical 0.1.0 instructions only.** For 0.1.1 use the source guide above.
+Requirements: an Apple Silicon Mac (M1 or later) with macOS 14 or later. The
+[installation guide](docs/MACOS_INSTALL.md) explains each step in detail.
 
-These instructions apply to the official `v0.1.0` pre-release assets on the
-[NumeriPlot GitHub Releases page](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0):
-
-1. Download `NumeriPlot_v0.1.0_macOS.zip` and its `.sha256` file only from the
-   official NumeriPlot GitHub Release page.
-2. In Terminal, calculate the downloaded ZIP's checksum:
+1. Download `NumeriPlot-0.2.0-macOS-AppleSilicon.dmg` only from the official
+   [0.2.0 release page](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.2.0).
+2. Optional: download its `.sha256` file too and check the disk image in
+   Terminal. The result must say `OK`:
 
    ```bash
-   shasum -a 256 NumeriPlot_v0.1.0_macOS.zip
+   cd ~/Downloads
+   shasum -a 256 -c NumeriPlot-0.2.0-macOS-AppleSilicon.dmg.sha256
    ```
 
-   Compare the complete result with the published checksum before opening the
-   ZIP.
-3. Double-click the ZIP and move `NumeriPlot.app` to `Applications`.
-4. Control-click or right-click `NumeriPlot.app`, choose **Open**, and review
-   the macOS warning before deciding whether to continue.
+3. Double-click the disk image and drag **NumeriPlot** onto **Applications**.
+4. Open NumeriPlot from **Applications** and follow the next section the first
+   time. The app opens within a few seconds.
 
 ### Gatekeeper and the unsigned beta
 
-The public beta build has no Apple Developer ID signature and is not
-notarized. macOS therefore cannot identify the developer or confirm that Apple
-has checked the application for malicious software.
+NumeriPlot is free and has no paid Apple Developer ID signature or
+notarization. macOS therefore cannot identify the developer and stops the
+first launch with a **“NumeriPlot” Not Opened** message. Allow it once:
 
-If macOS still blocks the app after you try to open it, first confirm that it
-came from the official release page and that its checksum matches. If you then
-choose to proceed, open **System Settings → Privacy & Security**, find the
-blocked-app message under **Security**, choose **Open Anyway**, and review the
-confirmation dialog. Apple documents this exception process in
+1. In the message, choose **Done**. The highlighted blue button is
+   **Move to Trash**; do not choose it.
+2. Open **System Settings → Privacy & Security**, scroll to **Security**, and
+   choose **Open Anyway** next to the message about NumeriPlot. The button
+   appears for about an hour after the blocked attempt.
+3. In the **Open “NumeriPlot”?** message, choose **Open Anyway** (again, not
+   **Move to Trash**), then confirm with Touch ID or your Mac password.
+
+NumeriPlot then opens normally. Apple documents this exception process in
 [Open a Mac app from an unknown developer](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac).
 
 Do not bypass a warning that says the application is damaged or contains
@@ -227,6 +235,9 @@ automatic update checks. On macOS, diagnostic logs are written locally to:
 ~/Library/Logs/NumeriPlot/numeriplot.log
 ```
 
+The app also keeps a Matplotlib font cache in `~/Library/Caches/NumeriPlot`,
+which may be deleted at any time.
+
 Logs are not uploaded automatically. Before sharing a log or project file,
 remove private research data, personal paths, credentials, and other sensitive
 information.
@@ -242,8 +253,8 @@ certification calculations.
 ## Development process and AI assistance
 
 NumeriPlot has been developed with substantial assistance from AI coding
-agents, including OpenAI Codex, in implementation, testing, documentation, and
-release preparation. The human maintainer directs the project, reviews and
+agents, including OpenAI Codex and Anthropic Claude Code, in implementation,
+testing, documentation, and release preparation. The human maintainer directs the project, reviews and
 accepts release-facing changes, and remains responsible for licensing,
 releases, and scientific claims. AI assistance is not evidence of scientific
 correctness; numerical results must still be independently verified.
@@ -272,4 +283,8 @@ Security reports or reports containing sensitive data must follow
 
 NumeriPlot is licensed under the GNU General Public License v3.0 only. See
 [`LICENSE`](LICENSE). Third-party components remain under their respective
-licenses; see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+licenses; see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md). The Mac app
+bundles Qt (LGPL v3), PyQt6 (GPL v3), and other open-source components without
+modification. Their full license texts are in the app under
+**File → About NumeriPlot → Third-Party Licenses**, and the source archives
+of the GPL/LGPL components are published with each release.

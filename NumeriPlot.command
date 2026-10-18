@@ -9,21 +9,28 @@ pause_on_error() {
     fi
 }
 
-if [ ! -x venv/bin/python ] || [ ! -f main.py ]; then
+if [ ! -f main.py ]; then
+    echo "Başlatıcı NumeriPlot klasöründe kalmalı; masaüstü için Finder takma adı kullanın."
+    echo "Keep this launcher in the NumeriPlot folder; use a Finder alias on the desktop."
+    pause_on_error
+    exit 1
+fi
+
+if [ ! -x venv/bin/python ]; then
     echo "İlk kurulum gerekli. / First-time setup is required."
     echo "Kılavuz / Guide: docs/SOURCE_INSTALL_TR.md (English: docs/SOURCE_INSTALL.md)"
-    echo "https://github.com/alptekin-yildiz/NumeriPlot/blob/main/docs/SOURCE_INSTALL_TR.md"
-    echo "https://github.com/alptekin-yildiz/NumeriPlot/blob/main/docs/SOURCE_INSTALL.md"
+    echo "https://github.com/alptekin-yildiz/NumeriPlot/blob/v0.2.0/docs/SOURCE_INSTALL_TR.md"
+    echo "https://github.com/alptekin-yildiz/NumeriPlot/blob/v0.2.0/docs/SOURCE_INSTALL.md"
     pause_on_error
     exit 1
 fi
 
 echo "NumeriPlot açılıyor. Bu pencere açık kalsın. / Starting NumeriPlot. Keep this window open."
-./venv/bin/python main.py
+NUMERIPLOT_LAUNCHER=1 ./venv/bin/python main.py
 result=$?
 if [ "$result" -ne 0 ]; then
-    echo "Açılış başarısız. Kılavuzun sorun giderme bölümüne bakın."
-    echo "Launch failed. See the troubleshooting section in the installation guide."
+    echo "Açılış başarısız. bash setup.sh komutunu yeniden çalıştırın; kılavuz bölüm 6’ya bakın."
+    echo "Launch failed. Run bash setup.sh again; see section 6 (Troubleshooting) in the installation guide."
     echo "docs/SOURCE_INSTALL_TR.md / docs/SOURCE_INSTALL.md"
     pause_on_error
 fi

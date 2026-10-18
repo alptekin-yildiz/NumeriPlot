@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.2.0 - 2026-10-18 (Public Beta)
+
+- Distribute NumeriPlot as a standalone Mac app for Apple Silicon (macOS 14 or
+  later): download one disk image, drag the app to Applications, and open it
+  with its own icon. No Python installation is needed. The app is unsigned;
+  macOS asks for permission once at first launch.
+- Add a bilingual Mac installation guide with the first-launch steps; keep the
+  source installation for other computers and for development.
+- Open the packaged app in about two seconds, including the first launch: keep
+  the Matplotlib font cache between launches and build it without the slow
+  macOS `system_profiler` font query (previously 12–20 seconds per launch).
+- Add **File → Open Example Project**, which opens the bundled synthetic
+  example without making it the save target.
+- Show Qt's notice and a **Third-Party Licenses** viewer in the About dialog.
+  Ship the collected license notices inside the app and publish the source
+  archives of its GPL/LGPL components with each release.
+- Build the disk image with `build_macos.sh`, which now checks the SciPy wheel,
+  collects the notices, verifies the bundle, and removes only its own outputs.
+  Leave unused Qt parts (QtPdf, QtNetwork, extra image-format plugins) out of
+  the app.
+- Fix setup in paths containing spaces and non-ASCII characters.
+- Reuse the existing virtual environment during setup without prior activation;
+  prefer Python 3.11 for a new environment and explain unusable environments.
+- Verify startup imports at setup time; automatically repair only the known
+  SciPy 1.15.2 wheel error on macOS 27 / arm64 / Python 3.11, then recheck.
+- Report startup exceptions without trying to create a dialog before Qt exists.
+- Bound logs to four files of up to 2 MiB each and reduce console noise.
+- Clarify launcher location errors and source-specific Gatekeeper instructions.
+
 ## 0.1.1 - 2026-10-16 (Public Beta)
 
 - Distribute 0.1.1 as source code; no prebuilt Mac ZIP is planned. Add

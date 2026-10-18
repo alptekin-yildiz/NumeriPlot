@@ -1,0 +1,32 @@
+NumeriPlot — Lisanslar / Licenses
+=================================
+
+TÜRKÇE
+
+NumeriPlot özgür ve açık kaynaklı bir yazılımdır; GNU Genel Kamu Lisansı
+sürüm 3 (yalnızca 3. sürüm, GPL-3.0-only) ile dağıtılır.
+
+Uygulama, kendi lisanslarıyla dağıtılan açık kaynak bileşenler içerir:
+Qt 6 (GNU LGPL v3), PyQt6 (GNU GPL v3), NumPy, SciPy, pandas, Matplotlib,
+Pillow, openpyxl ve diğerleri. Bileşenler değiştirilmeden kullanılır.
+
+- Tam lisans metinleri: NumeriPlot'ta Dosya → Hakkında →
+  "Üçüncü Taraf Lisansları".
+- Kaynak kodu: NumeriPlot'un ve GPL/LGPL bileşenlerin kaynak arşivleri,
+  bu sürümün GitHub sayfasında yayımlanır:
+  https://github.com/alptekin-yildiz/NumeriPlot/releases
+
+ENGLISH
+
+NumeriPlot is free and open-source software, distributed under the GNU
+General Public License version 3 only (GPL-3.0-only).
+
+The app contains open-source components distributed under their own
+licenses: Qt 6 (GNU LGPL v3), PyQt6 (GNU GPL v3), NumPy, SciPy, pandas,
+Matplotlib, Pillow, openpyxl and others. The components are unmodified.
+
+- Full license texts: in NumeriPlot, File → About →
+  "Third-Party Licenses".
+- Source code: NumeriPlot's source and the source archives of its GPL/LGPL
+  components are published on this release's GitHub page:
+  https://github.com/alptekin-yildiz/NumeriPlot/releases

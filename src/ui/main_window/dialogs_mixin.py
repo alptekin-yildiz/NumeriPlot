@@ -17,6 +17,7 @@ from PyQt6.QtWidgets import (
 )
 
 from lang import get_language, t
+from src.app_paths import third_party_notices_path
 from src.version import APP_SUBTITLE, SUPPORT_EMAIL
 
 
@@ -35,7 +36,7 @@ class MainWindowDialogsMixin:
 
         dlg = QDialog(self)
         dlg.setWindowTitle(t("action_about"))
-        dlg.setFixedWidth(440)
+        dlg.setFixedWidth(540)
         dlg.setMinimumHeight(340)
 
         root = QVBoxLayout(dlg)
@@ -121,6 +122,15 @@ class MainWindowDialogsMixin:
             )
         )
         b_lay.addLayout(info_row("©", "2026 Alptekin YILDIZ"))
+        # LGPLv3 4(c): show Qt's notice next to the app's own copyright notice.
+        b_lay.addLayout(
+            info_row(
+                "Bileşenler" if is_tr else "Components",
+                "Qt 6 © The Qt Company Ltd. (LGPLv3), PyQt6 © Riverbank Computing "
+                + ("Limited (GPLv3) ve diğer açık kaynak bileşenler"
+                   if is_tr else "Limited (GPLv3) and other open-source components"),
+            )
+        )
         b_lay.addSpacing(8)
 
         btn_row = QHBoxLayout()
@@ -128,23 +138,24 @@ class MainWindowDialogsMixin:
             "📄 Lisans Metnini Görüntüle" if is_tr else "📄 View License Text"
         )
         btn_license.setStyleSheet("font-size: 11px;")
+        btn_notices = QPushButton(
+            "📄 Üçüncü Taraf Lisansları" if is_tr else "📄 Third-Party Licenses"
+        )
+        btn_notices.setStyleSheet("font-size: 11px;")
 
-        def show_license():
+        def show_text(title, path, missing):
             lic_dlg = QDialog(dlg)
-            lic_dlg.setWindowTitle("GNU General Public License v3")
+            lic_dlg.setWindowTitle(title)
             lic_dlg.resize(560, 420)
             ll = QVBoxLayout(lic_dlg)
             txt = QTextEdit()
             txt.setReadOnly(True)
             txt.setStyleSheet("font-family: monospace; font-size: 11px;")
             try:
-                with open(license_path, encoding="utf-8") as fobj:
+                with open(path, encoding="utf-8") as fobj:
                     txt.setPlainText(fobj.read())
             except Exception:
-                txt.setPlainText(
-                    "LICENSE dosyası bulunamadı.\n"
-                    "Tam metin: https://www.gnu.org/licenses/gpl-3.0.txt"
-                )
+                txt.setPlainText(missing)
             ll.addWidget(txt)
             close = QPushButton("Kapat" if is_tr else "Close")
             close.clicked.connect(lic_dlg.accept)
@@ -154,13 +165,24 @@ class MainWindowDialogsMixin:
             ll.addLayout(cl)
             lic_dlg.exec()
 
-        btn_license.clicked.connect(show_license)
+        btn_license.clicked.connect(lambda: show_text(
+            "GNU General Public License v3",
+            license_path,
+            "LICENSE dosyası bulunamadı.\n"
+            "Tam metin: https://www.gnu.org/licenses/gpl-3.0.txt",
+        ))
+        btn_notices.clicked.connect(lambda: show_text(
+            btn_notices.text(),
+            third_party_notices_path(),
+            "THIRD_PARTY_NOTICES.md: https://github.com/alptekin-yildiz/NumeriPlot",
+        ))
 
         btn_close = QPushButton("Kapat" if is_tr else "Close")
         btn_close.setFixedWidth(80)
         btn_close.clicked.connect(dlg.accept)
 
         btn_row.addWidget(btn_license)
+        btn_row.addWidget(btn_notices)
         btn_row.addStretch()
         btn_row.addWidget(btn_close)
         b_lay.addLayout(btn_row)

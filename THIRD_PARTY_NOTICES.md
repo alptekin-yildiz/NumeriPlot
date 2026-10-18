@@ -1,9 +1,9 @@
 # Third-Party Notices and License Review
 
 NumeriPlot is distributed under `GPL-3.0-only`, but it depends on third-party
-software that remains under its own license. This document records the Phase 3
-review performed on 2026-08-30 for the planned NumeriPlot 0.1.0 Public Beta.
-It is not legal advice.
+software that remains under its own license. This document records the review
+first performed on 2026-08-30 and updated on 2026-10-18 for the NumeriPlot
+0.2.0 macOS app. It is not legal advice.
 
 ## Declared runtime components
 
@@ -28,31 +28,33 @@ clean build. Python is distributed under the PSF License Agreement and related
 incorporated-software licenses; see the
 [official Python 3.11 license documentation](https://docs.python.org/3.11/license.html).
 
-## Resolved transitive components observed during validation
+## Resolved transitive components
 
-The Phase 6 clean environment resolved the following runtime dependencies on
-2026-08-30. These observations are not a complete dependency lock and must not
-be treated as the final binary inventory.
+The 0.2.0 build environment resolved the following runtime dependencies. They
+are not pinned; the notice index inside each app
+(`licenses/third-party/INDEX.md`) lists the exact versions it bundles.
 
-| Component | Observed version | License |
+| Component | Version in the 0.2.0 build | License |
 | --- | ---: | --- |
 | contourpy | 1.3.3 | BSD-3-Clause |
 | cycler | 0.12.1 | BSD-3-Clause |
-| fonttools | 4.63.0 | MIT, with additional notices for incorporated code |
+| fonttools | 4.67.0 | MIT, with additional notices for incorporated code |
 | kiwisolver | 1.5.1 | BSD-3-Clause |
 | packaging | 26.3 | Apache-2.0 OR BSD-2-Clause |
-| pyparsing | 3.3.2 | MIT |
+| pyparsing | 3.3.3 | MIT |
 | python-dateutil | 2.9.0.post0 | Apache-2.0 OR BSD-3-Clause |
-| pytz | 2026.3.post1 | MIT |
-| tzdata | 2026.3 | Apache-2.0 |
+| pytz | 2026.5 | MIT |
+| tzdata | 2026.5 | Apache-2.0 |
 | et-xmlfile | 2.0.0 | MIT |
 | six | 1.17.0 | MIT |
 
-The audited NumPy and SciPy macOS wheels also declare OpenBLAS and LAPACK
-notices, the GCC runtime under `GPL-3.0-with-GCC-exception`, and libquadmath
-under `LGPL-2.1-or-later`. Whether each native library is present in the final
-application must be established from the built `.app`, not inferred from the
-installed wheel alone.
+The NumPy, SciPy, pandas and Pillow wheels carry notices for the code and
+native libraries they bundle. SciPy's macOS wheel includes OpenBLAS and the GCC
+runtime libraries: libgfortran and libgcc_s under
+`GPL-3.0-with-GCC-exception`, and libquadmath under `LGPL-2.1-or-later`.
+Matplotlib's wheel omits the notices for its bundled fonts, color maps and Qt
+figure editor; they are kept in `licenses/matplotlib-3.10.1/` from its source
+distribution.
 
 ## Packaging tools
 
@@ -66,40 +68,85 @@ exception in its
 The build now stops if PyInstaller is absent instead of downloading tooling
 during the release build.
 
-## Binary-distribution obligations and release gate
+## The macOS app
 
-No public binary may be published until all items below are satisfied for the
-actual clean release build:
+The disk image contains a self-contained `NumeriPlot.app` built with
+PyInstaller on Apple Silicon. It bundles the runtime components above, the
+Python 3.11.1 runtime, PyInstaller's bootloader and run-time hooks, and the
+native libraries shipped inside those wheels. The components are unmodified
+apart from the library paths and ad-hoc signatures that PyInstaller sets.
 
-1. Include NumeriPlot's complete, unmodified GPLv3 text (`LICENSE`) and this
-   notice with the application and source distribution.
-2. Include the complete LGPLv3 text for Qt together with the incorporated
-   GPLv3 text. Do not impose terms that prohibit reverse engineering for
-   debugging modifications to Qt.
-3. Provide equivalent, durable access to the exact Corresponding Source for
-   NumeriPlot and the GPL-covered PyQt6 version shipped in the binary. The
-   source offered with a release must correspond to that binary, including the
-   scripts needed to control its build.
-4. Provide the complete corresponding Qt 6.10.2 library source, including any
-   modifications, or a license-compliant written source offer. Preserve the
-   user's ability to replace/relink the LGPL library and provide sufficient
-   installation information to run the relinked result.
-5. Generate a manifest from the final `.app` and inspect PyInstaller analysis,
-   Qt frameworks/plugins, Python runtime files, native `.dylib` dependencies,
-   fonts, image codecs, and package metadata. Copy every applicable upstream
-   copyright notice, license text, and attribution into the release materials.
-6. Reconcile the final Qt frameworks/plugins with Qt 6.10.2's official
-   third-party-code records and SBOM. Do the same for the license files shipped
-   inside the exact NumPy, SciPy, pandas, Matplotlib, Pillow, and Python build
-   artifacts.
-7. Record the exact Python and PyInstaller versions, dependency hashes, source
-   locations, and any local modifications. Re-run this review whenever a
-   dependency or build input changes.
+Of Qt, the app keeps QtCore, QtGui, QtDBus (which QtGui requires), QtWidgets
+and QtSvg, with their platform, style, icon and image-format plugins from the
+qtbase and qtsvg modules. QtPdf, QtNetwork, and the plugins that need them or
+come from qtimageformats are left out because NumeriPlot never loads them
+(`tools/bundle_policy.py`).
 
-The release ZIP is therefore blocked until the clean-build inventory and the
-source/relinking package are verified. A source URL alone is not assumed to
-satisfy every redistribution condition; the release process must preserve the
-required license texts, notices, source availability, and installation rights.
+### What each release provides
+
+1. **License texts and notices inside the app** (`Contents/Resources/licenses`,
+   shown under **File → About NumeriPlot → Third-Party Licenses**): NumeriPlot's
+   GPLv3 `LICENSE`, this document, the LGPLv3 text, the license files shipped
+   with every bundled distribution, Python's license, PyInstaller's terms, and
+   the third-party attributions for the bundled Qt modules
+   (`licenses/Qt-6.10.2-third-party.txt`, generated by
+   `tools/qt_attributions.py`). `tools/collect_licenses.py` gathers them for
+   each build. The About dialog shows Qt's notice next to NumeriPlot's, and the
+   disk image carries a short bilingual notice.
+2. **Source code next to the disk image** on the GitHub release:
+   - NumeriPlot: the release's source archives, including `build_macos.sh`,
+     `NumeriPlot.spec` and `tools/`, which control the build;
+   - Qt 6.10.2: `qtbase-everywhere-src-6.10.2.tar.xz` and
+     `qtsvg-everywhere-src-6.10.2.tar.xz`;
+   - PyQt6 6.10.2: `pyqt6-6.10.2.tar.gz`;
+   - GCC runtime: `gcc-12.1.0.tar.xz`.
+
+   `tools/fetch_release_sources.py` downloads these official archives and
+   verifies them against pinned checksums taken from Qt's `.sha256` files,
+   GCC's `sha512.sum` and PyPI.
+3. **The right to replace Qt**, described below. NumeriPlot's terms do not
+   restrict reverse engineering for debugging such modifications.
+
+### Replacing Qt
+
+The Qt frameworks and plugins are separate files inside
+`NumeriPlot.app/Contents/Frameworks/PyQt6/Qt6/` (`lib/` and `plugins/`). To use
+a modified Qt, build a binary-compatible Qt 6.10 for arm64 macOS from the
+source archives, copy your frameworks or plugins over the bundled ones, and
+re-sign the app locally:
+
+```bash
+codesign --force --deep --sign - NumeriPlot.app
+```
+
+### GCC runtime source
+
+SciPy 1.15.2's wheel contains these libraries as built by the
+[gfortran-for-macOS 12.1](https://github.com/fxcoudert/gfortran-for-macOS)
+toolchain, which applies the Darwin/arm64 port maintained in
+[iains/gcc-12-branch](https://github.com/iains/gcc-12-branch) on top of
+GCC 12.1. That toolchain release does not identify an exact source commit, and
+SciPy's own license file names the GCC sources as the origin of these
+libraries. NumeriPlot follows SciPy's practice: it ships SciPy's notices
+unmodified and publishes the GCC 12.1.0 release archive together with the link
+to the Darwin branch. The maintainer adopted this standard on 2026-10-18.
+
+### Release checklist
+
+Before publishing an app release, the maintainer confirms that:
+
+1. `bash release_check.sh` passes and `bash build_macos.sh` completes, including
+   its SciPy wheel check, notice collection, `tools/check_app_bundle.py`, and
+   the signature and disk-image verification;
+2. `python3 tools/fetch_release_sources.py` completes, and its archives,
+   `SHA256SUMS` and `README.txt` are uploaded together with the disk image and
+   its `.sha256` file;
+3. the app installed from the disk image opens on a real Mac, loads the example
+   project, and exports a figure; and
+4. this document, `requirements*.txt`, `licenses/Qt-*-third-party.txt` and
+   `licenses/<package>-<version>/` are updated together whenever a bundled
+   dependency, Python or PyInstaller changes. The build stops when the Qt or
+   Matplotlib notices no longer match the installed versions.
 
 ## Trademarks and attribution
 

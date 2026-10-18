@@ -6,8 +6,8 @@
       "en": "Your first plot, step by step"
     },
     "intro": {
-      "tr": "NumeriPlot 0.1.1 Public Beta için çevrim dışı kullanım kılavuzu. Ekran görüntüleri aynı arayüzü kullanan 0.1.0 kaynak sürümünden, yalnızca deterministik sentetik verilerle alınmıştır. 0.1.1 için kaynak koddan kurulum yolu kullanılır; hazır Mac ZIP’i planlanmıyor.",
-      "en": "Offline guide for NumeriPlot 0.1.1 Public Beta. Screenshots were captured from the 0.1.0 source version with the same interface, using only deterministic synthetic data. Version 0.1.1 uses source installation; no prebuilt Mac ZIP is planned."
+      "tr": "NumeriPlot 0.2.0 Public Beta için çevrim dışı kullanım kılavuzu. Ekran görüntüleri aynı arayüzü kullanan 0.1.0 kaynak sürümünden (Dosya menüsü 0.2.0'dan), yalnızca deterministik sentetik verilerle alınmıştır. Apple Silicon Mac'lerde hazır uygulama kullanılır; diğer bilgisayarlarda kaynak koddan kurulum yolu vardır.",
+      "en": "Offline guide for NumeriPlot 0.2.0 Public Beta. Screenshots were captured from the 0.1.0 source version with the same interface (the File menu from 0.2.0), using only deterministic synthetic data. Apple Silicon Macs use the ready-made app; other computers can install from source."
     },
     "blocks": [
       {
@@ -27,13 +27,13 @@
         },
         "steps": {
           "tr": [
-            "Dosya → Proje Aç… ile examples/NumeriPlot_example_project.json dosyasını açın. Bu dosya bir veri CSV’si değil, hazır çalışma alanıdır.",
+            "Dosya → Örnek Projeyi Aç ile hazır sentetik örneği açın. Kaynak klasöründe aynı dosya examples/NumeriPlot_example_project.json olarak durur ve Dosya → Proje Aç… ile de açılır. Bu dosya bir veri CSV’si değil, hazır çalışma alanıdır.",
             "Grafik sekmesinde gözlemleri ve Gauss eğrisini inceleyin. Analiz Raporu sekmesinden kaydedilmiş fitin parametrelerini ve rezidülerini okuyun.",
             "Metin Yönetimi başlığına tıklayıp örnekteki Synthetic data only yazısını seçin. Güncelle ile değiştirin veya Sil ile kaldırın.",
             "Örneği korumak için Dosya → Projeyi Farklı Kaydet… ile kendi kopyanızı oluşturun. Ardından grafiği PNG, PDF veya SVG olarak dışa aktarın."
           ],
           "en": [
-            "Use File → Open Project… to open examples/NumeriPlot_example_project.json. This is a saved workspace, not a CSV data import.",
+            "Use File → Open Example Project to open the supplied synthetic example. In a source folder, the same file is examples/NumeriPlot_example_project.json and also opens with File → Open Project…. This is a saved workspace, not a CSV data import.",
             "Inspect the observations and Gaussian curve in Plot. Open Analysis Report to inspect the saved fit parameters and residuals.",
             "Expand Text Management and select the Synthetic data only annotation. Change it with Update or remove it with Delete.",
             "Keep the original example by using File → Save Project As… for your copy. Export the figure separately as PNG, PDF, or SVG."
@@ -47,13 +47,13 @@
         },
         "steps": {
           "tr": [
-            "Önce açık projenizi kaydedin. Veri Yükle… ile examples/data/noisy_linear.csv dosyasını seçin; önizlemede x ve y sütunlarını kontrol edin.",
+            "Önce açık projenizi kaydedin. Veri Yükle… ile depodaki examples/data/noisy_linear.csv dosyasını seçin; önizlemede x ve y sütunlarını kontrol edin.",
             "Veri Tablosu’nda x başlığına sağ tıklayıp X, y başlığına sağ tıklayıp Y Sol rolünü atayın.",
             "Grafik türünü seçin, Grafik Ekle’ye basın ve Grafik sekmesine geçin. Eksen başlıklarına ölçüm adlarını ve birimlerini ekleyin.",
             "Analiz ve Fit bölümünü açın. Seriyi ve Doğrusal modeli seçip Fit’e basın. Başlangıç değerlerini girin; raporu ve rezidüleri değerlendirin."
           ],
           "en": [
-            "Save your current project first. Use Load Data… for examples/data/noisy_linear.csv and check the x and y columns in the preview.",
+            "Save your current project first. Use Load Data… for examples/data/noisy_linear.csv from the repository and check the x and y columns in the preview.",
             "In Data Table, right-click the x header and assign X; right-click y and assign Y Left.",
             "Choose a plot type, select Add Plot, then open Plot. Add measurement names and units to the axis labels.",
             "Expand Analysis & Fit. Select the series and Linear model, then Fit. Enter starting values and review the report and residuals."
@@ -66,8 +66,8 @@
           "en": "Version and scope"
         },
         "text": {
-          "tr": "0.1.1 kaynak kod olarak dağıtılır. Kaynak kurulum adımları üstteki Kurulum bağlantısındadır. Yerel kontrol Apple Silicon, macOS 27.0.1 ve Python 3.11.1 ile yapıldı; diğer ortamların doğrulandığı iddia edilmez. Bu kılavuz güncel 0.1.1 kaynaklarını anlatır; önceki 0.1.0 paketi son düzeltmeleri içermez. Veriler yerel işlenir; uygulama çalışırken AI hizmeti kullanmaz.",
-          "en": "Version 0.1.1 is distributed as source code. Use the Installation link above for setup. Local checks used Apple Silicon, macOS 27.0.1 and Python 3.11.1; other environments are not claimed as validated. This guide describes current 0.1.1 sources; the previous 0.1.0 package lacks recent fixes. Data is processed locally; the running app does not use AI services."
+          "tr": "0.2.0, Apple Silicon Mac'ler (macOS 14 veya üstü) için hazır uygulama olarak dağıtılır; kurulum adımları üstteki Kurulum bağlantısındadır. Diğer bilgisayarlar NumeriPlot'u kaynak koddan çalıştırabilir. Yerel kontrol Apple Silicon ve macOS 27.0.1 ile yapıldı; diğer ortamların doğrulandığı iddia edilmez. Önceki 0.1.0 paketi son düzeltmeleri içermez. Veriler yerel işlenir; uygulama çalışırken AI hizmeti kullanmaz.",
+          "en": "Version 0.2.0 is distributed as a ready-made app for Apple Silicon Macs (macOS 14 or later); use the Installation link above for setup. Other computers can run NumeriPlot from source. Local checks used Apple Silicon and macOS 27.0.1; other environments are not claimed as validated. The previous 0.1.0 package lacks recent fixes. Data is processed locally; the running app does not use AI services."
         }
       }
     ]
@@ -583,8 +583,8 @@
           "en": "What to include in a report"
         },
         "text": {
-          "tr": "Sürüm, işletim sistemi/mimari, ZIP mi kaynak kod mu, adımlar, beklenen ve gerçekleşen davranış ve küçük sentetik örnek. Normal sorunları uygun GitHub issue şablonuyla bildirin; güvenlik veya hassas veri konularında SECURITY.md yolunu izleyin. Loglar otomatik yüklenmez; paylaşmadan önce temizleyin.",
-          "en": "Include version, OS/architecture, ZIP versus source, steps, expected and actual behavior, and a small synthetic example. Use the matching GitHub issue template for ordinary problems; follow SECURITY.md for vulnerabilities or sensitive reports. Logs are not uploaded automatically; sanitize them before sharing."
+          "tr": "Sürüm, işletim sistemi/mimari, uygulama mı kaynak kod mu, adımlar, beklenen ve gerçekleşen davranış ve küçük sentetik örnek. Normal sorunları uygun GitHub issue şablonuyla bildirin; güvenlik veya hassas veri konularında SECURITY.md yolunu izleyin. Loglar otomatik yüklenmez; paylaşmadan önce temizleyin.",
+          "en": "Include version, OS/architecture, app versus source, steps, expected and actual behavior, and a small synthetic example. Use the matching GitHub issue template for ordinary problems; follow SECURITY.md for vulnerabilities or sensitive reports. Logs are not uploaded automatically; sanitize them before sharing."
         }
       }
     ]
