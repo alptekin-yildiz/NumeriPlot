@@ -66,8 +66,8 @@
           "en": "Version and scope"
         },
         "text": {
-          "tr": "0.2.0, Apple Silicon Mac'ler (macOS 14 veya üstü) için hazır uygulama olarak dağıtılır; kurulum adımları üstteki Kurulum bağlantısındadır. Diğer bilgisayarlar NumeriPlot'u kaynak koddan çalıştırabilir. Yerel kontrol Apple Silicon ve macOS 27.0.1 ile yapıldı; diğer ortamların doğrulandığı iddia edilmez. Önceki 0.1.0 paketi son düzeltmeleri içermez. Veriler yerel işlenir; uygulama çalışırken AI hizmeti kullanmaz.",
-          "en": "Version 0.2.0 is distributed as a ready-made app for Apple Silicon Macs (macOS 14 or later); use the Installation link above for setup. Other computers can run NumeriPlot from source. Local checks used Apple Silicon and macOS 27.0.1; other environments are not claimed as validated. The previous 0.1.0 package lacks recent fixes. Data is processed locally; the running app does not use AI services."
+          "tr": "0.2.0, Apple Silicon Mac'ler (macOS 14 veya üstü) için hazır uygulama olarak dağıtılır; kurulum adımları üstteki Kurulum bağlantısındadır. Diğer bilgisayarlar NumeriPlot'u kaynak koddan çalıştırabilir. Yerel kontrol Apple Silicon ve macOS 27.0.1 ile yapıldı; diğer ortamların doğrulandığı iddia edilmez. Veriler yerel işlenir; uygulama çalışırken AI hizmeti kullanmaz.",
+          "en": "Version 0.2.0 is distributed as a ready-made app for Apple Silicon Macs (macOS 14 or later); use the Installation link above for setup. Other computers can run NumeriPlot from source. Local checks used Apple Silicon and macOS 27.0.1; other environments are not claimed as validated. Data is processed locally; the running app does not use AI services."
         }
       }
     ]

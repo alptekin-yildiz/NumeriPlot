@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Correct outdated version statements in `SECURITY.md`, the READMEs, the bug
+  report template and the source installation guides. New tests keep version
+  numbers, release links and the minimum macOS version in public documents
+  consistent with `src/version.py`.
+
 ## 0.2.0 - 2026-10-18 (Public Beta)
 
 - Distribute NumeriPlot as a standalone Mac app for Apple Silicon (macOS 14 or

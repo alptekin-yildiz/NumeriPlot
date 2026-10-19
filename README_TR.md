@@ -104,10 +104,6 @@ ilk açılışta bir kez izin ister. Proje şeması **1.0** olarak kalır.
 | Apple Silicon, macOS 14–26 | Paketteki kütüphanelerce desteklenir (en az macOS 14); bu sürümlerde denenmedi |
 | Intel Mac, Windows, Linux | Uygulama sunulmaz; kaynak koddan çalıştırmak mümkündür ama doğrulanmadı |
 
-[0.1.0 pre-release](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
-sonraki düzeltmeleri içermeyen önceki bir uygulama paketi barındırır. Bunun
-yerine 0.2.0'ı kullanın.
-
 ## Kaynaktan çalıştırma
 
 Apple Silicon Mac'te önerilen yol yukarıdaki uygulamadır. Kaynaktan çalıştırma

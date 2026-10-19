@@ -18,8 +18,7 @@ Terminal commands; subsequent launches are shorter.
   Python versions have not been validated here with the pinned dependencies.
 - Apple Silicon Mac: the local check used macOS 27.0.1 and Python 3.11.1.
   Equivalent validation has not been performed on Intel, Windows, Linux, or
-  older macOS versions. The previous package's “macOS 12+” description does
-  not establish support for this installation route.
+  older macOS versions.
 
 Open **Terminal** using Spotlight. This command only displays the Python
 version and does not change your computer:
@@ -128,8 +127,8 @@ is missing, try double-clicking the file again. macOS may ask for your login
 password. See the [Mac User Guide](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac).
 
 Do not proceed on a **damaged-file, detected-malware, or will-damage-your-computer**
-warning. Do not remove quarantine attributes. Checksums for the old 0.1.0 `.app`
-package do not apply to this source launcher.
+warning. Do not remove quarantine attributes. The disk-image checksum in the
+[Mac app guide](MACOS_INSTALL.md) does not apply to this source launcher.
 [Apple’s guidance](https://support.apple.com/en-ie/102445).
 
 If you prefer Terminal,

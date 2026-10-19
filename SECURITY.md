@@ -2,9 +2,10 @@
 
 ## Supported versions
 
-Security fixes target the latest published NumeriPlot 0.1.x Public Beta
-release unless a release note states otherwise. Version 0.1.1 is a source-only
-Public Beta release.
+Security fixes target the latest published NumeriPlot 0.2.x Public Beta
+release unless a release note states otherwise. Version 0.2.0 is distributed as
+a Mac app for Apple Silicon (macOS 14 or later); other computers can run it from
+source.
 
 ## Reporting a vulnerability
 
@@ -16,7 +17,8 @@ a report containing sensitive data. Send a concise private report to
 Include, when possible:
 
 - the affected NumeriPlot version or commit;
-- macOS and Python versions;
+- the macOS version, and whether you use the Mac app or run from source; for
+  source, also the Python version;
 - reproduction steps and expected impact;
 - whether private data may have been exposed; and
 - a minimal synthetic reproducer.

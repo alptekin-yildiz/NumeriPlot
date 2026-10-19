@@ -100,9 +100,6 @@ once at first launch. Project schema remains **1.0**.
 | Apple Silicon, macOS 14–26 | Supported by the bundled libraries (minimum macOS 14); not tested on these versions |
 | Intel Mac, Windows, Linux | No app is provided; running from source is possible but not validated |
 
-The [0.1.0 pre-release](https://github.com/alptekin-yildiz/NumeriPlot/releases/tag/v0.1.0)
-contains an earlier app package without the later fixes. Use 0.2.0 instead.
-
 ## Run from source
 
 On an Apple Silicon Mac, the app above is the recommended route. Running from

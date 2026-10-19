@@ -19,8 +19,7 @@ açılış daha kısadır.
   sürümlerinin sabitlenmiş bağımlılıklarla uyumluluğu burada doğrulanmadı.
 - Apple Silicon Mac: yerel deneme macOS 27.0.1 ve Python 3.11.1 ile yapıldı.
   Intel, Windows, Linux veya daha eski macOS sürümleri için aynı sonucu garanti
-  eden bir test yapılmadı. Önceki paketin “macOS 12+” bilgisi bu kurulumun
-  destek beyanı değildir.
+  eden bir test yapılmadı.
 
 Terminal’i Spotlight’ta **Terminal** yazarak açın. Aşağıdaki komut yalnız
 Python sürümünü gösterir; bilgisayarınızda değişiklik yapmaz:
@@ -131,7 +130,8 @@ isteyebilir. Bkz. [Mac Kullanma Kılavuzu (İngilizce)](https://support.apple.co
 
 **Hasarlı dosya, saptanmış zararlı yazılım veya bilgisayara zarar vereceği**
 uyarısında devam etmeyin. Karantina kaldırma komutu kullanmayın.
-Bu kaynak başlatıcısı için eski 0.1.0 `.app` paketinin checksum adımları geçerli değildir.
+[Mac uygulaması kılavuzundaki](MACOS_INSTALL_TR.md) disk görüntüsü checksum
+adımı bu kaynak başlatıcısı için geçerli değildir.
 [Apple’ın açıklaması](https://support.apple.com/tr-tr/102445).
 
 Terminal’den açmayı tercih ederseniz proje klasöründe şu komutu kullanın:

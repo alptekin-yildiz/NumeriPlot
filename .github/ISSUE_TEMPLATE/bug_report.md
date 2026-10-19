@@ -16,7 +16,7 @@ screenshots.
 
 ### NumeriPlot version
 
-<!-- For example: 0.1.0-beta or a commit hash. -->
+<!-- For example: Public Beta v0.2.0 (window title or File → About NumeriPlot) or a commit hash. -->
 
 ### Installation method
 

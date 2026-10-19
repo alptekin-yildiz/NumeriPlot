@@ -1,10 +1,21 @@
 import re
 from pathlib import Path
 
-from src.version import VERSION
+from src.version import MACOS_MINIMUM_VERSION, VERSION
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# NumeriPlot release numbers: 0.2.0, 0.2.x, and v0.2.0 in links. The one-digit
+# minor keeps dependency versions such as cycler 0.12.1 out of the check.
+NUMERIPLOT_VERSION = re.compile(r"(?<![\w.])v?(0\.\d\.(?:\d+|x))(?!\d|\.\d)")
+
+# Lines that may name another release, each with its reason.
+OTHER_VERSION_ALLOWED = (
+    # The guide says its screenshots come from the 0.1.0 source version.
+    ("docs/guide/essentials.json", "0.1.0 kaynak sürümünden"),
+    ("docs/guide/essentials.json", "0.1.0 source version"),
+)
 
 
 def test_required_public_release_documents_exist():
@@ -277,3 +288,75 @@ def test_public_documents_start_with_current_numeriplot_identity():
         content = (ROOT / path).read_text(encoding="utf-8").casefold()
         for term in disallowed_history_terms:
             assert term not in content, f"{path} contains {term!r}"
+
+
+def _public_document_lines():
+    """Yield (path, line number, line) for the tracked public documents.
+
+    Local maintainer files listed in .gitignore are skipped, and so is the
+    CHANGELOG history below the current release.
+    """
+    ignored = set((ROOT / ".gitignore").read_text(encoding="utf-8").splitlines())
+    paths = {
+        *ROOT.glob("*.md"),
+        ROOT / "CITATION.cff",
+        ROOT / "NumeriPlot.command",
+        *(ROOT / "docs").glob("*.md"),
+        ROOT / "docs" / "guide" / "README.md",
+        *(ROOT / "docs" / "guide").glob("*.json"),
+        *(ROOT / ".github").rglob("*.md"),
+        *(ROOT / "assets" / "dmg").glob("*.txt"),
+    }
+    for path in sorted(paths):
+        name = path.relative_to(ROOT).as_posix()
+        if name in ignored:
+            continue
+        text = path.read_text(encoding="utf-8")
+        if name == "CHANGELOG.md":
+            releases = [match.start() for match in re.finditer(r"(?m)^## \d", text)]
+            text = text[: releases[1]] if len(releases) > 1 else text
+        for number, line in enumerate(text.splitlines(), start=1):
+            yield name, number, line
+
+
+def _names_another_release_on_purpose(name, line):
+    return any(name == path and part in line for path, part in OTHER_VERSION_ALLOWED)
+
+
+def test_public_documents_name_only_the_current_version():
+    series = VERSION.rsplit(".", 1)[0] + ".x"
+    stale = [
+        f"{name}:{number}: {found}"
+        for name, number, line in _public_document_lines()
+        if not _names_another_release_on_purpose(name, line)
+        for found in NUMERIPLOT_VERSION.findall(line)
+        if found not in (VERSION, series)
+    ]
+    assert not stale, "Update these, or allow them with a reason:\n" + "\n".join(
+        stale
+    )
+
+
+def test_public_documents_state_the_bundle_minimum_macos():
+    minimum = MACOS_MINIMUM_VERSION.split(".")[0]
+    claim = re.compile(
+        r"macOS (\d+)(?:\+| or (?:newer|later)| veya (?:üstü|üzeri|sonrası))"
+    )
+    wrong = [
+        f"{name}:{number}: macOS {found}"
+        for name, number, line in _public_document_lines()
+        for found in claim.findall(line)
+        if found != minimum
+    ]
+    assert not wrong, "\n".join(wrong)
+
+
+def test_changelog_and_citation_record_the_current_release():
+    changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+    citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
+
+    release = re.search(r"(?m)^## (\d+\.\d+\.\d+) - (\d{4}-\d{2}-\d{2})", changelog)
+    released = re.search(r"(?m)^date-released: '?(\d{4}-\d{2}-\d{2})'?$", citation)
+
+    assert release and release.group(1) == VERSION
+    assert released and released.group(1) == release.group(2)
